@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Variational Inference
+title: variational inference
 date: 2016-04-22 12:58:05 +1000 
 categories: MachineLearning
 ---
