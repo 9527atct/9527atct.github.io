@@ -3,13 +3,13 @@
 	
 	{% include header.html %}	
 
-  <body>
+<body>
 
     
-	<div class="container">
+<div class="container">
 	<br />
 	{% include myheader.html %}
-	 <div class="row"> 
+	<div class="row"> 
 	 	<div class="blog-post">
         	<div class="col-sm-8 blog-main">
 			<br>			
@@ -21,15 +21,17 @@
 			<div class="col-sm-3 col-sm-offset-1 blog-sidebar">            	
 					{% include rightcolumn.html %}				
 			</div>
-			<div class="col-sm-10 blog-main">
+			<div class="col-sm-11 blog-main">
+			
 			{% include disqus.html %}
+			
 			</div>
 		</div>
 		
 	</div>
-    </div>
+</div>
 	{% include footer.html %}
 
-  </body>
+</body>
 
 </html>
