@@ -3,6 +3,7 @@ layout: post
 title: exponential family 
 date: 2016-04-25 15:24:05 +1000 
 categories: MachineLearning
+comments: true
 ---
 
 ----------

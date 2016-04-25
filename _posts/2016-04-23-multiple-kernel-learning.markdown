@@ -3,6 +3,7 @@ layout: post
 title: multiple kernel learing
 date: 2016-04-23 15:58:05 +1000 
 categories: MachineLearning
+comments: true
 ---
 
 ### Reproducing kernel Hibert Sapce (RKHS) ###
