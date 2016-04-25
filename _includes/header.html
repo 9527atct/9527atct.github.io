@@ -1,3 +1,4 @@
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,4 +19,5 @@
     <!--MML_HTMLorMML-full-->
     <script type="text/javascript" src="{{ BASE_PATH }}/public/MathJax/MathJax.js?config=TeX-AMS_HTML-full" ></script>
     <link href="{{ BASE_PATH }}/public/mycss/index.css" rel="stylesheet">
-</header>
+	<title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+</head>
