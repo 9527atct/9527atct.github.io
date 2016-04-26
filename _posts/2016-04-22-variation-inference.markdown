@@ -105,9 +105,30 @@ q^*(z_k) \propto \exp{ E_{-k} [ \ln p(z_k , Z_{-k},x)] }
 
 The *coordinate ascent algorithm* is to iteratively update each $q(z_k)$. The ELBO converges to a local minimum. Use the resulting $q$ is as a proxy for the true posterior.
 
+### working with exponential family conditional ###
+
+- Compute the log of the conditional
+
+\\[
+\ln p(z_j | z_{-j},x) = \ln h(z_j) + \eta (z_{-j},x)^T t(z_j) - a( \eta (z_{-j}, x))
+\\]
+
+- Compute the expectation with respect to $q(z_{-j})$
+
+\\[
+E[ \ln p(z_j | z_{-j},x)]= \ln h(z_j) + E[ \eta(z_{-j},x)]^Tt(z_j) - E[a( \eta (z_{-j}, x)) ]
+\\]
+
+- Noting that the last term does not depend on $q_j$, this means that
+
+\\[
+q^*(z_j) \propto h(z_j) \exp E[ \eta(z_{-j},x)]^Tt(z_j)
+\\]
+and the normalizing constant is $E[a( \eta (z_{-j}, x)) ]$
 
 
 
+----------
 
 ### Reference ###
 [Variational Bayesian methods](https://en.wikipedia.org/wiki/Variational_Bayesian_methods)
