@@ -4,16 +4,16 @@ layout: default
 
 <div class="home">
 
-  <h2 class="page-heading">文章列表:</h1>
+  <h2 class="page-heading">POST:</h1>
 
   <ul class="post-list">
     {% for post in site.posts %}
       <li>
         <span >{{ post.date | date: "%b %-d, %Y" }}</span>
 
-        <h2>
+        <h3>
           <a  href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
+        </h3>
       </li>
     {% endfor %}
   </ul>
