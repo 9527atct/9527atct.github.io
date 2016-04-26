@@ -30,6 +30,12 @@ h6, .h6 {
   }
 }
 
+/*
+ * navbar
+ */
+.navbar-static-top {
+  margin-bottom: 19px;
+}
 
 /*
  * Masthead for nav
