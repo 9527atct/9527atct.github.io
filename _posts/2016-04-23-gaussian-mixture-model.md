@@ -37,11 +37,11 @@ p(z=e_k | x) = \frac{p(x|z=e_k)p(z=e_k}{p(x)}=\frac{ \alpha_k N(x | \mu_k,C_k)}{
 
 
 ### Expectation Maximization Algorithm ###
-- Given $x=(x_1,...,x_n)
-- $(x,z) \sim p_{\theta} for some undnown $\theta \in \Theta$
+- Given $x=(x_1,...,x_n)$
+- $(x,z) \sim p_{\theta}$ for some undnown $\theta \in \Theta$
 - Goal: $\theta_{MLE} = \arg\max_{ \theta} p_{ \theta}(x)$
-- Issue: $p_{ \theta}(x) = \sum_{z} p_{ \theta}(x,z) difficult to maximize.
+- Issue: $p_{ \theta}(x) = \sum_{z} p_{ \theta}(x,z)$ difficult to maximize.
 - Alg: initialize $ \theta_0 \in \Theta $
   1. for t=0,1,2,...,(until convergence)
-  2. E-step: $Q( \theta, \theta_{t}) = E_{ \theta_t}( \ln p_{ \theta}(x,z)|X=x)
-  3. M-step: $ \theta_{t+1} = \arg\max_{ \theta} Q( \theta, \theta_t) 
+  2. E-step: $Q( \theta, \theta_{t}) = E_{ \theta_t}( \ln p_{ \theta}(x,z)|X=x)$
+  3. M-step: $ \theta_{t+1} = \arg\max_{ \theta} Q( \theta, \theta_t) $
