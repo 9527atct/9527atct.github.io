@@ -16,7 +16,7 @@ comments: true
 - MLE: $ \theta_{MLE} = \arg\max_{ \theta} p(D \| \theta)$
 
 ### samples ###
-Suppose dataset $D=(x_1,...,x_n)$, $x_i \in R^d$, and $\theta \sim N( \mu,1)$. $x_1,...,x_n$ are conditional independent given $\theta$, and distribution is $N( \theta, \sigma^2).
+Suppose dataset $D=(x_1,...,x_n)$, $x_i \in R^d$, and $\theta \sim N( \mu,1)$. $x_1,...,x_n$ are conditional independent given $\theta$, and distribution is $N( \theta, \sigma^2)$.
 
 Then, the MAP estimator is,
 \\[
