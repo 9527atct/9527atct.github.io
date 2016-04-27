@@ -47,3 +47,39 @@ Another form,
 Ber(x| \mu)= (1- \mu) \exp [x \ln \frac{ \mu}{1- \mu}]
 \\]
 where $\phi(x)=x, \theta = \ln \frac{ \mu}{1- \mu}$ 
+
+### MLE for an exponential family ###
+Given $D = (x_1,...,x_n)$, $x_i \in R^d , \theta \in R^k , x_1,...,x_n ~ p(x| theta) $, Then, MLE is,
+\\[
+\theta_{MLE} = \arg \max _{ \theta } p(D| \theta) 
+\\]
+
+That is,
+\\[
+\begin{split}
+p(D| \theta)&= \prod_{i=1}^n p(x_i | \theta) \\\
+&= \prod_{i=1}^n e^{ \theta^T s(x_i)}h(x_i) \frac{1}{Z( \theta)} \\\
+&= z( \theta)^{-n} e^{ \theta^T \sum_{i=1}^n s(x_i)} \prod_{i=1}^n h(x_i) \\\
+&= z( \theta)^{-n} e^{ \theta^T s(D) } \prod_{i=1}^n h(x_i)
+\end{split}
+\\]
+
+log function of the MLE
+\\[
+\ln p(D| \theta)= -n \ln Z( \theta) + \theta^T s(D) + \sum_{i=1}^n \ln h(x_i)
+\\]
+
+The function derivative is,
+\\[
+\frac{ \partial}{ \partial \theta_j} \ln p(D| \theta) = -n \frac{ \partial}{ \partial \theta_j} \ln Z( \theta) +s_j(D)
+\\]  
+
+and, $\frac{ \partial}{ \partial \theta_j} \ln Z( \theta)$,
+\\[
+\begin{split}
+\frac{ \partial}{ \partial \theta_j} \ln Z( \theta) &= \frac{1}{Z( \theta)} \frac{ \partial}{ \partial \theta_j} Z( \theta) \\\
+&= \frac{1}{Z( \theta)} \int s_j(x)e^{ \theta^T s(x)} h(x) dx \\\
+&= \int s_j(x) p_{ \theta}(x) dx \\\
+&= E_{ \theta}[ s_j(X) ]
+\end{split}
+\\]
