@@ -58,9 +58,9 @@ That is,
 \\[
 \begin{split}
 p(D| \theta)&= \prod_{i=1}^n p(x_i | \theta) \\\
-&= \prod_{i=1}^n e^{ \theta^T s(x_i)}h(x_i) \frac{1}{Z( \theta)} \\\
-&= z( \theta)^{-n} e^{ \theta^T \sum_{i=1}^n s(x_i)} \prod_{i=1}^n h(x_i) \\\
-&= z( \theta)^{-n} e^{ \theta^T s(D) } \prod_{i=1}^n h(x_i)
+&= \prod_{i=1}^n e^{ \theta^T S(x_i)}h(x_i) \frac{1}{Z( \theta)} \\\
+&= Z( \theta)^{-n} e^{ \theta^T \sum_{i=1}^n S(x_i)} \prod_{i=1}^n h(x_i) \\\
+&= Z( \theta)^{-n} e^{ \theta^T s(D) } \prod_{i=1}^n h(x_i)
 \end{split}
 \\]
 
@@ -68,12 +68,12 @@ log function of the MLE
 \\[
 \ln p(D| \theta)= -n \ln Z( \theta) + \theta^T S(D) + \sum_{i=1}^n \ln h(x_i)
 \\]
-where $S=(s_1,...,s_k)$,  $\theta^T S(D)= \sum_{j=1}^k \theta_j s_j(D)$, $s_j(D)= \sum_{i=1}^n s_j(x_i)$.
+where $S=(s_1,...,s_k)$, and,  $\theta^T S(D)= \sum_{j=1}^k \theta_j s_j(D)$, and,  $s_j(D)= \sum_{i=1}^n s_j(x_i)$.
 
 
-The function derivative is,
+The log function derivative is,
 \\[
-\frac{ \partial}{ \partial \theta_j} \ln p(D| \theta) = -n \frac{ \partial}{ \partial \theta_j} \ln Z( \theta) +s_j(D)
+\frac{ \partial}{ \partial \theta_j} \ln p(D| \theta) = -n \frac{ \partial}{ \partial \theta_j} \ln Z( \theta) +s_j(D) = -nE_{ \theta}s_j(X) + s_j(D)
 \\]  
 
 and, $\frac{ \partial}{ \partial \theta_j} \ln Z( \theta)$,
@@ -84,4 +84,11 @@ and, $\frac{ \partial}{ \partial \theta_j} \ln Z( \theta)$,
 &= \int s_j(x) p_{ \theta}(x) dx \\\
 &= E_{ \theta}[ s_j(X) ]
 \end{split}
+\\]
+
+We often write $ \nabla \ln Z( \theta) = E_{ \theta} S(X)$, then we have,
+\\[
+\begin{split}
+nE_{\theta}S(X)&=S(D)= \sum_{i=1}^n S(x_i) \\\
+E_{\theta}S(X)= \frac{1}{n} \sum_{i=1}^n S(x_i)
 \\]
