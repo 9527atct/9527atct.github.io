@@ -68,7 +68,7 @@ log function of the MLE
 \\[
 \ln p(D| \theta)= -n \ln Z( \theta) + \theta^T S(D) + \sum_{i=1}^n \ln h(x_i)
 \\]
-where $S=(s_1,...,s_k}$,  $\theta^T S(D)= \sum_{j=1}^k \theta_j s_j(D)$, $s_j(D)= \sum_{i=1}^n s_j(x_i)$.
+where $S=(s_1,...,s_k)$,  $\theta^T S(D)= \sum_{j=1}^k \theta_j s_j(D)$, $s_j(D)= \sum_{i=1}^n s_j(x_i)$.
 
 
 The function derivative is,
