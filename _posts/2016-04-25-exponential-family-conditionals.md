@@ -91,4 +91,5 @@ We often write $ \nabla \ln Z( \theta) = E_{ \theta} S(X)$, then we have,
 \begin{split}
 nE_{\theta}S(X)&=S(D)= \sum_{i=1}^n S(x_i) \\\
 E_{\theta}S(X)= \frac{1}{n} \sum_{i=1}^n S(x_i)
+\end{split}
 \\]
