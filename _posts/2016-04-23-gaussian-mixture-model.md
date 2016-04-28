@@ -74,7 +74,7 @@ E_{ \theta} ( \sum_i z_{ik})= \sum_i E_{ \theta}[z_{ik}]= \sum_i \alpha_k = n \a
 \\[
 E_{ \theta_{0}}( \sum_i z_{ik} \| X=x) = \sum_i E_{ \theta_0} [ z_{ik} | x_i] = \sum_i \gamma_{ik} = n_k
 \\]
-where $\gamma_{ik}= \frac{ \alpha_k p(x_i \| \theta_0^k)}{ \sum_{k'} \alpha_{k'} p(x_i \| \theta_0^k')}$. 
+where $ \gamma_{ik} = \frac{ \alpha_k p(x_i \| \theta_0^k)} {  \sum_{k'} \alpha_{k'} p(x_i \| \theta_0^{k'}) }$. 
   so, put it together, the parameter $\alpha_k$ estimator is,
 \\[
 \alpha_k = \frac{n_k}{n}
