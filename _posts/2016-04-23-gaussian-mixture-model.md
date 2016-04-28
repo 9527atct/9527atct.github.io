@@ -47,12 +47,12 @@ The first things to do is to get the $s_i(X,Z)|X=x $. we know that,
 p(x,z) &= \prod_{k=1}^m \alpha^{z_k} N(x| \mu_k, C_k)^{z_k} \\\
 &= \prod_{k=1}^m e^{z_k \ln \alpha_k } \sqrt{ \frac{ \mid \Lambda_k \mid}{2 \pi}} ^{z_k} e^{ \frac{-z_k}{2}(x- \mu_k)^T \Lambda_k (x- \mu_k)} \\\
 & \propto \exp( \sum_{k=1}^m z_k \ln \alpha_k + \frac{z_k}{2} \ln \mid \Lambda_k \mid - \frac{z_k}{2}(x^T \Lambda_k x-2 \mu_k^T \Lambda_k x + \mu_k^T \Lambda_k \mu_k)  )  \\\
-&= \exp (\sum z_k \beta_k -\frac{1}{2} \sum Tr(z_k xx^T \Lambda_k) + sum z_kx^T \Lambda_k \mu_k)
+&= \exp (\sum z_k \beta_k -\frac{1}{2} \sum Tr(z_k xx^T \Lambda_k) + \sum z_kx^T \Lambda_k \mu_k)
 \end{split}
 \\]
 where, $\beta_k = \ln \alpha_k + \frac{1}{2} \ln \mid \Lambda_k \mid - \frac{ 1}{2} \mu_k^T \Lambda_k \mu_k$. 
 
-And, Sufficient statistic is $z, z_kxx^T [k=1,...m], z_kx [k=1,...,m]
+And, Sufficient statistic is $z, z_kxx^T [k=1,...m], z_kx [k=1,...,m]$
 
 - Multiple
 \\[
