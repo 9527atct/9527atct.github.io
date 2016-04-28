@@ -30,7 +30,7 @@ p(x,z)= \prod_{k=1}^m \alpha^{z_k} N(x| \mu_k, C_k)^{z_k}
 
 the posterior distribution is,
 \\[
-p(z=e_k | x) = \frac{p(x|z=e_k)p(z=e_k}{p(x)}=\frac{ \alpha_k N(x | \mu_k,C_k)}{ \sum_{k=1}^m  \alpha_k N(x | \mu_k,C_k)}
+p(z=e_k | x) = \frac{p(x|z=e_k)p(z=e_k)}{p(x)}=\frac{ \alpha_k N(x | \mu_k,C_k)}{ \sum_{k=1}^m  \alpha_k N(x | \mu_k,C_k)}
 \\]
 
 ### EM for GMM ###
@@ -49,13 +49,16 @@ p(z=e_k | x) = \frac{p(x|z=e_k)p(z=e_k}{p(x)}=\frac{ \alpha_k N(x | \mu_k,C_k)}{
 - motivation for the EM 
 Specialize exponential family: $p_{ \theta}(x,z)= \frac{1}{C( \theta)}h(x,z)e^{g( \theta)^Ts(x,z)}$
 
-Nature form: $ p_{ \theta}(x,z)= \frac{1}{C( \theta)}h(x,z)e^{ \theta^T s(x,z)} = e^{ \theta^T s(x,z) - \ln C( \theta)} h(x,z)$
+Nature form: 
+\\[ 
+p_{ \theta}(x,z)= \frac{1}{C( \theta)}h(x,z)e^{ \theta^T s(x,z)} = e^{ \theta^T s(x,z) - \ln C( \theta)} h(x,z)
+\\]
 
 The derivative of the target log distribution
 \\[
 \begin{split}
-\frac{ \partial}{ \partial \theta_i} \ln p_{ \theta}(x) &= \frac{1}{p_{ \theta}(x)} \sum_z \frac{ \partial}{ \partial \theta_i}p(_{ \theta}(x,z) \\\
-&= \frac{1}{p_{ \theta}(x)} \sum_z (s_i(x,z)- \frac{ \partial}{ \partial \theta_i } \ln C( \theta)) p_{\theta}(x,z) \\\
+\frac{ \partial}{ \partial \theta_{i}} \ln p_{ \theta}(x) &= \frac{1}{p_{ \theta}(x)} \sum_z \frac{ \partial}{ \partial \theta_{i}} p_{ \theta}(x,z) \\\
+&= \frac{1}{p_{ \theta}(x)} \sum_z (s_i(x,z)- \frac{ \partial}{ \partial \theta_{i} } \ln C( \theta)) p_{\theta}(x,z) \\\
 &= \frac{1}{p_{ \theta}(x)} \sum_z (s_i(x,z)- E_{ \theta}(s_i(x,z)) p_{ \theta}(x,z) \\\
 &= \sum_{z} s_i(x,z) p_{ \theta}(z | x) - E_{ \theta} s_i(x,z)
 &= E_{ \theta}(s_i(x,z) | X=x)  - E_{ \theta} s_i(x,z)
@@ -71,24 +74,32 @@ E_{ \theta}(s_i(x,z) | X=x)  = E_{ \theta} s_i(x,z)
 - Answer: Iterate.
 - Alg: Let $ \theta_0 \in \theta$
   1. for t=1,2,3,...
-  2. solve E_{ \theta_{t-1}}(s_i(x,z) | X=x)  = E_{ \theta_t} s_i(x,z) for $\theta_t$
+  2. solve $E_{ \theta_{t-1}}(s_i(x,z) \| X=x)  = E_{ \theta_t} s_i(x,z)$ for $\theta_t$
 
 Standard EM:
-\\
-[ Q( \theta, \theta_{t}) = E_{ \theta_t} ( \ln p_{ \theta}(x,z) \| X=x))\\\]
+function of $Q$ is,
+\\[ 
+Q( \theta, \theta_{t}) = E_{ \theta_t} ( \ln p_{ \theta}(x,z) \| X=x))
+\\]
+
+and,
 \\[
 p_{ \theta}(x,z)= e^{ \theta^T s(x,z) - \ln C( \theta)} h(x,z)
 \\] 
+
+log function of likelihood, 
 \\[
 \ln p_{ \theta}(x,z)=  \theta^T s(x,z) - \ln C( \theta) + \ln h(x,z) 
 \\]
 
+$Q$ can be rewrite as,
 \\[
 Q( \theta, \theta_0)= E_{\theta_0}( \ln p_{ \theta}(X,Z) \| X=x)= \theta^TE_{ \theta_0}(s(X,Z) \| X=x) - \ln C( \theta) + const
 \\]
 
+The derivative of $Q$ is,
 \\[
-\frac{ \partial}{ \partial \theta_i} Q( \theta, \theta_0) = E_{ \theta_0}(s_i(X,Z)|X=x) - E_{ \theta} s_i(X,Z)
+\frac{ \partial}{ \partial \theta_i} Q( \theta, \theta_0) = E_{ \theta_0}(s_i(X,Z)|X=x) - E_{ \theta} s_i(X,Z) =0
 \\]
 
 Then, $\theta$ is our EM estimator result.
