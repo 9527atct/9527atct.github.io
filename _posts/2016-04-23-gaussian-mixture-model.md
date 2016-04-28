@@ -65,6 +65,7 @@ p_{ \theta}(x_1,...,x_n,z_1,...,z_n) &= \prod_{i=1}^n p_{ \theta}(x_i,z_i) \\\
 sufficient statistic is, $\sum_i z_{ik}, \sum_i z_{ik}x_i x_i^T, \sum_i z_{ik}x_i^T $.
 
 the following character $x=(x_1,...,x_n), z=(z_1,...,z_n)$ is a sequence of observation value, so, either $x_i$ or $z_i$ is a vector.
+
 1. $E_{ \theta_{0}}[ \sum_i z_{ik} \| X=x] = E_{ \theta} [ \sum_i z_{ik}]$. 
    the right part of equation is,
 \\[
