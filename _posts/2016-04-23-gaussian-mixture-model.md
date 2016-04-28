@@ -54,7 +54,7 @@ where, $\beta_k = \ln \alpha_k + \frac{1}{2} \ln \mid \Lambda_k \mid - \frac{ 1}
 
 And, Sufficient statistic is $z, z_kxx^T [k=1,...m], z_kx [k=1,...,m]$
 
-- Multiple
+- Multiple  $x_i=(X_{i1},...,X_{id}), z_i=(Z_{i1},...,Z_{im})$
 \\[
 \begin{split}
 p_{ \theta}(x_1,...,x_n,z_1,...,z_n) &= \prod_{i=1}^n p_{ \theta}(x_i,z_i) \\\
@@ -64,6 +64,7 @@ p_{ \theta}(x_1,...,x_n,z_1,...,z_n) &= \prod_{i=1}^n p_{ \theta}(x_i,z_i) \\\
 
 sufficient statistic is, $\sum_i z_{ik}, \sum_i z_{ik}x_i x_i^T, \sum_i z_{ik}x_i^T $.
 
+the following character $x=(x_1,...,x_n), z=(z_1,...,z_n)$ is a sequence of observation value, so, either $x_i$ or $z_i$ is a vector.
 1. $E_{ \theta_{0}}[ \sum_i z_{ik} \| X=x] = E_{ \theta} [ \sum_i z_{ik}]$. 
    the right part of equation is,
 \\[
@@ -71,8 +72,9 @@ E_{ \theta} ( \sum_i z_{ik})= \sum_i E_{ \theta}[z_{ik}]= \sum_i \alpha_k = n \a
 \\]
   the left,
 \\[
-E_{ \theta_{0}}( \sum_i z_{ik} \| X=x) = \sum_i E_{ \theta_0} [ z_{ik} | x] = \sum_i \gamma_{ik} = n_k
+E_{ \theta_{0}}( \sum_i z_{ik} \| X=x) = \sum_i E_{ \theta_0} [ z_{ik} | x_i] = \sum_i \gamma_{ik} = n_k
 \\]
+where $\gamma_{ik}= \frac{ \alpha_k p(x_i \| \theta_0^k)}{ \sum_{k'} \alpha_{k'} p(x_i \| \theta_0^k')}$. 
   so, put it together, the parameter $\alpha_k$ estimator is,
 \\[
 \alpha_k = \frac{n_k}{n}
