@@ -38,7 +38,7 @@ In this case, parameters are $\theta = ( \alpha, \{ \mu_k \}, \{ C_k \})$.
 
 EM is then to solve the following equation, and get the best $ \theta $.
 \\[
-E_{ \theta_{0}(s_i(X,Z)|X=x) = E_{ \theta s_i(X,Z)
+E_{ \theta_{0}[s_i(X,Z)|X=x] = E_{ \theta}[ s_i(X,Z)]
 \\]
 
 The first things to do is to get the $s_i(X,Z)|X=x $. we know that,
@@ -46,7 +46,7 @@ The first things to do is to get the $s_i(X,Z)|X=x $. we know that,
 \begin{split}
 p(x,z) &= \prod_{k=1}^m \alpha^{z_k} N(x| \mu_k, C_k)^{z_k} \\\
 &= \prod_{k=1}^m e^{z_k \ln \alpha_k } \sqrt{ \frac{ \mid \Lambda_k \mid}{2 \pi}} ^{z_k} e^{ \frac{-z_k}{2}(x- \mu_k)^T \Lambda_k (x- \mu_k)} \\\
-& \propto e^{ \sum z_k \ln \alpha_k + \frac{z_k}{2} \ln \mid \Lambda_k \mid - \frac{z_k}{2}(x^Tx-2 \mu_k^T \Labda_k x + \mu_k^T \mu_k)  }
+& \propto \exp{ \sum z_k \ln \alpha_k + \frac{z_k}{2} \ln \mid \Lambda_k \mid - \frac{z_k}{2}(x^Tx-2 \mu_k^T \Lambda_k x + \mu_k^T \mu_k)  }
 \end{split}
 \\]
 
