@@ -36,9 +36,9 @@ p(z=e_k | x) = \frac{p(x|z=e_k)p(z=e_k)}{p(x)}=\frac{ \alpha_k N(x | \mu_k,C_k)}
 ### EM for GMM ###
 In this case, parameters are $\theta = ( \alpha, \{ \mu_k \}, \{ C_k \})$.
 
-EM is then to solve the following equation, and get the best $ \theta $.
+EM is then to solve the following equation, and get the best $ \theta $. for each $j$
 \\[
-E_{ \theta_{0}[s_i(X,Z)|X=x] = E_{ \theta}[ s_i(X,Z)]
+E_{ \theta_{0}}[s_j(X,Z)|X=x] = E_{ \theta}[ s_j(X,Z)]
 \\]
 
 The first things to do is to get the $s_i(X,Z)|X=x $. we know that,
@@ -46,9 +46,25 @@ The first things to do is to get the $s_i(X,Z)|X=x $. we know that,
 \begin{split}
 p(x,z) &= \prod_{k=1}^m \alpha^{z_k} N(x| \mu_k, C_k)^{z_k} \\\
 &= \prod_{k=1}^m e^{z_k \ln \alpha_k } \sqrt{ \frac{ \mid \Lambda_k \mid}{2 \pi}} ^{z_k} e^{ \frac{-z_k}{2}(x- \mu_k)^T \Lambda_k (x- \mu_k)} \\\
-& \propto \exp{ \sum z_k \ln \alpha_k + \frac{z_k}{2} \ln \mid \Lambda_k \mid - \frac{z_k}{2}(x^Tx-2 \mu_k^T \Lambda_k x + \mu_k^T \mu_k)  }
+& \propto \exp( \sum_{k=1}^m z_k \ln \alpha_k + \frac{z_k}{2} \ln \mid \Lambda_k \mid - \frac{z_k}{2}(x^T \Labmda_k x-2 \mu_k^T \Lambda_k x + \mu_k^T \Lambda_k \mu_k)  )  \\\
+&= \exp (\sum z_k \beta_k -\frac{1}{2} \sum Tr(z_k xx^T \Lambda_k) + sum z_kx^T \Lambda_k \mu_k)
 \end{split}
 \\]
+where, $\beta_k = \ln \alpha_k + \frac{1}{2} \ln \mid \Lambda_k \mid - \frac{ 1}{2} \mu_k^T \Lambda_k \mu_k$. 
+
+And, Sufficient statistic is $z, z_kxx^T [k=1,...m], z_kx [k=1,...,m]
+
+- Multiple
+\\[
+\begin{split}
+p_{ \theta}(x_1,...,x_n,z_1,...,z_n) &= \prod_{i=1}^n p_{ \theta}(x_i,z_i) \\\
+&= \exp ( \wum_k( \sum_i z_{ik} ) \beta_k -\frac{1}{2} \sum_k Tr(( \sum_i z_{ik}x_i x_i^T) \Lambda_k ) + \sum_k ( \sum_i z_{ik}x_i^T) \Lambda_k \mu_k   )
+\end{split}
+\\]
+
+sufficient statistic is, $\sum_i z_{ik}, \sum_i z_{ik}x_i x_i^T, \sum_i z_{ik}x_i^T $.
+
+1. $E_{ \theta_0}( sum_i z_{ik} \| X=x) = E_{ \theta} ( \sum_i z_{ik})
 
 
 
@@ -111,12 +127,15 @@ log function of likelihood,
 
 $Q$ can be rewritten as,
 \\[
-Q( \theta, \theta_0)= E_{\theta_0}( \ln p_{ \theta}(X,Z) \| X=x)= \theta^TE_{ \theta_0}(s(X,Z) \| X=x) - \ln C( \theta) + const
+\begin{split}
+Q( \theta, \theta_0) &= E_{\theta_0}( \ln p_{ \theta}(X,Z) \| X=x)
+&= \theta^TE_{ \theta_0}(s(X,Z) \| X=x) - \ln C( \theta) + const
+\end{split}
 \\]
 
 The derivative of $Q$ is,
 \\[
-\frac{ \partial}{ \partial \theta_i} Q( \theta, \theta_0) = E_{ \theta_0}(s_i(X,Z)|X=x) - E_{ \theta} s_i(X,Z) =0
+\frac{ \partial}{ \partial \theta_i} Q( \theta, \theta_0) &= E_{ \theta_0}(s_i(X,Z)|X=x) - E_{ \theta} s_i(X,Z) =0
 \\]
 
 Then, $\theta$ is our EM estimator result.
