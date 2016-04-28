@@ -112,7 +112,7 @@ E_{ \theta_0}[ \sum_i z_{ik} x_i x_i^T \| X=x] = \sum_{i} \gamma_ik x_i x_i^T
 the right is,
 \\[
 \begin{split}
-E_{ \theta}[ \sum_{i} z_{ik} x_i x_i^T] &= \sum_i E_{ \theta} [z_ik x_i x_i^T | z_{ik}] \\\
+E_{ \theta}[ \sum_{i} z_{ik} x_i x_i^T] &= \sum_i E_{ \theta} [z_{ik} x_i x_i^T | z_{ik}] \\\
 &= \sum_i p_{ \theta}(z_{ik}=1)(C_k + \mu_k \mu_k^T) \\\
 &= n \alpha_k (z_{ik}=1)(C_k + \mu_k \mu_k^T) \\\
 &= n_k (z_{ik}=1)(C_k + \mu_k \mu_k^T)
@@ -132,7 +132,9 @@ C_k = ( \frac{1}{n_k} \sum_i \gamma_{ik} x_i x_i^T) - \mu_k \mu_k^T
 - Alg: initialize $ \theta_0 \in \Theta $
   1. for t=0,1,2,...,(until convergence)
   2. E-step: $ Q( \theta, \theta_{t}) = E_{ \theta_t} ( \ln p_{ \theta}(x,z) \| X=x))$
-  3. M-step: $ \theta_{t+1} = \arg\max_{ \theta} Q( \theta, \theta_t) $
+  3. M-step: 
+     * for MLE: $ \theta_{t+1} = \arg\max_{ \theta} Q( \theta, \theta_t) $.
+     * for MAP: $ \theta_{t+1} = \arg\max_{ \theta} Q( \theta, \theta_t) + \ln p( \theta) $.
   
 - motivation for the EM 
 Specialize exponential family: $p_{ \theta}(x,z)= \frac{1}{C( \theta)}h(x,z)e^{g( \theta)^Ts(x,z)}$
