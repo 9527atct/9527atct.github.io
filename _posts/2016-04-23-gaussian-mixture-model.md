@@ -64,8 +64,42 @@ p_{ \theta}(x_1,...,x_n,z_1,...,z_n) &= \prod_{i=1}^n p_{ \theta}(x_i,z_i) \\\
 
 sufficient statistic is, $\sum_i z_{ik}, \sum_i z_{ik}x_i x_i^T, \sum_i z_{ik}x_i^T $.
 
-1. $E_{ \theta_{0}}( \sum_i z_{ik} \| X=x) = E_{ \theta} ( \sum_i z_{ik})$
+1. $E_{ \theta_{0}}[ \sum_i z_{ik} \| X=x] = E_{ \theta} [ \sum_i z_{ik}]$
+   the right part of equation is,
+\\[
+E_{ \theta} ( \sum_i z_{ik})= \sum_i E_{ \theta}[z_{ik}]= \sum_i \alpha_k = n \alpha_k
+\\]
+  the left,
+\\[
+E_{ \theta_{0}}( \sum_i z_{ik} \| X=x) = \sum_i E_{ \theta_0} [ z_{ik} | x] = \sum_i \gamma_{ik} = n_k
+\\]
+  so, put it together, the parameter $\alpha_k$ estimator is,
+\\[
+\alpha_k = \frac{n_k}{n}
+\\]
 
+2. $E_{ \theta_0} [ \sum_i z_{ik}x_i | x] = E_{ \theta} [ \sum_i z_{ik} X_i]$.
+the left part of equation is,
+\\[
+\begin{split}
+E_{ \theta_0} [ \sum_i z_{ik}x_i | x] &= \sum_i E_{ \theta_0} [ z_{ik}|x]x_i \\\
+&= \sum_i \gamma_{ik}x_i
+\end{split}
+\\]
+the right,
+\\[
+\begin{split}
+E_{ \theta} [ \sum_i z_{ik} X_i] &= \sum_i E_{ \theta}[ E_{ \theta}[z_{ik}X_i|z_{ik}]] \\\
+&= \sum_i p_{ \theta}(z_{ik}=1) \mu_k \\\
+&= \sum_i \alpha_k \mu_k \\\ 
+&= n \alpha_k \mu_k \\\
+&= n_k \mu_k
+\end{split}
+\\]
+put it together,
+\\[
+\mu_k = \frac{1}{n_k} \sum_i \gamma_{ik} x_i
+\\]
 
 
 
