@@ -105,6 +105,23 @@ put it together,
 \mu_k = \frac{1}{n_k} \sum_i \gamma_{ik} x_i
 \\]
 
+3. $E_{ \theta_0}[ \sum_i z_{ik} x_i x_i^T \| X=x] = E_{ \theta}[ \sum_{i} z_{ik} x_i x_i^T]$. the left is,
+\\[
+E_{ \theta_0}[ \sum_i z_{ik} x_i x_i^T \| X=x] = \sum_{i} \gamma_ik x_i x_i^T
+\\]
+the right is,
+\\[
+\begin{split}
+E_{ \theta}[ \sum_{i} z_{ik} x_i x_i^T] &= \sum_i E_{ \theta} [z_ik x_i x_i^T | z_{ik}] \\\
+&= \sum_i p_{ \theta}(z_{ik}=1)(C_k + \mu_k \mu_k^T) \\\
+&= n \alpha_k (z_{ik}=1)(C_k + \mu_k \mu_k^T) \\\
+&= n_k (z_{ik}=1)(C_k + \mu_k \mu_k^T)
+\end{split}
+\\]
+put together,
+\\[
+C_k = ( \frac{1}{n_k} \sum_i \gamma_{ik} x_i x_i^T) - \mu_k \mu_k^T
+\\]
 
 
 ### Expectation Maximization Algorithm ###
