@@ -60,7 +60,7 @@ The derivative of the target log distribution
 \frac{ \partial}{ \partial \theta_{i}} \ln p_{ \theta}(x) &= \frac{1}{p_{ \theta}(x)} \sum_z \frac{ \partial}{ \partial \theta_{i}} p_{ \theta}(x,z) \\\
 &= \frac{1}{p_{ \theta}(x)} \sum_z (s_i(x,z)- \frac{ \partial}{ \partial \theta_{i} } \ln C( \theta)) p_{\theta}(x,z) \\\
 &= \frac{1}{p_{ \theta}(x)} \sum_z (s_i(x,z)- E_{ \theta}(s_i(x,z)) p_{ \theta}(x,z) \\\
-&= \sum_{z} s_i(x,z) p_{ \theta}(z | x) - E_{ \theta} s_i(x,z)
+&= \sum_{z} s_i(x,z) p_{ \theta}(z | x) - E_{ \theta} s_i(x,z) \\\
 &= E_{ \theta}(s_i(x,z) | X=x)  - E_{ \theta} s_i(x,z)
 \end{split}
 \\]
@@ -92,7 +92,7 @@ log function of likelihood,
 \ln p_{ \theta}(x,z)=  \theta^T s(x,z) - \ln C( \theta) + \ln h(x,z) 
 \\]
 
-$Q$ can be rewrite as,
+$Q$ can be rewritten as,
 \\[
 Q( \theta, \theta_0)= E_{\theta_0}( \ln p_{ \theta}(X,Z) \| X=x)= \theta^TE_{ \theta_0}(s(X,Z) \| X=x) - \ln C( \theta) + const
 \\]
