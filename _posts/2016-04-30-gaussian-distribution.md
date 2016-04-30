@@ -29,20 +29,22 @@ where, $y_i = u_i^T(x- \mu)$.
 > \\[ \mu_{MLE} = \frac{1}{N} \sum_{i=1}^N x_i = \bar{x} \\]
 > \\[ \Sigma_{MLE} = \frac{1}{N} \sum_{i=1}^N (x_i - \bar{x})(x_i - \bar{x})^T = \frac{1}{N}( \sum_{i=1}^N x_i x_i^T) - \bar{x} \bar{x}^T \\]
 
+- $\mu_{MLE}$
+
 The following is to process the MLE for parameters $\mu$ and $\Sigma$. The likelihood function is,
 \\[
 \ln ( \theta)= \frac{-ND}{2} \ln 2 \pi + \frac{N}{2} \ln | \Lambda | - \frac{1}{2} \sum_{i=1}^N (x_i - \mu)^T \Lambda (x_i - \mu)
 \\]
 where $ \theta = ( \mu, \Sigma)$. 
 
-Then, we let the derivative ,that is, $ \frac{ \partial}{ \partial \mu} \ln ( \theta)$ to be 0. Solving this equation, we could get the MLE vaule of $\mu$. Firstly, we calculate the $\frac{ \partial}{ \partial \mu} (x_i - \mu)^T \Sigma^{-1} (x_i - \mu)$,
+Then, we let the derivative ,that is, $ \frac{ \partial}{ \partial \mu} \ln ( \theta)$ to be 0. Solving this equation, we could get the MLE vaule of $\mu$. Firstly, we calculate the $\frac{ \partial}{ \partial \mu} (x_i - \mu)^T \Sigma^{-1} (x_i - \mu)$, and apply the rule $ \frac{ \partial a^TAa}{ \partial a}=(A+A^T)a $,
 \\[
 \begin{split}
 \frac{ \partial}{ \partial \mu} (x_i - \mu)^T \Sigma^{-1} (x_i - \mu) &= \frac{ \partial}{ \partial y_i} y_i^T \Sigma^{-1} y_i \frac{ \partial y_i }{ \partial \mu} \\\
 &= -( \Sigma^{-1} + \Sigma^{-T}) y_i
 \end{split}
 \\]
-Using the rule $ \frac{ \partial a^TAa}{ \partial a}=(A+A^T)a $, we have,
+ we have,
 \\[
 \frac{ \partial}{ \partial \mu} \ln ( \theta) = \frac{-1}{2} \sum_{i=1}^N -2 \Sigma^{-1} (x_i - \mu) = 0
 \\]
@@ -51,3 +53,19 @@ Solving this equation, we finally get the MLE of the $\mu$ is,
 \mu_{MLE} = \frac{1}{N} \sum_{i=1}^N x_i
 \\]
     
+- $\Sigma_{MLE}$
+\\[
+\begin{split}
+\ln l( \theta) &= \frac{-ND}{2} \ln 2 \pi + \frac{N}{2} \ln | \Lambda | - \frac{1}{2} \sum_{i=1}^N Tr[ (x_i - \mu)^T \Lambda (x_i - \mu)] \\\
+&= \frac{-ND}{2} \ln 2 \pi + \frac{N}{2} \ln | \Lambda | - \frac{1}{2} \sum_{i=1}^N Tr[ (x_i - \mu)(x_i - \mu)^T \Lambda ] \\\
+&= \frac{-ND}{2} \ln 2 \pi + \frac{N}{2} \ln | \Lambda | - \frac{1}{2} Tr[ S_{\mu} \Lambda ]
+\end{split}
+\\]
+where, $S_{\mu}= \sum_{i=1}^{N} (x_i - \mu)(x_i - \mu)^T. Using the rule $\frac{\partial \ln (A)}{ \partial A}=A^{-T}$ and $ \frac{ \partial Tr(BA)}{ \parital A}=B^T$ the derivate of the function of $\Lambda$ is
+\\[
+\frac{ \partial \ln l( \theta)}{ \partial \Lambda} = \frac{N}{2} \Lambda^{-T} - \frac{1}{2} S_{\mu}^T = 0
+\\]
+Finally, we get the MLE of $\Sigma$, that is,
+\\[
+\Sigma_{MLE} = \frac{1}{N} S_{\mu}^T
+\\]
