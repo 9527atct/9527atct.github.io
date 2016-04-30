@@ -61,7 +61,7 @@ Solving this equation, we finally get the MLE of the $\mu$ is,
 &= \frac{-ND}{2} \ln 2 \pi + \frac{N}{2} \ln | \Lambda | - \frac{1}{2} Tr[ S_{\mu} \Lambda ]
 \end{split}
 \\]
-where, $S_{\mu}= \sum_{i=1}^{N} (x_i - \mu)(x_i - \mu)^T$. Using the rule $\frac{\partial \ln (A)}{ \partial A}=A^{-T}$ and $ \frac{ \partial Tr(BA)}{ \parital A}=B^T$ the derivate of the function of $\Lambda$ is
+where, $S_{\mu}= \sum_{i=1}^{N} (x_i - \mu)(x_i - \mu)^T$. Using the rule $\frac{\partial \ln (A)}{ \partial A}=A^{-T}$ and $ \frac{ \partial Tr(BA)}{ \partial A}=B^T$ the derivate of the function of $\Lambda$ is
 \\[
 \frac{ \partial \ln l( \theta)}{ \partial \Lambda} = \frac{N}{2} \Lambda^{-T} - \frac{1}{2} S_{\mu}^T = 0
 \\]
