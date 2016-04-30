@@ -40,9 +40,9 @@ Then, we let the derivative ,that is, $ \frac{ \partial}{ \partial \mu} \ln ( \t
 \begin{split}
 \frac{ \partial}{ \partial \mu} (x_i - \mu)^T \Sigma^{-1} (x_i - \mu) &= \frac{ \partial}{ \partial y_i} y_i^T \Sigma^{-1} y_i \frac{ \partial y_i }{ \partial \mu} \\\
 &= -( \Sigma^{-1} + \Sigma^{-T}) y_i
-end{split}
+\end{split}
 \\]
-So, we have,
+Using the rule $ \frac{ \partial a^TAa}{ \partial a}=(A+A^T)a $, we have,
 \\[
 \frac{ \partial}{ \partial \mu} \ln ( \theta) = \frac{-1}{2} \sum_{i=1}^N -2 \Sigma^{-1} (x_i - \mu) = 0
 \\]
