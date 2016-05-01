@@ -81,8 +81,8 @@ Suppose $x=(x_1,x_2)$ is jointly Gaussian,
 Then, we have the marginal distributions:
 \\[
 \begin{split}
-p(x_1) &= N( \mu_1, \Sigma_{11} \\\
-p(x_2) &= N( \mu_2, \Sigma_{22}
+p(x_1) &= N( \mu_1, \Sigma_{11}) \\\
+p(x_2) &= N( \mu_2, \Sigma_{22})
 \end{split}
 \\]
 
@@ -102,8 +102,8 @@ p(x_1 | x_2) &= N(x_1 | \mu_{1|2}, \Sigma_{1|2}) \\\
 Suppose we have two variables, $x$ and $y$. Let $x \in R^{D_x}$ be a hidden variable, and $y \in R^{D_y}$ be a noisy observation of $x$. Let us assume we have the following prior and likelihood.
 \\[
 \begin{split}
-p(x) = N(x| \mu_x, \Sigma_x) \\\
-p(y|x) = N(y | Ax+b, \Sigma_y)
+p(x) &= N(x| \mu_x, \Sigma_x) \\\
+p(y|x) &= N(y | Ax+b, \Sigma_y)
 \end{split}
 \\]
 where $A$ is a matrix of size $D_y \times D_x$. This is an example of a linear Gaussian system.
@@ -193,4 +193,31 @@ IW( \sigma^2 | S^{-1}, \nu)= IG( \sigma^2 | \nu /2 ,S/2)
 ### MAP estimation ###
 
 - posterior of $\mu$
+The likelihood has the form $ p( \mathcal{D}| \mu)= \mathcal{N}( \bar{x}| \mu, \frac{1}{N} \Sigma)$. According to linear Gaussian theory, we can treat the $\mathcal{D}$ as the observation of the hidden variable $\mu$. Now, we give a prior to $\mu$, that is, $p( \mu) = \mathcal{N}( \mu | m_o, v_0)$. Then, we can derive a Gaussian posterior for $\mu$ ,
+\\[
+\begin{split}
+p( \mu | \mathcal{D}, \Sigma) &= \mathcal{N}( \mu | m_N,V_N) \\\
+m_N &= V_N( \Sigma^{-1}(N \bar{x}) + V_0^{-1}m_0) \\\
+V_N^{-1} &= V_0^{-1} + N \Sigma^{-1}
+\end{split}
+\\]
 
+- posterior distribution of $\Sigma$
+The likelihood,
+\\[
+p( \mathcal{D}| \mu, \Sigma) \propto | \Sigma |^{-N/2} \exp [ \frac{-1}{2} tr(S_{ \mu} \Sigma^{-1} ]
+\\]
+
+The corresponding conjugate prior is known as the inverse Wishart distribution,
+\\[
+IW( \Sigma | S_0^{-1}, \nu_0) \propto | \Sigma |^{-( \nu_0 + D + 1) /2} \exp [ \frac{-1}{2}tr(S_0 \Sigma^{-1}) ]
+\\]
+Here $ \nu_0 > D-1$ is the degrees of freedom, $S_0$ is a symmetric pd matrix. We see that $S_0^{-1}$ plays the role of the prior scatter matrix, and $  \nu_0 + D + 1$ controls the strength of the prior, and hence plays a role analogous to the sample size $N$.
+
+Multiplying the likelihood and prior we find that the posterior is also inverse Wishart:
+\\[
+\begin{split}
+p( \Sigma| \mathcal{D}, \mu) & \propto | \Sigma |^{N/2}  \exp [ \frac{-1}{2} tr(S_{ \mu} \Sigma^{-1} ]  | \Sigma |^{-( \nu_0 + D + 1) /2} \exp [ \frac{-1}{2}tr(S_0 \Sigma^{-1}) ] \\\
+&= |Sigma|^{ \frac{N+( \nu_0 + D + 1}{2}} \exp [- \frac{1}{2} tr[ \Sigma^{-1} (S_{ \mu} + S_0)]]
+\end{split}
+\\]
