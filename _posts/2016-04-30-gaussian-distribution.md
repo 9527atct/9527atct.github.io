@@ -71,6 +71,55 @@ Finally, we get the MLE of $\Sigma$, that is,
 \Sigma_{MLE} = \frac{1}{N} S_{\mu}^T
 \\]
 
+### Jointly Gaussian ###
+
+Suppose $x=(x_1,x_2)$ is jointly Gaussian,
+\\[
+\mu = \begin{pmatrix} \mu_1 \\\ \mu_2 \end{pmatrix} , \Sigma = \begin{pmatrix} \Sigma_{11} & \Sigma_{12} \\\ \Sigma_{21} & \Sigma_{22} \end{pmatrix}, \Lambda = \Sigma^{-1}
+\\]
+
+Then, we have the marginal distributions:
+\\[
+\begin{split}
+p(x_1) &= N( \mu_1, \Sigma_{11} \\\
+p(x_2) &= N( \mu_2, \Sigma_{22}
+\end{split}
+\\]
+
+and the posterior conditional is given by
+\\[
+\begin{split}
+p(x_1 | x_2) &= N(x_1 | \mu_{1|2}, \Sigma_{1|2}) \\\
+\mu_{1|2}&= \mu_1 + \Sigma_{12} \Sigma_{22}^{-1}(x_2 - \mu_2) \\\
+&= \mu_1 - \Lambda_{11}^{-1} \Lambda_{12}(x_2 - \mu_2) \\\
+&= \Sigma_{1|2}( \Lambda_{11} \mu_1 - \Lambda_{12}(x_2 - \mu_2)) \\\
+\Sigma_{1|2} &= \Sigma_{11} - \Sigma_{12} \Sigma_{22}^{-1} \Sigma_{21} = \Lambda_{11}^{-1}
+\end{split}
+\\]
+
+### Linear Gaussian ###
+
+Suppose we have two variables, $x$ and $y$. Let $x \in R^{D_x}$ be a hidden variable, and $y \in R^{D_y}$ be a noisy observation of $x$. Let us assume we have the following prior and likelihood.
+\\[
+\begin{split}
+p(x) = N(x| \mu_x, \Sigma_x) \\\
+p(y|x) = N(y | Ax+b, \Sigma_y)
+\end{split}
+\\]
+where $A$ is a matrix of size $D_y \times D_x$. This is an example of a linear Gaussian system.
+
+Then, the posterior $p(x|y)$ is given by the following:
+\\[
+\begin{split}
+p(x|y) &= N(x | \mu_{x|y}, \Sigma_{x|y}) \\\
+\Sigma_{x|y} &= \Sigma_x^{-1} + A^T \Sigma_y^{-1} A \\\
+\mu_{x|y} &= \Sigma_{x|y}[A^T \Sigma_y^{-1}(y-b)+ \Sigma_x^{-1} \mu_x]
+\end{split}
+\\]
+In addition, the normalization constant $p(y)$ is given by 
+\\[
+p(y) = N(y| A \mu_x +b , \Sigma_y + A \Sigma_x A^T)
+\\]
 
 ### Wishart distribution ###
 The Wishart distribution is the generalization of Gamma distribution to positive definite matrices.
@@ -140,3 +189,8 @@ mean= \frac{S^{-1}}{ \nu -D -1}
 \\[
 IW( \sigma^2 | S^{-1}, \nu)= IG( \sigma^2 | \nu /2 ,S/2)
 \\]
+
+### MAP estimation ###
+
+- posterior of $\mu$
+
