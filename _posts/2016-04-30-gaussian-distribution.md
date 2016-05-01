@@ -217,7 +217,36 @@ Here $ \nu_0 > D-1$ is the degrees of freedom, $S_0$ is a symmetric pd matrix. W
 Multiplying the likelihood and prior we find that the posterior is also inverse Wishart:
 \\[
 \begin{split}
-p( \Sigma| \mathcal{D}, \mu) & \propto | \Sigma |^{N/2}  \exp [ \frac{-1}{2} tr(S_{ \mu} \Sigma^{-1} ]  | \Sigma |^{-( \nu_0 + D + 1) /2} \exp [ \frac{-1}{2}tr(S_0 \Sigma^{-1}) ] \\\
-&= |Sigma|^{ \frac{N+( \nu_0 + D + 1}{2}} \exp [- \frac{1}{2} tr[ \Sigma^{-1} (S_{ \mu} + S_0)]]
+p( \Sigma| \mathcal{D}, \mu) & \propto | \Sigma |^{N/2}  \exp [ \frac{-1}{2} tr(S_{ \mu} \Sigma^{-1}) ]  | \Sigma |^{-( \nu_0 + D + 1) /2} \exp [ \frac{-1}{2}tr(S_0 \Sigma^{-1}) ] \\\
+&= | \Sigma|^{ \frac{N+( \nu_0 + D + 1}{2}} \exp [- \frac{1}{2} tr[ \Sigma^{-1} (S_{ \mu} + S_0)]] \\\
+&= IW( \Sigma | S_N, \nu_N)
 \end{split}
+\\]
+Here, $\nu_N = \nu_0 + N$, $S_N^{-1} = S_0 + S_{ \mu}$.
+
+  * MAP estimation for $ \Sigma$
+  \\[
+  \hat{ \Sigma}_{map} = \frac{ S_N }{ \nu_N + D + 1} = \frac{S_0 + S_{ \mu}}{N_0 + N}
+  \\]
+  if  we use an improper uniform prior, corresponding to $N_0 =0 $ and $S_0 = 0$, we recover the MLE.
+  Let $\mu = \bar{x}$, so, $S_{ \mu} = S_{ \hat{x}}$. Then the posterior can be rewritten as
+  \\[
+  \hat{ \Sigma}_{map} = \frac{S_0 + S_{ \bar{x}}}{N_0 + N} = \frac{N_0 S_0}{(N_0 + N)N_0  }+ \frac{NS}{(N_0+N)N} = \lambda \Sigma_0 + (1- \lambda) \hat{ \Sigma}_{mle}
+  \\]
+  where $\lambda = \frac{N_0}{N_0 + N}$.
+  
+- Posterior distribution of $\mu$ and $\Sigma$
+likelihood:
+\\[
+\begin{split}
+p( \mathcal{D} | \mu, \Sigma)=(2 \pi)^{-ND/2} | \Sigma |^{-N/2} \exp \left( - \frac{1}{2} \sum_{i=1}^N (x_i - \mu)^T \Sigma^{-1} (x_i - \mu) \right)
+\end{split}
+\\]
+We know that,
+\\[
+\sum_{i=1}^N (x_i - \mu)^T \Sigma^{-1} (x_i - \mu) = tr( \Sigma^{-1} S_{ \bar{x}}) + N( \bar{x} - \mu)^T \Sigma^{-1} ( \bar{x} - \mu)
+\\]
+Hence we can rewritte the likelihood as follows:
+\\[
+p( \mathcal{D} | \mu, \Sigma)=(2 \pi)^{-ND/2} | \Sigma |^{-N/2}\exp \left( - \frac{N}{2} \sum_{i=1}^N (x_i - \bar{x})^T \Sigma^{-1} (x_i - \bar{x}) \right) \exp \left( - \frac{N}{2} tr( \Sigma^{-1} S_{ \bar{x}}) \right)
 \\]
