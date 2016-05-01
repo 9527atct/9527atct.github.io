@@ -236,7 +236,7 @@ Here, $\nu_N = \nu_0 + N$, $S_N^{-1} = S_0 + S_{ \mu}$.
   where $\lambda = \frac{N_0}{N_0 + N}$.
   
 - Posterior distribution of $\mu$ and $\Sigma$
-likelihood:
+	1. likelihood:
 \\[
 \begin{split}
 p( \mathcal{D} | \mu, \Sigma)=(2 \pi)^{-ND/2} | \Sigma |^{-N/2} \exp \left( - \frac{1}{2} \sum_{i=1}^N (x_i - \mu)^T \Sigma^{-1} (x_i - \mu) \right)
@@ -250,3 +250,24 @@ Hence we can rewritte the likelihood as follows:
 \\[
 p( \mathcal{D} | \mu, \Sigma)=(2 \pi)^{-ND/2} | \Sigma |^{-N/2}\exp \left( - \frac{N}{2} \sum_{i=1}^N (x_i - \bar{x})^T \Sigma^{-1} (x_i - \bar{x}) \right) \exp \left( - \frac{N}{2} tr( \Sigma^{-1} S_{ \bar{x}}) \right)
 \\]
+
+	2. Prior: Normal-inverse-wishart, NIW
+\\[
+p( \mu ,\Sigma) = p( \Sigma) p( \mu | \Sigma)
+\\]
+\\[
+NIW( \mu , \Sigma | m_0, \kappa_0, \nu_0, S_0) \sim N( \mu | m_0, \frac{1}{ \kappa_0} \Sigma) \times IW( \Sigma |S_0, \nu_0)
+\\]
+	
+	3. Posterior
+\\[
+\begin{split}
+p( \mu, \Sigma | \mathcal{D}) &= NIW( \mu, \Sigma | m_N, \kappa_N, \nu_N, S_N) \\\
+m_N &= \frac{ \kappa_0 m_0 + N \bar{x}}{ \kappa_{N}} = \frac{ \kappa_0}{ \kappa_0 + N}m_0 + \frac{N}{ \kappa_0 + N} \bar{x} \\\
+\kappa_N = \kappa_0 + N\\\
+\nu_N &= \nu_0 + N \\\
+S_N &= S_0 + S_{ \bar{x}} + \frac{ \kappa_0 N}{ \kappa_0 + N}( \bar{x} - m_0)( \bar{x} - m_0)^T \\\
+&= S_0 + S + \kappa_0m_0m_0^T - \kappa_Nm_Nm_N^T
+\end{split}
+\\]
+where $S= \sum_{i=1}^N x_ix_i^T$.
