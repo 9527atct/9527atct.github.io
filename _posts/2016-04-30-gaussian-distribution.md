@@ -31,7 +31,7 @@ where, $y_i = u_i^T(x- \mu)$.
 
 - $\mu_{MLE}$
 
-The following is to process the MLE for parameters $\mu$ and $\Sigma$. The likelihood function is,
+The goal of the following steps is to process the MLE for parameters $\mu$ and $\Sigma$. We know that The likelihood function of joint distribution is,
 \\[
 \ln ( \theta)= \frac{-ND}{2} \ln 2 \pi + \frac{N}{2} \ln | \Lambda | - \frac{1}{2} \sum_{i=1}^N (x_i - \mu)^T \Lambda (x_i - \mu)
 \\]
@@ -48,12 +48,13 @@ Then, we let the derivative ,that is, $ \frac{ \partial}{ \partial \mu} \ln ( \t
 \\[
 \frac{ \partial}{ \partial \mu} \ln ( \theta) = \frac{-1}{2} \sum_{i=1}^N -2 \Sigma^{-1} (x_i - \mu) = 0
 \\]
-Solving this equation, we finally get the MLE of the $\mu$ is,
+Solving this equation, we finally get the MLE for the parameter $\mu$ is,
 \\[
 \mu_{MLE} = \frac{1}{N} \sum_{i=1}^N x_i
 \\]
     
 - $\Sigma_{MLE}$
+
 \\[
 \begin{split}
 \ln l( \theta) &= \frac{-ND}{2} \ln 2 \pi + \frac{N}{2} \ln | \Lambda | - \frac{1}{2} \sum_{i=1}^N Tr[ (x_i - \mu)^T \Lambda (x_i - \mu)] \\\
@@ -95,7 +96,7 @@ The normalization constant only exists (and hence the pdf is only well defined) 
 
 - connection between the Wishart and the Gaussian
 
-Let $x_i \sim \mathcal{N}(0, \Sigma). Then the scatter matrix $S= \sum_{i=1}^N x_ix_i^T$ has a Wishart distribution: $S \sim Wi( \Sigma,1)$. Hence $E[S]= N \Sigma$.
+Let $x_i \sim \mathcal{N}(0, \Sigma)$. Then the scatter matrix $S= \sum_{i=1}^N x_ix_i^T$ has a Wishart distribution: $S \sim Wi( \Sigma,1)$. Hence $E[S]= N \Sigma$.
 
 - mean,mode
 
@@ -111,4 +112,31 @@ mode = (\nu -D -1)S
 - if $D=1$, the Wishart reduces to the Gamma distribution:
 \\[
 Wi( \lambda | s^{-1}, \nu) = Ga( \lambda | \nu /2 ,s/2)
+\\]
+
+### Inverse Wishart distribution ###
+If $\lambda \sim Ga(a,b)$, then $\frac{1}{\lambda} \sim IG(a,b)$. similarly, if $\Sigma^{-1} \sim Wi(S, \nu)$ then $\Sigma \sim IW(S^{-1}, \nu + D + 1)$, where IW is the inverse Wishart, the multidimensional generalization of the inverse Gamma.
+
+- pdf
+\\[
+IW( \Sigma | S, \nu) = \frac{1}{Z_{IW}} | \Sigma |^{-( \nu + D + 1) /2} \exp[ - \frac{1}{2} tr( S^{-1} \Sigma^{-1}]
+\\]
+where 
+\\[
+Z_{IW} = |S|^{- \nu /2} 2^{ \nu d/2} \Gamma_{D}( \nu /2)
+\\]
+
+- mean
+\\[
+mean= \frac{S^{-1}}{ \nu -D -1}
+\\]
+
+- mode
+\\[
+\frac{S^{-1}}{ \nu + D + 1}
+\\]
+
+- if $D=1$, this reduces to the inverse Gamma:
+\\[
+IW( \sigma^2 | S^{-1}, \nu)= IG( \sigma^2 | \nu /2 ,S/2)
 \\]
