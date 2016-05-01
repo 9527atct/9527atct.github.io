@@ -264,7 +264,7 @@ NIW( \mu , \Sigma | m_0, \kappa_0, \nu_0, S_0) \sim N( \mu | m_0, \frac{1}{ \kap
 \begin{split}
 p( \mu, \Sigma | \mathcal{D}) &= NIW( \mu, \Sigma | m_N, \kappa_N, \nu_N, S_N) \\\
 m_N &= \frac{ \kappa_0 m_0 + N \bar{x}}{ \kappa_{N}} = \frac{ \kappa_0}{ \kappa_0 + N}m_0 + \frac{N}{ \kappa_0 + N} \bar{x} \\\
-\kappa_N = \kappa_0 + N\\\
+\kappa_N &= \kappa_0 + N\\\
 \nu_N &= \nu_0 + N \\\
 S_N &= S_0 + S_{ \bar{x}} + \frac{ \kappa_0 N}{ \kappa_0 + N}( \bar{x} - m_0)( \bar{x} - m_0)^T \\\
 &= S_0 + S + \kappa_0m_0m_0^T - \kappa_Nm_Nm_N^T
