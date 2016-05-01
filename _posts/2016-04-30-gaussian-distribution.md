@@ -203,6 +203,7 @@ V_N^{-1} &= V_0^{-1} + N \Sigma^{-1}
 \\]
 
 - posterior distribution of $\Sigma$
+
 The likelihood,
 \\[
 p( \mathcal{D}| \mu, \Sigma) \propto | \Sigma |^{-N/2} \exp [ \frac{-1}{2} tr(S_{ \mu} \Sigma^{-1} ]
@@ -224,7 +225,8 @@ p( \Sigma| \mathcal{D}, \mu) & \propto | \Sigma |^{N/2}  \exp [ \frac{-1}{2} tr(
 \\]
 Here, $\nu_N = \nu_0 + N$, $S_N^{-1} = S_0 + S_{ \mu}$.
 
-  * MAP estimation for $ \Sigma$
+  ** MAP estimation for $ \Sigma$ **
+  
   \\[
   \hat{ \Sigma}_{map} = \frac{ S_N }{ \nu_N + D + 1} = \frac{S_0 + S_{ \mu}}{N_0 + N}
   \\]
