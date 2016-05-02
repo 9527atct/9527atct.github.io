@@ -286,3 +286,11 @@ where $S= \sum_{i=1}^N x_ix_i^T$. Result analysis: the posterior mean is a conve
    p( \mu | \mathcal{D} = \int p( \mu, \Sigma | \mathcal{D}) d \Sigma = \mathcal{T}( \mu | m_N, \frac{S_N}{ \kappa_N ( \nu_N -D + 1)} S_N, \nu_N -D +1)
    \\]
    Then, $ \hat{ \mu}_{map} = m_N$.
+   
+   5. Posterior predictive
+   \\[
+   \begin{split}
+   p(x| \mathcal{D})= p(x| \mu, \Sigma)p( \mu, \Sigma| \mathcal{D}) &= \int \int \mathcal{N}(x| \mu, \Sigma) NIW( \mu , \Sigma | m_N, \kappa_N, \nu_N, S_N) d \mu d \Sigma \\\
+   &= \mathcal{T}(x|m_N, \frac{ \kappa_N + 1}{ \kappa_N( \nu_N -D +1)}S_N, \nu_N -D + 1)
+   \end{split}
+   \\]
