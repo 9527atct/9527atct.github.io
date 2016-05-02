@@ -193,6 +193,7 @@ IW( \sigma^2 | S^{-1}, \nu)= IG( \sigma^2 | \nu /2 ,S/2)
 ### MAP estimation ###
 
 - posterior of $\mu$
+
 The likelihood has the form $ p( \mathcal{D}| \mu)= \mathcal{N}( \bar{x}| \mu, \frac{1}{N} \Sigma)$. According to linear Gaussian theory, we can treat the $\mathcal{D}$ as the observation of the hidden variable $\mu$. Now, we give a prior to $\mu$, that is, $p( \mu) = \mathcal{N}( \mu | m_o, v_0)$. Then, we can derive a Gaussian posterior for $\mu$ ,
 \\[
 \begin{split}
