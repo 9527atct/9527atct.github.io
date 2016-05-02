@@ -272,12 +272,12 @@ S_N &= S_0 + S_{ \bar{x}} + \frac{ \kappa_0 N}{ \kappa_0 + N}( \bar{x} - m_0)( \
 where $S= \sum_{i=1}^N x_ix_i^T$. Result analysis: the posterior mean is a convex combination of the prior mean and the MLE, with "strength" $\kappa_0 + N$; and the posterior scatter matrix $S_N$ is the prior scatter matrix $S_0$ plus the empirical scatter matrix $S_{ \bar{x}}$ plus an extra term due to the uncertainty in the mean.
 
    4. MAP for $ \mu, \Sigma$
-   - **$ \hat{ \Sigma}_{map} $**
+   - $ \hat{ \Sigma}_{map} $
    \\[
    p( \Sigma | \mathcal{D}) = \int p( \mu, \Sigma | \mathcal{D}) d \mu = IW( \Sigma | S_N, \nu_N)
    \\]
    Then, $ \hat{ \Sigma}_{map} = \frac{S_N}{ \nu_N + D + 1}$
-   - **$ \hat{ \mu}_{map} $**
+   - $ \hat{ \mu}_{map} $
    \\[
    p( \mu | \mathcal{D} = \int p( \mu, \Sigma | \mathcal{D}) d \Sigma = \mathcal{T}( \mu | m_N, \frac{S_N}{ \kappa_N ( \nu_N -D + 1)} S_N, \nu_N -D +1)
    \\]
