@@ -223,14 +223,18 @@ p( \Sigma| \mathcal{D}, \mu) & \propto | \Sigma |^{N/2}  \exp [ \frac{-1}{2} tr(
 \\]
 Here, $\nu_N = \nu_0 + N$, $S_N^{-1} = S_0 + S_{ \mu}$.
   - MAP estimation for $ \Sigma$   
-  \\[
-  \hat{ \Sigma}_{map} = \frac{ S_N }{ \nu_N + D + 1} = \frac{S_0 + S_{ \mu}}{N_0 + N}
-  \\]
+\\[
+\hat{ \Sigma}_{map} = \frac{ S_N }{ \nu_N + D + 1} = \frac{S_0 + S_{ \mu}}{N_0 + N}
+\\]
   if  we use an improper uniform prior, corresponding to $N_0 =0 $ and $S_0 = 0$, we recover the MLE.
   Let $\mu = \bar{x}$, so, $S_{ \mu} = S_{ \hat{x}}$. Then the posterior can be rewritten as
-  \\[
-  \hat{ \Sigma}_{map} = \frac{S_0 + S_{ \bar{x}}}{N_0 + N} = \frac{N_0 S_0}{(N_0 + N)N_0  }+ \frac{NS}{(N_0+N)N} = \lambda \Sigma_0 + (1- \lambda) \hat{ \Sigma}_{mle}
-  \\]
+\\[
+\begin{split}
+\hat{ \Sigma}_{map} &= \frac{S_0 + S_{ \bar{x}}}{N_0 + N} \\\
+&= \frac{N_0 S_0}{(N_0 + N)N_0  }+ \frac{NS}{(N_0+N)N} \\\
+&= \lambda \Sigma_0 + (1- \lambda) \hat{ \Sigma}_{mle}
+\end{split}
+\\]
   where $\lambda = \frac{N_0}{N_0 + N}$.
   
 - Posterior distribution of $\mu$ and $\Sigma$
