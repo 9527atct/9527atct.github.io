@@ -221,8 +221,9 @@ p( \Sigma| \mathcal{D}, \mu) & \propto | \Sigma |^{N/2}  \exp [ \frac{-1}{2} tr(
 &= IW( \Sigma | S_N, \nu_N)
 \end{split}
 \\]
-Here, $\nu_N = \nu_0 + N$, $S_N^{-1} = S_0 + S_{ \mu}$.
-  - MAP estimation for $ \Sigma$   
+Here, $\nu_N = \nu_0 + N$, $S_N^{-1} = S_0 + S_{ \mu}$. <br/>
+
+MAP estimation for $ \Sigma$
 
 \\[
 \hat{ \Sigma}_{map} = \frac{ S_N }{ \nu_N + D + 1} = \frac{S_0 + S_{ \mu}}{N_0 + N}
