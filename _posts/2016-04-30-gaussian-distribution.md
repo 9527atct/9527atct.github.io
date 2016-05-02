@@ -202,19 +202,16 @@ V_N^{-1} &= V_0^{-1} + N \Sigma^{-1}
 \end{split}
 \\]
 
-- posterior distribution of $\Sigma$
-
+- posterior distribution of $\Sigma$.
 The likelihood,
 \\[
 p( \mathcal{D}| \mu, \Sigma) \propto | \Sigma |^{-N/2} \exp [ \frac{-1}{2} tr(S_{ \mu} \Sigma^{-1} ]
 \\]
-
 The corresponding conjugate prior is known as the inverse Wishart distribution,
 \\[
 IW( \Sigma | S_0^{-1}, \nu_0) \propto | \Sigma |^{-( \nu_0 + D + 1) /2} \exp [ \frac{-1}{2}tr(S_0 \Sigma^{-1}) ]
 \\]
 Here $ \nu_0 > D-1$ is the degrees of freedom, $S_0$ is a symmetric pd matrix. We see that $S_0^{-1}$ plays the role of the prior scatter matrix, and $  \nu_0 + D + 1$ controls the strength of the prior, and hence plays a role analogous to the sample size $N$.
-
 Multiplying the likelihood and prior we find that the posterior is also inverse Wishart:
 \\[
 \begin{split}
@@ -224,9 +221,7 @@ p( \Sigma| \mathcal{D}, \mu) & \propto | \Sigma |^{N/2}  \exp [ \frac{-1}{2} tr(
 \end{split}
 \\]
 Here, $\nu_N = \nu_0 + N$, $S_N^{-1} = S_0 + S_{ \mu}$.
-
-  ** MAP estimation for $ \Sigma$ **
-  
+  - MAP estimation for $ \Sigma$   
   \\[
   \hat{ \Sigma}_{map} = \frac{ S_N }{ \nu_N + D + 1} = \frac{S_0 + S_{ \mu}}{N_0 + N}
   \\]
@@ -275,13 +270,13 @@ S_N &= S_0 + S_{ \bar{x}} + \frac{ \kappa_0 N}{ \kappa_0 + N}( \bar{x} - m_0)( \
 \\]
 where $S= \sum_{i=1}^N x_ix_i^T$. Result analysis: the posterior mean is a convex combination of the prior mean and the MLE, with "strength" $\kappa_0 + N$; and the posterior scatter matrix $S_N$ is the prior scatter matrix $S_0$ plus the empirical scatter matrix $S_{ \bar{x}}$ plus an extra term due to the uncertainty in the mean.
 
-   4. MAP for $ \mu, \Sigam$
-   - **$ \Sigma $**
+   4. MAP for $ \mu, \Sigma$
+   - **$ \hat{ \Sigma}_{map} $**
    \\[
    p( \Sigma | \mathcal{D}) = \int p( \mu, \Sigma | \mathcal{D}) d \mu = IW( \Sigma | S_N, \nu_N)
    \\]
    Then, $ \hat{ \Sigma}_{map} = \frac{S_N}{ \nu_N + D + 1}$
-   - **$ \mu $**
+   - **$ \hat{ \mu}_{map} $**
    \\[
    p( \mu | \mathcal{D} = \int p( \mu, \Sigma | \mathcal{D}) d \Sigma = \mathcal{T}( \mu | m_N, \frac{S_N}{ \kappa_N ( \nu_N -D + 1)} S_N, \nu_N -D +1)
    \\]
