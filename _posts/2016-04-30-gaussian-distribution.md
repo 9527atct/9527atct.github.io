@@ -260,6 +260,7 @@ p( \mu ,\Sigma) = p( \Sigma) p( \mu | \Sigma)
 \\[
 NIW( \mu , \Sigma | m_0, \kappa_0, \nu_0, S_0) \sim N( \mu | m_0, \frac{1}{ \kappa_0} \Sigma) \times IW( \Sigma |S_0, \nu_0)
 \\]
+where, $m_0$ is our prior mean for $\mu$, and $\kappa_0$ is how strongly we believe this prior; and $S_0$ is our prior mean for $\Sigma$, and $\nu_0$ is how strongly we believe this prior.
 	
 	3. Posterior
 \\[
@@ -272,4 +273,4 @@ S_N &= S_0 + S_{ \bar{x}} + \frac{ \kappa_0 N}{ \kappa_0 + N}( \bar{x} - m_0)( \
 &= S_0 + S + \kappa_0m_0m_0^T - \kappa_Nm_Nm_N^T
 \end{split}
 \\]
-where $S= \sum_{i=1}^N x_ix_i^T$.
+where $S= \sum_{i=1}^N x_ix_i^T$. Result analysis: the posterior mean is a convex combination of the prior mean and the MLE, with "strength" $\kappa_0 + N$; and the posterior scatter matrix $S_N$ is the prior scatter matrix $S_0$ plus the empirical scatter matrix $S_{ \bar{x}}$ plus an extra term due to the uncertainty in the mean.
