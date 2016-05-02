@@ -1,7 +1,7 @@
 ---
 layout: post
 title: gaussian distribution
-date: 2016-04-30 21:37:05 +1000 
+date: 2016-04-30 21:09:05 +1000 
 categories: MachineLearning
 comments: true
 ---
@@ -223,11 +223,14 @@ p( \Sigma| \mathcal{D}, \mu) & \propto | \Sigma |^{N/2}  \exp [ \frac{-1}{2} tr(
 \\]
 Here, $\nu_N = \nu_0 + N$, $S_N^{-1} = S_0 + S_{ \mu}$.
   - MAP estimation for $ \Sigma$   
+
 \\[
 \hat{ \Sigma}_{map} = \frac{ S_N }{ \nu_N + D + 1} = \frac{S_0 + S_{ \mu}}{N_0 + N}
 \\]
-  if  we use an improper uniform prior, corresponding to $N_0 =0 $ and $S_0 = 0$, we recover the MLE.
-  Let $\mu = \bar{x}$, so, $S_{ \mu} = S_{ \hat{x}}$. Then the posterior can be rewritten as
+
+if  we use an improper uniform prior, corresponding to $N_0 =0 $ and $S_0 = 0$, we recover the MLE.
+Let $\mu = \bar{x}$, so, $S_{ \mu} = S_{ \hat{x}}$. Then the posterior can be rewritten as
+
 \\[
 \begin{split}
 \hat{ \Sigma}_{map} &= \frac{S_0 + S_{ \bar{x}}}{N_0 + N} \\\
@@ -235,7 +238,10 @@ Here, $\nu_N = \nu_0 + N$, $S_N^{-1} = S_0 + S_{ \mu}$.
 &= \lambda \Sigma_0 + (1- \lambda) \hat{ \Sigma}_{mle}
 \end{split}
 \\]
-  where $\lambda = \frac{N_0}{N_0 + N}$.
+
+where $\lambda = \frac{N_0}{N_0 + N}$.
+
+
   
 - Posterior distribution of $\mu$ and $\Sigma$
 	1. likelihood:
@@ -294,3 +300,7 @@ where $S= \sum_{i=1}^N x_ix_i^T$. Result analysis: the posterior mean is a conve
    &= \mathcal{T}(x|m_N, \frac{ \kappa_N + 1}{ \kappa_N( \nu_N -D +1)}S_N, \nu_N -D + 1)
    \end{split}
    \\]
+   
+   
+   
+   
