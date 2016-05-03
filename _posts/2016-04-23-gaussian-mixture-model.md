@@ -167,7 +167,7 @@ Then, the MAP estimate is given by
 \\]
 
 \\[
-\bar{x}_k = \frac{ \sum_i \gamma_{ik} x_i}{ \gamma_k} 
+\bar{ x }_k = \frac{ \sum_i \gamma_{ik} x_i}{ \gamma_k} 
 \\]
 
 \\[
