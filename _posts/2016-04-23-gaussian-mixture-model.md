@@ -184,9 +184,10 @@ The common choice of hyperparameters is, (Fraley and Raftery 2007)
 |$\kappa_0$:| 0.01              |
 |-----------|-------------------|
 |$\nu_0$:   | $d+2$             |
-|$S_0$:     | $= \frac{1}{K^{1/D}} diag(s_1^2,...,s_D^2) $, where $s_j = (1/N) \sum_{i=1}^N(x_{ij}- \bar{x}_j)^2$ is the pooled variance for dimension $j$. |
 |-----------|-------------------|
-
+|$S_0$:     | $= \frac{1}{K^{1/D}} diag(s_1^2,...,s_D^2) $ |
+|-----------|-------------------|
+, where $s_j = (1/N) \sum_{i=1}^N(x_{ij}- \bar{x}_j)^2$ is the pooled variance for dimension $j$.
 
 
 
