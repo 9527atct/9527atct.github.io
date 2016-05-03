@@ -9,6 +9,7 @@ comments: true
 ----------
 
 ### Definition ###
+------------------
 
 A pdf $p(x| \theta)$, for $ \mathbf{x}=(x_1,...,x_m) \in \mathcal{X}^m$, and $ \theta \in \Theta  \subseteq R^d$, is said to be in the *exponential family* if it is of the form,
 \\[
@@ -34,6 +35,7 @@ p( \mathbf{x}| \theta) = h( \mathbf{x}) \exp [ \eta ( \theta)^T s ( \mathbf{x}) 
 where $ \eta$ is a function that maps the parameters $\theta$ to the natural parameters $ \eta = \eta ( \theta)$. if $dim( \theta) < dim( \eta ( \theta))$, it is called a curved exponential family, which means we have more sufficient statistics than parameters.
 
 ### example ###
+---------------
 
 The Bernoulli distribution can be written in exponential family form as follows:
 \\[

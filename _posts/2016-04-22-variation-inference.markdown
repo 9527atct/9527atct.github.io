@@ -11,6 +11,7 @@ comments: true
 ----------
 
 ### Main Idea ###
+-----------------
 
 The main idea behind variational methods is to pick a family of distributions over the latent variables with its own _variational parameter_
 \\[
@@ -21,12 +22,15 @@ Then find the setting of the parameters that makes $q$ close to the posterior of
 Use $q$ with the fitted parameters as a proxy for the posterior, e.g., to form predictions about future data or to investigate the posterior distribution of the hidden variables.
 
 ### Using KL  to measure the closeness ###
+------------------------------------------
+
 - The KL divergence for variational inference is
 \\[
 KL(q || p)=\int q(Z) \ln \{ \frac{q(Z)}{p(Z|x)} \}=E_q [ \ln \frac{q(Z)}{p(Z|x)}]
 \\]
 
 ### The Evidence Lower Bound (ELBO) ###
+---------------------------------------
 
 - We actually can't minimize the KL divergence exactly, but we can minimize a function that is equal to it up to a constant. This is the *evidence lower bound* (**ELBO**)
 
@@ -42,6 +46,7 @@ KL(q || p)=\int q(Z) \ln \{ \frac{q(Z)}{p(Z|x)} \}=E_q [ \ln \frac{q(Z)}{p(Z|x)}
 The last inequality is the **ELBO**, , and applies the Jensen's inequality. We choose a family of variational distributions (i.e., a parameterization of a distribution of the latent variables, in another words, functional of distribution) such that the expectations are computable.
 
 ### Take KL, ELBO together ###
+------------------------------
 
 - First
 \\[
@@ -66,6 +71,7 @@ Notice that $\ln p(x)$ does not depend on $q$. So, as a function of the variatio
 \\]
 
 ### Mean Field Variational Inference ###
+----------------------------------------
 
 In mean field variational inference, we assume that the variational family factorizes,
 \\[
@@ -106,6 +112,7 @@ q^*(z_k) \propto \exp{ E_{-k} [ \ln p(z_k , Z_{-k},x)] }
 The *coordinate ascent algorithm* is to iteratively update each $q(z_k)$. The ELBO converges to a local minimum. Use the resulting $q$ is as a proxy for the true posterior.
 
 ### working with exponential family conditional ###
+---------------------------------------------------
 
 - Compute the log of the conditional
 
@@ -128,9 +135,10 @@ and the normalizing constant is $E[a( \eta (z_{-j}, x)) ]$
 
 
 
-----------
+
 
 ### Reference ###
+-----------------
 [Variational Bayesian methods](https://en.wikipedia.org/wiki/Variational_Bayesian_methods)
 
 [Variational Inference](https://www.cs.princeton.edu/courses/archive/fall11/cos597C/lectures/variational-inference-i.pdf)

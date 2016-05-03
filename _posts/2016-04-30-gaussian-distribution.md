@@ -9,6 +9,7 @@ comments: true
 ----------
 
 ### multivariate normal ###
+---------------------------
 multivariate gaussian or multivariate normal (MVN) is the most widely used joint probability density function for continuous variables. Multivariate Gaussian is the distribution with maximum entropy subject to having a specified mean and covariance. 
 
 - pdf 
@@ -26,6 +27,7 @@ where,
 where, $y_i = u_i^T(x- \mu)$.
 
 ### MLE for $\mu, \Sigma$ ###
+-----------------------------
 > \\[ \mu_{MLE} = \frac{1}{N} \sum_{i=1}^N x_i = \bar{x} \\]
 > \\[ \Sigma_{MLE} = \frac{1}{N} \sum_{i=1}^N (x_i - \bar{x})(x_i - \bar{x})^T = \frac{1}{N}( \sum_{i=1}^N x_i x_i^T) - \bar{x} \bar{x}^T \\]
 
@@ -72,6 +74,7 @@ Finally, we get the MLE of $\Sigma$, that is,
 \\]
 
 ### Jointly Gaussian ###
+------------------------
 
 Suppose $x=(x_1,x_2)$ is jointly Gaussian,
 \\[
@@ -98,6 +101,7 @@ p(x_1 | x_2) &= N(x_1 | \mu_{1|2}, \Sigma_{1|2}) \\\
 \\]
 
 ### Linear Gaussian ###
+-----------------------
 
 Suppose we have two variables, $x$ and $y$. Let $x \in R^{D_x}$ be a hidden variable, and $y \in R^{D_y}$ be a noisy observation of $x$. Let us assume we have the following prior and likelihood.
 \\[
@@ -122,6 +126,8 @@ p(y) = N(y| A \mu_x +b , \Sigma_y + A \Sigma_x A^T)
 \\]
 
 ### Wishart distribution ###
+----------------------------
+
 The Wishart distribution is the generalization of Gamma distribution to positive definite matrices.
 
 - pdf
@@ -164,6 +170,8 @@ Wi( \lambda | s^{-1}, \nu) = Ga( \lambda | \nu /2 ,s/2)
 \\]
 
 ### Inverse Wishart distribution ###
+------------------------------------
+
 If $\lambda \sim Ga(a,b)$, then $\frac{1}{\lambda} \sim IG(a,b)$. similarly, if $\Sigma^{-1} \sim Wi(S, \nu)$ then $\Sigma \sim IW(S^{-1}, \nu + D + 1)$, where IW is the inverse Wishart, the multidimensional generalization of the inverse Gamma.
 
 - pdf
@@ -191,6 +199,7 @@ IW( \sigma^2 | S^{-1}, \nu)= IG( \sigma^2 | \nu /2 ,S/2)
 \\]
 
 ### MAP estimation ###
+----------------------
 
 - posterior of $\mu$
 
