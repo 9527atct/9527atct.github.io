@@ -138,13 +138,14 @@ C_k = ( \frac{1}{n_k} \sum_i \gamma_{ik} x_i x_i^T) - \mu_k \mu_k^T
 In EM MAP estimation, the auxiliary function is,
 
 \\[
-Q'( \theta, \theta^{old})= \left[ \sum_i \sum_k \gamma_{ik} \ln \pi_{ik} + \sum_i \sum_k \gamma_{ik} \ln p(x_i | \theta_k)  \right] + \ln p( \pi) + \sum_k \ln p( \theta_k)
+Q( \theta, \theta^{old})= \left[ \sum_i \sum_k \gamma_{ik} \ln \pi_{ik} + \sum_i \sum_k \gamma_{ik} \ln p(x_i | \theta_k)  \right] + \ln p( \pi) + \sum_k \ln p( \theta_k)
 \\]
 where $ \ln p( \pi) + \sum_k \ln p( \theta_k)$ is added prior information.
 
-1. E step remains unchanged. 
+1. E step: remains unchanged. <br/>
 
 it is natural to use a Dirichlet prior, $\pi \sim Dir( \alpha)$, since this is conjugate to the categorical distribution. The MAP estimate is given by 
+
 \\[
 \pi_k = \frac{ \gamma_k + \alpha_k - 1}{N + \sum_k \alpha_k -K}
 \\]
@@ -161,10 +162,14 @@ Then, the MAP estimate is given by
 \begin{split}
 \hat{ \mu}_k &= \frac{ \gamma_k \bar{x}_k + \kappa_0 m_0}{ \gamma_k + \kappa_0} \\\
 \hat{ \Sigma}_k &= \frac{ S_0 + S_k + \frac{ \kappa_0 \gamma_k}{ \kappa_0 + \gamma_k} ( \bar{x}_k - m_0)( \bar{x}_k - m_0)^T}{ \nu_0 + \gamma_k + D + 2} \\\
-\bar{x}_k &= \frac{ \Sum_i \gamma_{ik} x_i}{ \gamma_k} \\\
+\bar{x}_k &= \frac{ \sum_i \gamma_{ik} x_i}{ \gamma_k} \\\
 S_k &= \sum_i \gamma_{ik}(x_i - \bar{x}_k)(x_i - \bar{x}_k)^T
 \end{split}
 \\]
+
+3. Prior Hyperparameters
+
+$$
 
 
 ### Expectation Maximization Algorithm ###
