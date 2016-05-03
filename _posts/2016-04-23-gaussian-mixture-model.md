@@ -142,7 +142,7 @@ Q( \theta, \theta^{old})= \left[ \sum_i \sum_k \gamma_{ik} \ln \pi_{ik} + \sum_i
 \\]
 where $ \ln p( \pi) + \sum_k \ln p( \theta_k)$ is added prior information.
 
-1. E step: remains unchanged. <br/>
+-  E step: remains unchanged. <br/>
 
 it is natural to use a Dirichlet prior, $\pi \sim Dir( \alpha)$, since this is conjugate to the categorical distribution. The MAP estimate is given by 
 
@@ -150,7 +150,7 @@ it is natural to use a Dirichlet prior, $\pi \sim Dir( \alpha)$, since this is c
 \pi_k = \frac{ \gamma_k + \alpha_k - 1}{N + \sum_k \alpha_k -K}
 \\]
 
-2. M step: consider a conjugate prior 
+-  M step: consider a conjugate prior 
 
 \\[
 p( \mu_k, \Sigma_k)= NIW( \mu_k, \Sigma_k | m_0, \kappa_0, \nu_0, S_0)
@@ -159,17 +159,24 @@ p( \mu_k, \Sigma_k)= NIW( \mu_k, \Sigma_k | m_0, \kappa_0, \nu_0, S_0)
 Then, the MAP estimate is given by
 
 \\[
-\begin{split}
-\hat{ \mu}_k &= \frac{ \gamma_k \bar{x}_k + \kappa_0 m_0}{ \gamma_k + \kappa_0} \\\
-\hat{ \Sigma}_k &= \frac{ S_0 + S_k + \frac{ \kappa_0 \gamma_k}{ \kappa_0 + \gamma_k} ( \bar{x}_k - m_0)( \bar{x}_k - m_0)^T}{ \nu_0 + \gamma_k + D + 2} \\\
-\bar{x}_k &= \frac{ \sum_i \gamma_{ik} x_i}{ \gamma_k} \\\
-S_k &= \sum_i \gamma_{ik}(x_i - \bar{x}_k)(x_i - \bar{x}_k)^T
-\end{split}
+\hat{ \mu}_k = \frac{ \gamma_k \bar{x}_k + \kappa_0 m_0}{ \gamma_k + \kappa_0} 
+\\]
+
+\\[
+\hat{ \Sigma}_k = \frac{ S_0 + S_k + \frac{ \kappa_0 \gamma_k}{ \kappa_0 + \gamma_k} ( \bar{x}_k - m_0)( \bar{x}_k - m_0)^T}{ \nu_0 + \gamma_k + D + 2} 
+\\]
+
+\\[
+\bar{x}_k = \frac{ \sum_i \gamma_{ik} x_i}{ \gamma_k} 
+\\]
+
+\\[
+S_k = \sum_i \gamma_{ik}(x_i - \bar{x}_k)(x_i - \bar{x}_k)^T
 \\]
 
 3. Prior Hyperparameters
 
-$$
+
 
 
 ### Expectation Maximization Algorithm ###
