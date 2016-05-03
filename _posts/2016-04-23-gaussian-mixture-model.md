@@ -173,7 +173,7 @@ S_k = \sum_i \gamma_{ik}(x_i - \bar{x}_k) (x_i - \bar{x}_k)^T
 
 and,
 \\[
-\bar{x}_k = \frac{ \sum_i \gamma_{ik} x_i }{ \gamma_k }
+\bar{x}\_k = \frac{ \sum_i \gamma\_{ik} x_i }{ \gamma_k }
 \\]
 
 - Prior Hyperparameters
