@@ -174,7 +174,18 @@ Then, the MAP estimate is given by
 S_k = \sum_i \gamma_{ik}(x_i - \bar{x}_k)(x_i - \bar{x}_k)^T
 \\]
 
-3. Prior Hyperparameters
+- Prior Hyperparameters
+
+The common choice of hyperparameters is, (Fraley and Raftery 2007)
+
+|-----------|-------------------|
+|$m_0$:     | the mean of data  |
+|-----------|-------------------|
+|$\kappa_0$:| 0.01              |
+|-----------|-------------------|
+|$\nu_0$:   | $d+2$             |
+|$S_0$:     | $= \frac{1}{K^{1/D}} diag(s_1^2,...,s_D^2) $, where $s_j = (1/N) \sum_{i=1}^N(x_{ij}- \bar{x}_j)^2$ is the pooled variance for dimension $j$. |
+|-----------|-------------------|
 
 
 
