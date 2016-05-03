@@ -128,22 +128,29 @@ C_k = ( \frac{1}{n_k} \sum_i \gamma_{ik} x_i x_i^T) - \mu_k \mu_k^T
 
 
 -  EM MAP estimation
+
 In EM MAP estimation, the auxiliary function is 
+
 \\[
 Q'( \theta, \theta^{old})= \left[ \sum_i \sum_k \gamma_{ik} \ln \pi_{ik} + \sum_i \sum_k \gamma_{ik} \ln p(x_i | \theta_k)  \right] + \ln p( \pi) + \sum_k \ln p( \theta_k)
 \\]
 where $ \ln p( \pi) + \sum_k \ln p( \theta_k)$ is added prior information.
 
-1. E step remains unchanged. it is natural to use a Dirichlet prior, $\pi \sim Dir( \alpha)$, since this is conjugate to the categorical distribution. The MAP estimate is given by 
+1. E step remains unchanged. 
+
+it is natural to use a Dirichlet prior, $\pi \sim Dir( \alpha)$, since this is conjugate to the categorical distribution. The MAP estimate is given by 
 \\[
 \pi_k = \frac{ \gamma_k + \alpha_k - 1}{N + \sum_k \alpha_k -K}
 \\]
 
 2. M step: consider a conjugate prior 
+
 \\[
 p( \mu_k, \Sigma_k)= NIW( \mu_k, \Sigma_k | m_0, \kappa_0, \nu_0, S_0)
 \\]
+
 Then, the MAP estimate is given by
+
 \\[
 \begin{split}
 \hat{ \mu}_k &= \frac{ \gamma_k \bar{x}_k + \kappa_0m_0}{ \gamma_k + \kappa_0} \\\
@@ -152,6 +159,7 @@ Then, the MAP estimate is given by
 S_k &= \sum_i \gamma_{ik}(x_i - \bar{x}_k)(x_i - \bar{x}_k)^T
 \end{split}
 \\]
+
 
 ### Expectation Maximization Algorithm ###
 - Given $x=(x_1,...,x_n)$
