@@ -167,12 +167,13 @@ Then, the MAP estimate is given by
 \\]
 
 \\[
-\bar{ x }_k = \frac{ \sum_i \gamma_{ik} x_i}{ \gamma_k} 
+S_k = \sum_i \gamma_{ik}(x_i - \bar{x}_k)(x_i - \bar{x}_k)^T
 \\]
 
 \\[
-S_k = \sum_i \gamma_{ik}(x_i - \bar{x}_k)(x_i - \bar{x}_k)^T
+\bar{x}_k = \frac{ \sum_i \gamma_{ik} x_i } { \gamma_k }
 \\]
+
 
 - Prior Hyperparameters
 
