@@ -166,15 +166,15 @@ Then, the MAP estimate is given by
 \hat{ \Sigma}_k = \frac{ S_0 + S_k + \frac{ \kappa_0 \gamma_k}{ \kappa_0 + \gamma_k} ( \bar{x}_k - m_0)( \bar{x}_k - m_0)^T}{ \nu_0 + \gamma_k + D + 2} 
 \\]
 
+where,
 \\[
-\begin{split}
-S_k &= \sum_i \gamma_{ik}(x_i - \bar{x}_k)(x_i - \bar{x}_k)^T \\\
-\bar{x}_k &= \frac{ \sum_i \gamma_{ik} x_i } { \gamma_k }
-\end{split}
+S_k = \sum_i \gamma_{ik}(x_i - \bar{x}_k) (x_i - \bar{x}_k)^T
 \\]
 
-
-
+and,
+\\[
+\bar{x}_k = \frac{ \sum_i \gamma_{ik} x_i }{ \gamma_k }
+\\]
 
 - Prior Hyperparameters
 
@@ -187,9 +187,7 @@ $\kappa_0$: 0.01
 
 $\nu_0$:    $d+2$             
 
-$S_0$:      $= \frac{1}{K^{1/D}} diag(s_1^2,...,s_D^2) $ 
-
-, where $s_j = (1/N) \sum_{i=1}^N(x_{ij}- \bar{x}_j)^2$ is the pooled variance for dimension $j$.
+$S_0$:      $= \frac{1}{K^{1/D}} diag(s_1^2,...,s_D^2) $ , where $s_j = (1/N) \sum_{i=1}^N(x_{ij}- \bar{x}_j)^2$ is the pooled variance for dimension $j$.
 
 
 
