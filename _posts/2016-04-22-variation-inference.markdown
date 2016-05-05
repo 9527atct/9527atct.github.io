@@ -175,10 +175,23 @@ Assum that $q( \mu, \tau) = q( \mu) q( \tau)$, i.e. that the posterior distribut
 &= - \frac{E_{ \tau}[ \tau]}{2} \left[ \sum_{i=1}^{N}(x_i - \mu)^2 + \lambda_0 ( \mu - \mu_0)^2 \right] + C \\\
 & = - \frac{1}{2}( \lambda_0 + N)E_{ \tau}[ \tau] \left[ \mu - \frac{ \lambda_0 \mu_0 + \sum_{i=1}^N x_i}{ \lambda_0 + N} \right] + C
 \\]
+that is to say, $q_{ \mu}^*( \mu) \sim N( \mu \| \mu_N= \frac{ \ambda_0 \mu_0 + N \bar{x}}{ \lambda_0 + N}, \lambda_N^{-1}= ( \lambda_0 + N) E[ \tau])
 similarity,
 \\[
 \ln q_{ \tau}^*( \tau) = (a_0 -1) \ln \tau - b_0 \tau + \frac{1}{2} \ln \tau + \frac{N}{2} \ln \tau - \frac{ \tau}{2} E_{ \mu} \left[ \sum_{i=1}^N (x_i - \mu)^2 + \lambda_0( \mu - \mu_0)^2 \right] + C
 \\]
+and, $q_{ \tau}( \tau) \sim Ga( \tau \| a_N= a_0 + \frac{N+1}{2}, b_N=b_0 + \frac{1}{2}E_{ \mu} \left[ \sum_{i=1}^N (x_i - \mu)^2 + \lambda_0( \mu - \mu_0)^2 \right])
+
+After removed the expectation, we can write the parameter equations as follows,
+\\[
+\begin{split}
+\mu_N &= \frac{ \lambda_0 \mu_0 + N \bar{x}}{ \lambda_0 + N} \\\
+\lambda_N &= ( \lambda_0 + N) \frac{ a_N }{b_N} \\\
+a_N &= a_0 + \frac{N+1}{2} \\\
+b_N &= b_0 + \frac{1}{2} \left[ ( \lambda_0 + N)( \lambda_N^{-1} + \mu_N^2) -2 \left[ \lambda_0 \mu_0 + \sum_{i=1}^N x_i \right] \mu_N + \left[ \sum_{i=1}^N x_i^2 \right] + \lambda_0 \mu_0^2 \right]
+\end{split}
+\\]
+Note taht there are circular dependencies among the formulas for $ \mu_N, \lambda_N, b_N$. This naturally suggests an EM-like algorithm to solve.
 
 
 
