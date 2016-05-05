@@ -160,7 +160,7 @@ p( \tau) &= Gamma( \tau |a_0, b_0)
 \\]
 where,
 \\[
-N(x| \mu, \sigma^2) = \frac{1}{ \sqrt{2 \pi} \sigma} \exp \left[ - \frac{(x- \mu)^2}{2 \sigma^2} \right] \\\
+N(x| \mu, \sigma^2) &= \frac{1}{ \sqrt{2 \pi} \sigma} \exp \left[ - \frac{(x- \mu)^2}{2 \sigma^2} \right] \\\
 Gamma( \tau | a,b) &= \frac{b^a \tau^{a-1} e^{-b \tar}}{ \Gamma(a)}
 \\]
 
