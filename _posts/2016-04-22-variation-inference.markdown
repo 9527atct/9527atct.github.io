@@ -177,10 +177,10 @@ Assum that $q( \mu, \tau) = q( \mu) q( \tau)$, i.e. that the posterior distribut
 & = - \frac{1}{2}( \lambda_0 + N)E_{ \tau}[ \tau] \left[ \mu - \frac{ \lambda_0 \mu_0 + \sum_{i=1}^N x_i}{ \lambda_0 + N} \right] + C
 \end{split}
 \\]
-that is to say, $q_{ \mu}^*( \mu) \sim N( \mu \| \mu_N= \frac{ \ambda_0 \mu_0 + N \bar{x}}{ \lambda_0 + N}, \lambda_N^{-1}= ( \lambda_0 + N) E[ \tau])$
+that is to say, $q_{ \mu}^{ \*}( \mu) \sim N( \mu \| \mu_N= \frac{ \lambda_0 \mu_0 + N \bar{x}}{ \lambda_0 + N}, \lambda_N^{-1}= ( \lambda_0 + N) E[ \tau])$
 similarity,
 \\[
-\ln q_{ \tau}^* ( \tau) = (a_0 -1) \ln \tau - b_0 \tau + \frac{1}{2} \ln \tau + \frac{N}{2} \ln \tau - \frac{ \tau}{2} E_{ \mu} \left[ \sum_{i=1}^N (x_i - \mu)^2 + \lambda_0( \mu - \mu_0)^2 \right] + C
+\ln q_{ \tau}^{ \*} ( \tau) = (a_0 -1) \ln \tau - b_0 \tau + \frac{1}{2} \ln \tau + \frac{N}{2} \ln \tau - \frac{ \tau}{2} E_{ \mu} \left[ \sum_{i=1}^N (x_i - \mu)^2 + \lambda_0( \mu - \mu_0)^2 \right] + C
 \\]
 and, $q_{ \tau}( \tau) \sim Ga( \tau \| a_N= a_0 + \frac{N+1}{2}, b_N=b_0 + \frac{1}{2}E_{ \mu} \left[ \sum_{i=1}^N (x_i - \mu)^2 + \lambda_0( \mu - \mu_0)^2 \right])$
 
