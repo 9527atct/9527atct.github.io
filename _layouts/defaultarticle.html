@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+	{% include header.html %}
+
+<body>
+{% include myheader.html %}
+<div class="container">
+	<div class="row">
+	 	<div class="blog-post">
+        	<div class="col-sm-11 blog-main">			
+            	<div class="blog-post">
+        			{{ content }}
+				</div>
+			</div>
+
+
+			<div class="col-sm-11 blog-main">
+			<br />
+			{% include disqus.html %}
+
+			</div>
+		</div>
+
+	</div>
+</div>
+	{% include footer.html %}
+
+</body>
+
+</html>
