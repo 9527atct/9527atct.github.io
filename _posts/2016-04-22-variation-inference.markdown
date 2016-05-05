@@ -178,9 +178,9 @@ Assum that $q( \mu, \tau) = q( \mu) q( \tau)$, i.e. that the posterior distribut
 \end{split}
 \\]
 that is to say,
-\[
+\\[
 q_{ \mu}( \mu) \sim N( \mu \| \mu_N= \frac{ \lambda_0 \mu_0 + N \bar{x}}{ \lambda_0 + N}, \lambda_N^{-1}= ( \lambda_0 + N) E[ \tau])
-\]
+\\]
 similarity,
 \\[
 \ln q_{ \tau} ( \tau) = (a_0 -1) \ln \tau - b_0 \tau + \frac{1}{2} \ln \tau + \frac{N}{2} \ln \tau - \frac{ \tau}{2} E_{ \mu} \left[ \sum_{i=1}^N (x_i - \mu)^2 + \lambda_0( \mu - \mu_0)^2 \right] + C
