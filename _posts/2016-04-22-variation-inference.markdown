@@ -135,7 +135,7 @@ and the normalizing constant is $E[a( \eta (z_{-j}, x)) ]$
 
 ### a sample from wiki ###
 --------------------------
-Given $N$ data points $X=[x_1,...,x_N]$ and our goal is to infer the posterior distribution $q( \mu , \tau) = p( \mu, \tau \| x_1,...,x_N)$. We place conjugate prior distributions on the unknown mean and variance. That is,
+Given $N$ data points $X=[x_1,...,x_N]$ and **our goal** is to infer the posterior distribution $q( \mu , \tau) = p( \mu, \tau \| x_1,...,x_N)$. We place conjugate prior distributions on the unknown mean and variance. That is,
 \\[
 \begin{split}
 \mu &\sim N( \mu_0, (\lambda_0 \tau)^{-1}) \\\
@@ -164,6 +164,20 @@ where,
 N(x| \mu, \sigma^2) &= \frac{1}{ \sqrt{2 \pi} \sigma} \exp \left[ - \frac{(x- \mu)^2}{2 \sigma^2} \right] \\\
 Gamma( \tau | a,b) &= \frac{b^a \tau^{a-1} e^{-b \tau}}{ \Gamma(a)}
 \end{split}
+\\]
+
+- mean field factorized approximation
+Assum that $q( \mu, \tau) = q( \mu) q( \tau)$, i.e. that the posterior distribution factorizes into independent factor $\mu$ and $\tau$.
+
+- variational derivation of $q( \mu)$
+\\[
+\ln q^*_{ \mu}( \mu) &= E_{ \tau} \left[ \ln (p( \mathcal{D} | \mu, \tau)) + \ln p( \mu | \tau) + \ln p( \tau) + C\right] \\\
+&= - \frac{E_{ \tau}[ \tau]}{2} \left[ \sum_{i=1}^{N}(x_i - \mu)^2 + \lambda_0 ( \mu - \mu_0)^2 \right] + C \\\
+& = - \frac{1}{2}( \lambda_0 + N)E_{ \tau}[ \tau] \left[ \mu - \frac{ \lambda_0 \mu_0 + \sum_{i=1}^N x_i}{ \lambda_0 + N} \right] + C
+\\]
+similarity,
+\\[
+\ln q_{ \tau}^*( \tau) = (a_0 -1) \ln \tau - b_0 \tau + \frac{1}{2} \ln \tau + \frac{N}{2} \ln \tau - \frac{ \tau}{2} E_{ \mu} \left[ \sum_{i=1}^N (x_i - \mu)^2 + \lambda_0( \mu - \mu_0)^2 \right] + C
 \\]
 
 
