@@ -135,8 +135,34 @@ and the normalizing constant is $E[a( \eta (z_{-j}, x)) ]$
 
 ### a sample from wiki ###
 --------------------------
-Given $N$ data points $X=[x_1,...,x_N]$ and our goal is to infer the posterior distribution $q( \mu , \tau) = p( \mu, \tau \| x_1,...,x_N)$.
+Given $N$ data points $X=[x_1,...,x_N]$ and our goal is to infer the posterior distribution $q( \mu , \tau) = p( \mu, \tau \| x_1,...,x_N)$. We place conjugate prior distributions on the unknown mean and variance. That is,
+\\[
+\begin{split}
+\mu &\sim N( \mu_0, (\lambda_0 \tau)^{-1}) \\\
+\tau &\sim Ga(a_0, b_0) \\\
+p( \mathcal{D}) &\sim N( \mu , \tau^{-1})
+\end{split}
+\\]
 
+- the joint probability
+
+The joint probability of all variables can be rewritten as
+\\[
+p( \mathcal{D}, \mu , \tau)=p( \mathcal{D}| \mu, \tau)p( \mu | \tau)p( \tau)
+\\]
+where the individual factors are,
+\\[
+\begin{split}
+p( \mathcal{D}| \mu, \tau) &= \prod_{i=1}^{N} N( x_i | \mu, \tau^{-1}) \\\
+p( \mu | \tau ) &= N( \mu | \mu_0, ( \lambda_0 \tau)^{-1}) \\\
+p( \tau) &= Gamma( \tau |a_0, b_0)
+\end{split}
+\\]
+where,
+\\[
+N(x| \mu, \sigma^2) = \frac{1}{ \sqrt{2 \pi} \sigma} \exp \left[ - \frac{(x- \mu)^2}{2 \sigma^2} \right] \\\
+Gamma( \tau | a,b) &= \frac{b^a \tau^{a-1} e^{-b \tar}}{ \Gamma(a)}
+\\]
 
 
 
