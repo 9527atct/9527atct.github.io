@@ -1,7 +1,7 @@
 ---
 layout: post
 title: variational inference
-date: 2016-04-22 12:58:05 +1000 
+date: 2016-04-22 12:58:05 +1000
 categories: MachineLearning
 comments: true
 ---
@@ -94,7 +94,7 @@ Write this object as a function of $q(z_k)$,
 \mathcal{L} = \int q(z_k)E_{-k}[ \ln p(z_k| z_{-k},x)] dz_{k} - \int q(z_k) \ln q(z_k) dz_k
 \\]
 
-The derivative w.r.t. $q(z_k)$ is 
+The derivative w.r.t. $q(z_k)$ is
 \\[
 \frac{ d \mathcal{L} }{ dq(z_k)}= E_{-k}[ \ln p(z_k|z_{-k},x) ]- \ln q(z_k) = 0
 \\]
@@ -132,6 +132,10 @@ E[ \ln p(z_j | z_{-j},x)]= \ln h(z_j) + E[ \eta(z_{-j},x)]^Tt(z_j) - E[a( \eta (
 q^*(z_j) \propto h(z_j) \exp E[ \eta(z_{-j},x)]^Tt(z_j)
 \\]
 and the normalizing constant is $E[a( \eta (z_{-j}, x)) ]$
+
+### a sample from wiki ###
+--------------------------
+Given $N$ data points $X=[x_1,...,x_N]$ and our goal is to infer the posterior distribution $q( \mu , \tau) = p( \mu, \tau \| x_1,...,x_N)$.
 
 
 
