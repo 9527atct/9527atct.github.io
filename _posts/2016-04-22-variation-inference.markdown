@@ -162,7 +162,7 @@ where,
 \\[
 \begin{split}
 N(x| \mu, \sigma^2) &= \frac{1}{ \sqrt{2 \pi} \sigma} \exp \left[ - \frac{(x- \mu)^2}{2 \sigma^2} \right] \\\
-Gamma( \tau | a,b) &= \frac{b^a \tau^{a-1} e^{-b \tar}}{ \Gamma(a)}
+Gamma( \tau | a,b) &= \frac{b^a \tau^{a-1} e^{-b \tau}}{ \Gamma(a)}
 \end{split}
 \\]
 
