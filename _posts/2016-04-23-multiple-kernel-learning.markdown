@@ -1,7 +1,7 @@
 ---
 layout: post
 title: multiple kernel learing
-date: 2016-04-23 15:58:05 +1000 
+date: 2016-04-23 15:58:05 +1000
 categories: MachineLearning
 comments: true
 ---
@@ -9,7 +9,7 @@ comments: true
 ### Reproducing kernel Hibert Sapce (RKHS) ###
 ----------------------------------------------
 
-RKHS is a Hibert Space of functions in which point evaluation is a continuous linear functional. Roughly speaking, this means that if two function $f$ and $g$ in the RKHS are close in norm, i.e., $||f-g||$ is small, then $f$ and $g$ are also pointwise close, i.e., $|f(x)-g(x)|$ is small for all $x$. The reverse need not be true.
+RKHS is a Hibert Space of functions in which point evaluation is a continuous linear functional. Roughly speaking, this means that if two function $f$ and $g$ in the RKHS are close in norm, i.e., $\mid \mid f-g \mid \mid$ is small, then $f$ and $g$ are also pointwise close, i.e., $\|f(x)-g(x)\|$ is small for all $x$. The reverse need not be true.
 
 ### Multiple kernel learning ###
 --------------------------------
@@ -20,14 +20,12 @@ Multiple kernel learning refers to a set of machine learning methods that use a 
 
 The basic idea behind multiple kernel learning algorithms is to add an *extra parameter* to the minimization problem of the learning algorithm.
 
-As an example, consider the case of supervised learning of a linear combination of a set of $n$ kernels $K$. We introduce a new kernel 
+As an example, consider the case of supervised learning of a linear combination of a set of $n$ kernels $K$. We introduce a new kernel
 \\[
-K'= \sum_{i=1}^n \beta_i K_i 
-\\] 
+K'= \sum_{i=1}^n \beta_i K_i
+\\]
 where $ \beta $ is a vector of coefficients for each kernel. because the kernels are additive (due to properties of reproducing kernel Hilbert spaces), this new function is still a kernel. For a set of data $X$ with labels $Y$, the minimization problem can then be written as,
 \\[
 \min_{ \beta,c} E(Y,K'c) + R(K,c)
 \\]
 where $E$ is an error function and $R$ is a regularization term. $E$ is typically the square loss function or the hinge loss function, and $R$ is usually an $l_n$ norm or some combination of the norms. This optimization problem can then be solved by standard optimization methods. Adaptations of existing techniques such as the sequential minimal optimization have also been developed for multiple kernel SVM-based methods.
-
-
