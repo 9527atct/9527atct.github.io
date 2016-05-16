@@ -25,13 +25,13 @@ Given a vector $x=(x_1,...,x_n)^T $. Then we defined the vector norms as follow.
 
 ### matrix norms ###
 -------
-Given a matrix $ A=(a_{ij}) \in C^{m \times n}$. Then we defined the following matrix norms.
+Given a matrix $ A=(a_{ij}) \in C^{m \times n}$. Then we defined the following matrix norms. Due to the sementic conflic with mathjax and markdown, so, all of the norms ignore the symbol with which to identify themselves are not in the normal format.
 
-- $  \| \| A \| \|_1$  = $ \max_{1 \leq j \leq n} \sum_{i=1}^m \| a_{ij} \| $.
+- $  \| \| A \| \|1  =  \max_{1 \leq j \leq n} \sum_{i=1}^m \| a_{ij} \| $.
 
-- $ \| \| A \| \|_2 $  = $ \sigma_1 (A) $, $\sigma_1(A)$ is the maximum singular value of the matrix $A$.
+- $ \| \| A \| \|2   =  \sigma_1 (A) $, $\sigma_1(A)$ is the maximum singular value of the matrix $A$.
 
-- $  \| \| A \| \|_{ \infty} $ = $ \max_{1 \leq i \leq n} \sum_{j=1}^n \| a_{ij} \| $
+- $  \| \| A \| \|{ \infty}  =  \max_{1 \leq i \leq n} \sum_{j=1}^n \| a_{ij} \| $
 
 - $  \| \| A \| \|*  =  \sum_i \sigma_i (A) $.
 
