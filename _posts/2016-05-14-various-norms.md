@@ -22,8 +22,8 @@ Given a vector $x=(x_1,...,x_n)^T $. Then we defined the vector norms as follow.
 -------
 Given a matrix $ A=(a_{ij}) \in C^{m \times n}$
 
-- $ \| \| A \| \|_1$ = $ \max_{1 \leq j \leq n} \sum_{i=1}^m \| a_{ij} \|$
-- $  \| \| A \| \|_2 $ = $ \sigma_1 (A) $, $\sigma_1(A)$ is the maximum singular value of the matrix $A$.
-- $  \| \| A \| \|_F = ( \sum_{i=1}^m \sum_{j=1}^n \| a_{ij} \|^2)^{1/2} = (Tr(A^HA))^{1/2}.
-- $  \| \| A \| \|_* $ = $ \sum_i \sigma_i (A)$.
-- $  \| \| A \| \|_{\infty} $ = $ \max_{1 \leq i \leq n} \sum_{j=1}^n \| a_{ij} \|
+- $ \| \| A \| \|_1  =  \max_{1 \leq j \leq n} \sum_{i=1}^m \| a_{ij} \|$
+- $  \| \| A \| \|_2  =  \sigma_1 (A) $, $\sigma_1(A)$ is the maximum singular value of the matrix $A$.
+- $  \| \| A \| \|_F = ( \sum_{i=1}^m \sum_{j=1}^n \| a_{ij} \|^2)^{1/2} = (Tr(A^HA))^{1/2} $.
+- $  \| \| A \| \|_*  =  \sum_i \sigma_i (A)$.
+- $  \| \| A \| \|_{\infty}  =  \max_{1 \leq i \leq n} \sum_{j=1}^n \| a_{ij} \| $
