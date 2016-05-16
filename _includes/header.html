@@ -16,6 +16,19 @@
     },
   });
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("code").map(function(){
+    match = /^\$(.*)\$$/.exec($(this).html());
+    if (match){
+      //$(this).after("<span class=mathjax_inline>" + match + "</span>");
+      //$(this).hide();
+      $(this).replaceWith("<span class=hpl_mathjax_inline>" + $(this).html() + "</span>");
+      MathJax.Hub.Queue(["Typeset",MathJax.Hub,$(this).get(0)]);
+    }
+  });
+});
+</script>
     <!--MML_HTMLorMML-full-->
     <script type="text/javascript" src="{{ BASE_PATH }}/public/MathJax/MathJax.js?config=TeX-AMS_HTML-full" ></script>
     <link href="{{ BASE_PATH }}/public/mycss/index.css" rel="stylesheet">
