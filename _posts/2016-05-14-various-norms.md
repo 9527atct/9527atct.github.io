@@ -18,6 +18,8 @@ Given a vector $x=(x_1,...,x_n)^T $. Then we defined the vector norms as follow.
 -  $ \| \| x \| \|_{ \infty} $ =$ \max \left[ \|x_1 \|,..., \| x_n \| \right]$
 -  $ \| \| x \| \|_p $  = $( \| x_1 \|^p,..., \|x_n \|^p)^{ \frac{1}{p}}$
 
+### matrix norms ###
+-------
 Given a matrix $ A=(a_{ij}) \in C^{m \times n}$
 
 - $ \| \| A \| \|_1$ = $ \max_{1 \leq j \leq n} \sum_{i=1}^m \| a_{ij} \|$
