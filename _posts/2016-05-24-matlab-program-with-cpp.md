@@ -24,10 +24,10 @@ Both matlab and c are very popular program languages. In this article, we introd
 ```cpp
 void arrayProduct(double x, double *y, double *z, mwSize  n)
 {
-	mwSize  i;
-   	for (i=0;i<n;i++){
-    	z[i] = x * y[i];
-    }
+mwSize  i;
+for (i=0;i<n;i++){
+    z[i] = x * y[i];
+}
 }
 ```
     
@@ -37,39 +37,39 @@ void arrayProduct(double x, double *y, double *z, mwSize  n)
 void mexFunction(int nlhs, mxArray *plhs[],int nrhs, const mxArray *prhs[])
 {
 
-	double multiplier;
-	double *inMatrix;
-	mwSize ncols;
-	double *outMatrix;
+double multiplier;
+double *inMatrix;
+mwSize ncols;
+double *outMatrix;
 
 
-	if(nrhs != 2){
-		mexErrMsgIdAndTxt("MyToolbox:arrayProduct:nrhs","Two inputs required.");
-	}
-	if(nlhs != 1) {
-		mexErrMsgIdAndTxt("MyToolbox:arrayProduct:nlhs","One output required.");
-	}
+if(nrhs != 2){
+	mexErrMsgIdAndTxt("MyToolbox:arrayProduct:nrhs","Two inputs required.");
+}
+if(nlhs != 1) {
+	mexErrMsgIdAndTxt("MyToolbox:arrayProduct:nlhs","One output required.");
+}
 
-	if( !mxIsDouble(prhs[0]) || mxIsComplex(prhs[0]) || mxGetNumberOfElements(prhs[0]) != 1 ) {
-		mexErrMsgIdAndTxt("MyToolbox:arrayProduct:notScalar","Input multiplier must be a scalar.");
-	}
-	if( !mxIsDouble(prhs[1]) || mxIsComplex(prhs[1])) {
-		mexErrMsgIdAndTxt("MyToolbox:arrayProduct:notDouble","Input matrix must be type double.");
-	}
-	if(mxGetM(prhs[1]) != 1) {
-		mexErrMsgIdAndTxt("MyToolbox:arrayProduct:notRowVector",  "Input must be a row vector.");
-	}
+if( !mxIsDouble(prhs[0]) || mxIsComplex(prhs[0]) || mxGetNumberOfElements(prhs[0]) != 1 ) {
+	mexErrMsgIdAndTxt("MyToolbox:arrayProduct:notScalar","Input multiplier must be a scalar.");
+}
+if( !mxIsDouble(prhs[1]) || mxIsComplex(prhs[1])) {
+	mexErrMsgIdAndTxt("MyToolbox:arrayProduct:notDouble","Input matrix must be type double.");
+}
+if(mxGetM(prhs[1]) != 1) {
+	mexErrMsgIdAndTxt("MyToolbox:arrayProduct:notRowVector",  "Input must be a row vector.");
+}
 
 
 
-	multiplier = mxGetScalar(prhs[0]);
-	inMatrix = mxGetPr(prhs[1]);
-	ncols = mxGetN(prhs[1]);
+multiplier = mxGetScalar(prhs[0]);
+inMatrix = mxGetPr(prhs[1]);
+ncols = mxGetN(prhs[1]);
 
-	plhs[0] = mxCreateDoubleMatrix(1,ncols,mxREAL);
-	outMatrix = mxGetPr(plhs[0]);
+plhs[0] = mxCreateDoubleMatrix(1,ncols,mxREAL);
+outMatrix = mxGetPr(plhs[0]);
 
-	arrayProduct(multiplier,inMatrix,outMatrix,ncols);
+arrayProduct(multiplier,inMatrix,outMatrix,ncols);
 }
 ```
 
