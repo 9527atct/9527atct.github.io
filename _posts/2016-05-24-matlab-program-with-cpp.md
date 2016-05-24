@@ -6,19 +6,21 @@ categories: technology
 comments: true
 ---
 
-----------
-### matlab program with cpp ###
-----------------------------
+### matlab work with c/cpp ###
+------------------------------
+
 
 Both matlab and c are very popular program languages. In this article, we introduced a way to use these two technology together. 
 
 - first create cpp source file "*.cpp", and include the header file "mex.h"; if you want to use the "mwSize" type, then also need to include "matrix.h".
-    `#include "mex.h"`
-    `#include "matrix.h"`
+    ```
+    #include "mex.h"
+    #include "matrix.h"
+	```
 
 - secondly, define your function details. for example,
 
-`
+	```
     void arrayProduct(double x, double *y, double *z, mwSize  n)
     {
     	mwSize  i;
@@ -26,10 +28,10 @@ Both matlab and c are very popular program languages. In this article, we introd
     		z[i] = x * y[i];
     	}
     }
-`
+	```
     
 - third, create the gateway function
-`
+	```
     void mexFunction(int nlhs, mxArray *plhs[],int nrhs, const mxArray *prhs[])
     {
     
@@ -74,7 +76,7 @@ Both matlab and c are very popular program languages. In this article, we introd
     arrayProduct(multiplier,inMatrix,outMatrix,ncols);
     
     }
-`
+	```
 
 
 ### compile ###
