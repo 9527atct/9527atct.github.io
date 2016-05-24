@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postarticle
 title: matlab program with cpp
 date: 2016-05-24 12:09:05 +1000 
 categories: technology
