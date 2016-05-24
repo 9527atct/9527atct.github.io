@@ -1,13 +1,13 @@
 ---
 layout: postarticle
-title: matlab program with cpp
+title: matlab work with cpp
 date: 2016-05-24 12:09:05 +1000 
 categories: technology
 comments: true
 ---
 
-------------------------------
-### matlab work with c/cpp ###
+
+### contents written by using c/cpp language ###
 ------------------------------
 
 
@@ -74,13 +74,14 @@ arrayProduct(multiplier,inMatrix,outMatrix,ncols);
 }
 ```
 
----------------
+
 ### compile ###
 ---------------
 
 in the matlab enviroment, use command `mex -g xxx.c` to compile the c/cpp cource files. Here, the means of `-g` is to open the debug mode, when you want to debug the file.
 
--------------
+
+
 ### debug ###
 -------------
 
