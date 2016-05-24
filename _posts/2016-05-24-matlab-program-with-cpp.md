@@ -8,7 +8,7 @@ comments: true
 
 
 ### contents written by using c/cpp language ###
-------------------------------
+
 
 
 Both matlab and c are very popular program languages. In this article, we introduced a way to use these two technology together. 
@@ -76,14 +76,14 @@ arrayProduct(multiplier,inMatrix,outMatrix,ncols);
 
 
 ### compile ###
----------------
+
 
 in the matlab enviroment, use command `mex -g xxx.c` to compile the c/cpp cource files. Here, the means of `-g` is to open the debug mode, when you want to debug the file.
 
 
 
 ### debug ###
--------------
+
 
 In the windows operation system, we can use visual studio to debug the compiled files.
 - firstly, open visuall c++, then click "tools"->"attach files" and choose the file that compiled with file suffix "xx.pdb".
