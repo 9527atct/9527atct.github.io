@@ -12,16 +12,16 @@ comments: true
 
 Both matlab and c are very popular program languages. In this article, we introduced a way to use these two technology together. 
 
-- first create cpp source file "*.cpp", and include the header file "mex.h"; if you want to use the "mwSize" type, then also need to include "matrix.h".
+- First create cpp source file "*.cpp", and include the header file "mex.h"; if you want to use the "mwSize" type, then also need to include "matrix.h".
 
 ```
 #include "mex.h"
 #include "matrix.h"
 ```
 
-- secondly, define your function details. for example,
+- Second, define your function details. for example,
 
-```
+```cpp
 void arrayProduct(double x, double *y, double *z, mwSize  n)
 {
 	mwSize  i;
@@ -31,52 +31,45 @@ void arrayProduct(double x, double *y, double *z, mwSize  n)
 }
 ```
     
-- third, create the gateway function
+- Third, create the gateway function
 
-```
+```matlab
 void mexFunction(int nlhs, mxArray *plhs[],int nrhs, const mxArray *prhs[])
 {
 
-double multiplier;
-double *inMatrix;
-mwSize ncols;
-double *outMatrix;
+	double multiplier;
+	double *inMatrix;
+	mwSize ncols;
+	double *outMatrix;
 
 
-if(nrhs != 2){
-mexErrMsgIdAndTxt("MyToolbox:arrayProduct:nrhs","Two inputs required.");
-}
-if(nlhs != 1) {
-mexErrMsgIdAndTxt("MyToolbox:arrayProduct:nlhs",
-  "One output required.");
-}
+	if(nrhs != 2){
+		mexErrMsgIdAndTxt("MyToolbox:arrayProduct:nrhs","Two inputs required.");
+	}
+	if(nlhs != 1) {
+		mexErrMsgIdAndTxt("MyToolbox:arrayProduct:nlhs","One output required.");
+	}
 
-if( !mxIsDouble(prhs[0]) || 
-mxIsComplex(prhs[0]) ||
-mxGetNumberOfElements(prhs[0]) != 1 ) {
-mexErrMsgIdAndTxt("MyToolbox:arrayProduct:notScalar",
-  "Input multiplier must be a scalar.");
-}
-if( !mxIsDouble(prhs[1]) || 
-mxIsComplex(prhs[1])) {
-mexErrMsgIdAndTxt("MyToolbox:arrayProduct:notDouble","Input matrix must be type double.");
-}
-if(mxGetM(prhs[1]) != 1) {
-mexErrMsgIdAndTxt("MyToolbox:arrayProduct:notRowVector",
-  "Input must be a row vector.");
-}
+	if( !mxIsDouble(prhs[0]) || mxIsComplex(prhs[0]) || mxGetNumberOfElements(prhs[0]) != 1 ) {
+		mexErrMsgIdAndTxt("MyToolbox:arrayProduct:notScalar","Input multiplier must be a scalar.");
+	}
+	if( !mxIsDouble(prhs[1]) || mxIsComplex(prhs[1])) {
+		mexErrMsgIdAndTxt("MyToolbox:arrayProduct:notDouble","Input matrix must be type double.");
+	}
+	if(mxGetM(prhs[1]) != 1) {
+		mexErrMsgIdAndTxt("MyToolbox:arrayProduct:notRowVector",  "Input must be a row vector.");
+	}
 
 
 
-multiplier = mxGetScalar(prhs[0]);
-inMatrix = mxGetPr(prhs[1]);
-ncols = mxGetN(prhs[1]);
+	multiplier = mxGetScalar(prhs[0]);
+	inMatrix = mxGetPr(prhs[1]);
+	ncols = mxGetN(prhs[1]);
 
-plhs[0] = mxCreateDoubleMatrix(1,ncols,mxREAL);
-outMatrix = mxGetPr(plhs[0]);
+	plhs[0] = mxCreateDoubleMatrix(1,ncols,mxREAL);
+	outMatrix = mxGetPr(plhs[0]);
 
-arrayProduct(multiplier,inMatrix,outMatrix,ncols);
-
+	arrayProduct(multiplier,inMatrix,outMatrix,ncols);
 }
 ```
 
