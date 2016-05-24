@@ -6,6 +6,7 @@ categories: technology
 comments: true
 ---
 
+------------------------------
 ### matlab work with c/cpp ###
 ------------------------------
 
@@ -73,13 +74,13 @@ arrayProduct(multiplier,inMatrix,outMatrix,ncols);
 }
 ```
 
-
+---------------
 ### compile ###
 ---------------
 
 in the matlab enviroment, use command `mex -g xxx.c` to compile the c/cpp cource files. Here, the means of `-g` is to open the debug mode, when you want to debug the file.
 
-
+-------------
 ### debug ###
 -------------
 
