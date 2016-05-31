@@ -86,6 +86,7 @@ in the matlab enviroment, use command `mex -g xxx.c` to compile the c/cpp cource
 
 
 In the windows operation system, we can use visual studio to debug the compiled files.
+
 - firstly, open visuall c++, then click "tools"->"attach files" and choose the file that compiled with file suffix "xx.pdb".
 - choose the breakpoint you want
 - run files in matlab enviroment.
