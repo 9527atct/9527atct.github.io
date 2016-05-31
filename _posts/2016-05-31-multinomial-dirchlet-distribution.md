@@ -2,7 +2,7 @@
 layout: postarticle
 title: multinomial dirichlet distribution
 date: 2016-05-24 12:09:05 +1000 
-categories: technology
+categories: Math
 comments: true
 ---
 
