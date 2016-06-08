@@ -11,3 +11,24 @@ comments: true
 \\[
 p(X_1=n_1,X_2=n_2,...,X_k=n_k)= \frac{ \Gamma( \sum_i n_i)}{ \Gamma(n_1)... \Gamma(n_k)} \prod_{i=1}^k p_i^{n_i}
 \\]
+
+### multinomial,binomial ,categorical ,bernolli###
+
+假设有$k$个桶，$n$个球，每个桶中的球的个数为$x_i$,概率为$p_i$.那么掉入每个桶中的球的个数服从以下分布，
+<table>
+<tr>
+<td>分布</td><td>球的个数</td><td>桶数</td><td>掉入桶的概率</td>
+</tr>
+<tr>
+<td>multinomial</td><td>$n$</td><td>$k$</td><td>$p_1,p_2,...,p_k$</td>
+</tr>
+<tr>
+<td>binomial</td><td>$n$</td><td>2</td><td>$p$(另一个为$1-p$)</td>
+</tr>
+<tr>
+<td>categorical</td><td>1</td><td>$k$</td><td>$p_1,p_2,...,p_k$</td>
+</tr>
+<tr>
+<td>bernolli</td><td>1</td><td>2</td><td>$p$(另一个为$1-p$)</td>
+</tr>
+</table>
