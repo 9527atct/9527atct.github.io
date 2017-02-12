@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Matrix 
+title: Matrix Elementary
 date: 2016-05-14 10:45
 categories: Math
 comments: true
