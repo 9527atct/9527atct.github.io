@@ -29,7 +29,7 @@ p(S)=\\frac{ |S|^{\\frac{r-p-1}{2}} \\cdot exp(-\\frac{1}{2} Tr(\\Sigma^{-1}S)) 
   + $S\_{11}\\sim W\_p(\\Sigma\_{11},r)$
   + $S\_{22}\\sim W\_p(\\Sigma\_{22},r)$
   + $S\_{11.2}\\sim W\_p(\\Sigma\_{11.2},r-(p-q))$
-  + $S\_{12}|S\_{22} \\sim N\_{q,p-q}(\\Sigma_{12}\\Sigma\_{22}^{-1}S\_{22}, \\Sigma\_{11.2} \\otimes S\_{22})$
+  + $S\_{12} \| S\_{22} \\sim N\_{q,p-q}(\\Sigma_{12}\\Sigma\_{22}^{-1}S\_{22}, \\Sigma\_{11.2} \\otimes S\_{22})$
 
   
 
