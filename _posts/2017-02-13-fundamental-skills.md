@@ -1,8 +1,8 @@
 ---
 layout: postarticle
-title: Wishart Distribution
-date: 2017-02-12 14:11:05 +1000
-categories: MachineLearning
+title: Fundamental Skills
+date: 2017-02-13 9:46:05 +1000
+categories: Math
 comments: true
 ---
 
@@ -12,8 +12,8 @@ comments: true
 If $S=X^TX$, where $X\_{np}\\sim N(0,I\_n \\otimes \\Sigma)$, here, $p$ is the dimensions of the data, and, $n$ is the number of the data. Then $S$ is positive definite, and is said to have the wishart distribution with $n$ degree of  freedom and covariance matrix $\\Sigma$.
 \\[
 \\begin{split}
-X^TX \&= S \\sim W\_p(\\Sigma,n) \\\
-\&\\Updownarrow \\text{equivalence} \\\
+X^TX \&= S \\sim W\_p(\\Sigma,n) \\\\
+\&\\Updownarrow \\text{equivalence} \\\\
 X\&\\sim N(0,I\_n \\otimes \\Sigma)
 \\end{split}
 \\]
