@@ -8,11 +8,10 @@ comments: true
 
 ----------
 
-### multivariate normal ###
----------------------------
-multivariate gaussian or multivariate normal (MVN) is the most widely used joint probability density function for continuous variables. Multivariate Gaussian is the distribution with maximum entropy subject to having a specified mean and covariance. 
+### Multivariate Normal Distribution###
+- [**brief introduce**] multivariate gaussian or multivariate normal (MVN) is the most widely used joint probability density function for continuous variables. Multivariate Gaussian is the distribution with maximum entropy subject to having a specified mean and covariance. 
 
-- pdf 
+- [**pdf**]
 \\[
 N(x| \mu, \Sigma)= \frac{1}{(2 \pi)^{ \frac{D}{2}} | \Sigma|^{ \frac{1}{2}}} \exp [ - \frac{1}{2} (x- \mu)^T \Sigma^{-1}(x- \mu) ]
 \\]
@@ -26,8 +25,37 @@ where,
 \\]
 where, $y_i = u_i^T(x- \mu)$.
 
+### Matrix Normal Distribution ###
+- [**brief introduce**] In statistics, the matrix normal distribution is a probability distribution that is a generalization of the multivariate normal distribution to matrix-valued random variable. Also the matrix normal distribution is special case of the multivariate normal distribution.
+- [**definition**] The probability density function for the random matrix $X\_{np} $ that follows the matrix normal distribution $MN\_{np}(M,U,V)$ has the form,
+\\[
+p(X|M,U,V)=\\frac{ exp(-\\frac{1}{2} tr(V^{-1}(X-M)^T U^{-1}(X-M) )) }{ (2\\pi)^{np/2}|V|^{n/2}|U|^{p/2}  }
+\\]
+Here, $V\_{p\\times p}$ can be treated as covariance matrix, and $U\_{n\\times n}$ as the kernel matrix of data.
+
+    **proof**: 
+\\[
+\\begin{split}
+&-\\frac{1}{2} tr(V^{-1}(X-M)^T U^{-1}(X-M)) \\\
+&=-\\frac{1}{2} vec(X-M)^T vec(U^{-1}(X-M)V^{-1})\\\
+&=-\\frac{1}{2} vec(X-M)^T (V^{-1} \\otimes U^{-1}) vec( X-M) \\\
+&=-\\frac{1}{2} vec(X-M)^T (V \\otimes U)^{-1}  vec( X-M) \\\
+&=-\\frac{1}{2} vec(X-M)^T (\\Sigma)^{-1}  vec( X-M) \\\
+\\end{split}
+\\]
+and for determinant,
+\\[
+|V|^{n/2}|U|^{p/2}=|V\\otimes U|=|\\Sigma|
+\\]
+so, we can conclude that,
+\\[
+vec(X) \\sim N\_{np}(vec(M),V\\otimes U)
+\\]
+notice that, both $V$ and $U$ are symmetric matrices.
+
+
+
 ### MLE for $\mu, \Sigma$ ###
------------------------------
 > \\[ \mu_{MLE} = \frac{1}{N} \sum_{i=1}^N x_i = \bar{x} \\]
 > \\[ \Sigma_{MLE} = \frac{1}{N} \sum_{i=1}^N (x_i - \bar{x})(x_i - \bar{x})^T = \frac{1}{N}( \sum_{i=1}^N x_i x_i^T) - \bar{x} \bar{x}^T \\]
 

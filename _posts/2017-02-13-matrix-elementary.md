@@ -92,6 +92,24 @@ If $A,B$ are square matrices, $P=Q^T$.
 \\[
 vec(C)=(B^T \\otimes A) \\times vec(X)
 \\]
+For an example, this formula comes into handy in showing that matrix normal distribution is a special case of the multivariate normal distribution.
+
+### Bilinear Map###
++ [**brief introduce**] In mathematics, a bilinear map is a function combining elements of two vector space to yield an element of a third vector space, and is linear in each of its arguments. **matrix multiplication is an example**.
+
++ [**definition**] Let $V,W$ and $X$ be three vector space over the same base field $\\mathcal{F}$. A bilinear map is a function:
+\\[
+f: V\\times W \\rightarrow X
+\\]
+such that for any $w$ in $W$ the map,
+\\[
+v \\rightarrow f(v,w)
+\\]
+is a linear map from $V$ to $X$, and for any $v$ in $V$ the map,
+\\[
+w \\rightarrow f(v,w)
+\\]
+is a linear map from $W$ to $X$. In another words, when we hold the first entry of the bilinear map fixed while letting the second entry vary, the results is a linear operator, and similarly when we hold the second entry fixed.
 
 ### Block Matrix ###
 - [**block matrix multiplication**] Given two matrix $A\_{m\\times p}, B\_{p\\times n}$, then turn it to a block partitioned matrix, using "conformable partition" Strategies, such as given A an arbitary column partition, the the matrix B using the same style to divide the rowes. Then,
