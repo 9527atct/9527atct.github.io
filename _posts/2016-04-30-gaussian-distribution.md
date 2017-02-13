@@ -31,7 +31,7 @@ where, $y_i = u_i^T(x- \mu)$.
 \\[
 p(X|M,U,V)=\\frac{ exp(-\\frac{1}{2} tr(V^{-1}(X-M)^T U^{-1}(X-M) )) }{ (2\\pi)^{np/2}|V|^{n/2}|U|^{p/2}  }
 \\]
-Here, $V\_{p\\times p}$ can be treated as covariance matrix, and $U\_{n\\times n}$ as the kernel matrix of data.
+Here, $V\_{p\\times p}$ can be treated as **covariance matrix**, and $U\_{n\\times n}$ as the **kernel matrix** of data.
 
     **proof**: 
 \\[
@@ -229,7 +229,7 @@ IW( \sigma^2 | S^{-1}, \nu)= IG( \sigma^2 | \nu /2 ,S/2)
 ### MAP estimation ###
 ----------------------
 
-- posterior of $\mu$
+- **posterior of $\mu$**
 
 The likelihood has the form $ p( \mathcal{D}| \mu)= \mathcal{N}( \bar{x}| \mu, \frac{1}{N} \Sigma)$. According to linear Gaussian theory, we can treat the $\mathcal{D}$ as the observation of the hidden variable $\mu$. Now, we give a prior to $\mu$, that is, $p( \mu) = \mathcal{N}( \mu | m_o, v_0)$. Then, we can derive a Gaussian posterior for $\mu$ ,
 \\[
@@ -240,7 +240,7 @@ V_N^{-1} &= V_0^{-1} + N \Sigma^{-1}
 \end{split}
 \\]
 
-- posterior distribution of $\Sigma$.
+- **posterior distribution of $\Sigma$**  
 The likelihood,
 \\[
 p( \mathcal{D}| \mu, \Sigma) \propto | \Sigma |^{-N/2} \exp [ \frac{-1}{2} tr(S_{ \mu} \Sigma^{-1} ]
@@ -281,8 +281,8 @@ where $\lambda = \frac{N_0}{N_0 + N}$.
 
 
   
-- Posterior distribution of $\mu$ and $\Sigma$
-	1. likelihood:
+- **Posterior distribution of $\mu$ and $\Sigma$**
+	1. **likelihood**:
 \\[
 \begin{split}
 p( \mathcal{D} | \mu, \Sigma)=(2 \pi)^{-ND/2} | \Sigma |^{-N/2} \exp \left( - \frac{1}{2} \sum_{i=1}^N (x_i - \mu)^T \Sigma^{-1} (x_i - \mu) \right)
@@ -297,7 +297,7 @@ Hence we can rewritte the likelihood as follows:
 p( \mathcal{D} | \mu, \Sigma)=(2 \pi)^{-ND/2} | \Sigma |^{-N/2}\exp \left( - \frac{N}{2} \sum_{i=1}^N (x_i - \bar{x})^T \Sigma^{-1} (x_i - \bar{x}) \right) \exp \left( - \frac{N}{2} tr( \Sigma^{-1} S_{ \bar{x}}) \right)
 \\]
 
-	2. Prior: Normal-inverse-wishart, NIW
+	2. **Prior: Normal-inverse-wishart, NIW**
 \\[
 p( \mu ,\Sigma) = p( \Sigma) p( \mu | \Sigma)
 \\]
@@ -306,7 +306,7 @@ NIW( \mu , \Sigma | m_0, \kappa_0, \nu_0, S_0) \sim N( \mu | m_0, \frac{1}{ \kap
 \\]
 where, $m_0$ is our prior mean for $\mu$, and $\kappa_0$ is how strongly we believe this prior; and $S_0$ is our prior mean for $\Sigma$, and $\nu_0$ is how strongly we believe this prior.
 	
-	3. Posterior
+	3. **Posterior**
 \\[
 \begin{split}
 p( \mu, \Sigma | \mathcal{D}) &= NIW( \mu, \Sigma | m_N, \kappa_N, \nu_N, S_N) \\\
@@ -319,27 +319,21 @@ S_N &= S_0 + S_{ \bar{x}} + \frac{ \kappa_0 N}{ \kappa_0 + N}( \bar{x} - m_0)( \
 \\]
 where $S= \sum_{i=1}^N x_ix_i^T$. Result analysis: the posterior mean is a convex combination of the prior mean and the MLE, with "strength" $\kappa_0 + N$; and the posterior scatter matrix $S_N$ is the prior scatter matrix $S_0$ plus the empirical scatter matrix $S_{ \bar{x}}$ plus an extra term due to the uncertainty in the mean.
 
-   4. MAP for $ \mu, \Sigma$
-   
-- 4.1 $ \hat{ \Sigma} $  
- 
+   4. **MAP for $ \mu, \Sigma$**
+        - **4.1 $ \hat{ \Sigma} $**
 \\[
 p( \Sigma | \mathcal{D}) = \int p( \mu, \Sigma | \mathcal{D}) d \mu = IW( \Sigma | S_N, \nu_N)
 \\]
-Then, $ \hat{ \Sigma}_{map} = \frac{S_N}{ \nu_N + D + 1}$ .  
-
-- 4.2 $ \hat{ \mu}$   
-
+Then, $ \hat{ \Sigma}_{map} = \frac{S_N}{ \nu_N + D + 1}$ . 
+        - **4.2 $ \hat{ \mu}$**
 \\[
 p( \mu | \mathcal{D} = \int p( \mu, \Sigma | \mathcal{D}) d \Sigma = \mathcal{T}( \mu | m_N, \frac{S_N}{ \kappa_N ( \nu_N -D + 1)} S_N, \nu_N -D +1)
 \\]
-Then, $ \hat{ \mu}_{map} = m_N$.   
-   
-- 4.3 Posterior predictive 
-  
+Then, $ \hat{ \mu}_{map} = m_N$.
+        - **4.3 Posterior predictive**s
 \\[
 \begin{split}
-p(x| \mathcal{D})= p(x| \mu, \Sigma)p( \mu, \Sigma| \mathcal{D}) &= \int \int \mathcal{N}(x| \mu, \Sigma) NIW( \mu , \Sigma | m_N, \kappa_N, \nu_N, S_N) d \mu d \Sigma \\\
+p(x| \mathcal{D})= p(x| \mu, \Sigma)p( \mu, \Sigma| \mathcal{D}) &= \iint \mathcal{N}(x| \mu, \Sigma) NIW( \mu , \Sigma | m_N, \kappa_N, \nu_N, S_N) d \mu d \Sigma \\\
 &= \mathcal{T}(x|m_N, \frac{ \kappa_N + 1}{ \kappa_N( \nu_N -D +1)}S_N, \nu_N -D + 1)
 \end{split}
 \\]
