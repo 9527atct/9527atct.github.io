@@ -6,11 +6,102 @@ categories: Math
 comments: true
 ---
 
+### Block Matrix ###
+- [**block matrix multiplication**] Given two matrix $A\_{m\\times p}, B\_{p\\times n}$, then turn it to a block partitioned matrix, using "conformable partition" Strategies, such as given A an arbitary column partition, the the matrix B using the same style to divide the rowes. Then,
+\\[
+C=A^TB
+\\]
+
+- [**schur complement**]
+If $A$ is inversable, then for block matrix 
+\\[
+M=\\begin{pmatrix}
+A \& B \\\
+C \& D \\\
+\\end{pmatrix}
+\\]
+we have the schur complement of block $A$ is,
+\\[
+M/A = D-CA^{-1}B
+\\]
+and, the schur complement of block $D$ is,
+\\[
+M/D = A-BD^{-1}C
+\\]
+
+- [**inverse of the block matrix**]
+\\[
+\\begin{pmatrix}
+A \& B \\\
+C \& D \\\
+\\end{pmatrix}^{-1} = \\begin{pmatrix} 
+A^{-1}+A^{-1}B(D-CA^{-1}B)^{-1}CA^{-1} \& -A^{-1}B(D-CA^{-1}B)^{-1} \\\
+-(D-CA^{-1}B)^{-1}CA^{-1} \& (D-CA^{-1}B)^{-1} \\\
+\\end{pmatrix}
+\\]
+
+    special case, for diagonal block matrix, we have,
+\\[
+\\begin{pmatrix}
+A \& 0 \\\
+0 \& B
+\\end{pmatrix}^{-1} = \\begin{pmatrix} A^{-1} \& 0  \\\
+0 \& B^{-1} \\\ \\end{pmatrix}
+\\]
+
+    for upper triangle block matrix,
+\\[
+\\begin{pmatrix}
+A \& C \\\
+0 \& B
+\\end{pmatrix}^{-1} = \\begin{pmatrix} A^{-1} \& -A^{-1}CB^{-1} \\\
+0 \& B^{-1} \\\ \\end{pmatrix}
+\\]
+
+    for lower triangle block matrix,
+\\[
+\\begin{pmatrix}
+A \& 0 \\\
+C \& B
+\\end{pmatrix}^{-1} = \\begin{pmatrix} A^{-1} \& 0  \\\
+-B^{-1}CA^{-1} \& B^{-1} \\\ \\end{pmatrix}
+\\]
+
+    for subordinary diagonal block matrix,
+\\[
+\\begin{pmatrix}
+0 \& A \\\
+B \& 0
+\\end{pmatrix}^{-1} = \\begin{pmatrix} 0 \& B^{-1} \\\
+A^{-1} \& 0 \\\ \\end{pmatrix}
+\\]   
+
+
+
+### Block Diagonal Matrices ###
+- [**definition**] block diagonal matrix is a block matrix that is a square matrix, and having main diagonal block matrices.
+\\[
+A=\\begin{pmatrix}
+A\_1 \& 0 \& ... \& 0 \\\
+0 \& A\_2 \& ... \& 0 \\\
+\\vdots \& \\vdots \& \\ddots \& \\vdots \\\
+0 \& 0 \& ... \& A\_n \\\
+\\end{pmatrix}
+\\]
+- [**determinat**] 
+\\[
+det(A)=det(A\_1)\\times ... \\times det(A\_n)
+\\]
+- [**trace**]
+\\[
+tr(A)= tr(A\_1)+...+tr(A\_n)
+\\]
 
 
 
 
-### vector norms ###
+
+### Vector Norms ###
 -------
 Given a vector $x=(x_1,...,x_n)^T $. Then we defined the vector norms as follow.
 
@@ -23,7 +114,7 @@ Given a vector $x=(x_1,...,x_n)^T $. Then we defined the vector norms as follow.
 -  $ \| \| x \| \|_p $  = $( \| x_1 \|^p,..., \|x_n \|^p)^{ \frac{1}{p}}$
 
 
-### matrix norms ###
+### Matrix Norms ###
 -------
 Given a matrix $ A=(a_{ij}) \in C^{m \times n}$. Then we defined the following matrix norms. Due to the sementic conflic with mathjax and markdown, so, all of the norms ignore the symbol with which to identify themselves are not in the normal format.
 
