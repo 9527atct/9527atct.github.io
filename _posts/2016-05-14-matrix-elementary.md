@@ -6,6 +6,43 @@ categories: Math
 comments: true
 ---
 
+### Trace ###
+- [**basic properties**]
+\\[
+\\begin{split}
+tr(A+B) \&= tr(A) + tr(B)\\\
+tr(kA) \&= ktr(A) \\\
+tr(A^T) \&= tr(A)
+\\end{split}
+\\]
+
+- [**trace of a product**]
+\\[
+tr(X^TY)=tr(XY^T)=tr(Y^TX)=tr(YX^T)=\\sum_{ij}X\_{ij}Y\_{ij}
+\\]
+for *Hadamard product*,
+\\[
+tr(X^TY)=\\sum_{ij}(X \\circ Y)\_{ij}
+\\]
+for *vectorization*,
+\\[
+tr(X^TY)=vec(Y)^T vec(X)=vec(X)^Tvec(Y)
+\\]
+*invariant under cyclic permutation*,
+\\[
+tr(ABCD)=tr(BCDA)=tr(CDAB)=tr(DABC)
+\\]
+for *Kronecker product*,
+\\[
+tr(X \\otimes Y) = tr(X)tr(Y)
+\\]
+
+- [**spectrum of matrix**]
+If $f(x)=(x-\\lambda\_1)^{d\_1}...(x-\\lambda\_k)^{d\_k} $ is the *characteristic polynomial* of a matrix A, then,
+\\[
+tr(A)=d\_1 \\lambda\_1 +...+d\_k\\lambda\_k
+\\]
+
 ### Block Matrix ###
 - [**block matrix multiplication**] Given two matrix $A\_{m\\times p}, B\_{p\\times n}$, then turn it to a block partitioned matrix, using "conformable partition" Strategies, such as given A an arbitary column partition, the the matrix B using the same style to divide the rowes. Then,
 \\[
@@ -27,6 +64,14 @@ M/A = D-CA^{-1}B
 and, the schur complement of block $D$ is,
 \\[
 M/D = A-BD^{-1}C
+\\]
+
+- [**LDU decompose**]
+\\[
+\\begin{pmatrix}
+A \& B \\\
+C \& D \\\
+\\end{pmatrix}=\\begin{pmatrix} I \& 0 \\\ CA^{-1} \& I \\end{pmatrix} \\begin{pmatrix} A \& 0 \\\ 0 \& D-CA^{-1}B \\end{pmatrix} \\begin{pmatrix} I \& A^{-1}B \\\ 0 \& I \\end{pmatrix}
 \\]
 
 - [**inverse of the block matrix**]
@@ -101,8 +146,9 @@ tr(A)= tr(A\_1)+...+tr(A\_n)
 
 
 
+
+
 ### Vector Norms ###
--------
 Given a vector $x=(x_1,...,x_n)^T $. Then we defined the vector norms as follow.
 
 -  $ \| \| x \| \|_{0} $  = the number of non-zero members of the vector.
@@ -115,7 +161,6 @@ Given a vector $x=(x_1,...,x_n)^T $. Then we defined the vector norms as follow.
 
 
 ### Matrix Norms ###
--------
 Given a matrix $ A=(a_{ij}) \in C^{m \times n}$. Then we defined the following matrix norms. Due to the sementic conflic with mathjax and markdown, so, all of the norms ignore the symbol with which to identify themselves are not in the normal format.
 
 - $  \| \| A \| \|\_1  =  \\max_{1 \leq j \leq n} \\sum\_{i=1}^m \| a\_{ij} \| $.
