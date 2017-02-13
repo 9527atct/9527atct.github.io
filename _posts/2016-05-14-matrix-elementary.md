@@ -10,9 +10,9 @@ comments: true
 - [**basic properties**]
 \\[
 \\begin{split}
-tr(A+B) \&= tr(A) + tr(B)\\\
-tr(kA) \&= ktr(A) \\\
-tr(A^T) \&= tr(A)
+tr(A+B) &= tr(A) + tr(B)\\\
+tr(kA) &= ktr(A) \\\
+tr(A^T) &= tr(A)
 \\end{split}
 \\]
 
@@ -53,8 +53,8 @@ C=A^TB
 If $A$ is inversable, then for block matrix 
 \\[
 M=\\begin{pmatrix}
-A \& B \\\
-C \& D \\\
+A & B \\\
+C & D \\\
 \\end{pmatrix}
 \\]
 we have the schur complement of block $A$ is,
@@ -69,56 +69,56 @@ M/D = A-BD^{-1}C
 - [**LDU decompose**]
 \\[
 \\begin{pmatrix}
-A \& B \\\
-C \& D \\\
-\\end{pmatrix}=\\begin{pmatrix} I \& 0 \\\ CA^{-1} \& I \\end{pmatrix} \\begin{pmatrix} A \& 0 \\\ 0 \& D-CA^{-1}B \\end{pmatrix} \\begin{pmatrix} I \& A^{-1}B \\\ 0 \& I \\end{pmatrix}
+A & B \\\
+C & D \\\
+\\end{pmatrix}=\\begin{pmatrix} I & 0 \\\ CA^{-1} & I \\end{pmatrix} \\begin{pmatrix} A & 0 \\\ 0 & D-CA^{-1}B \\end{pmatrix} \\begin{pmatrix} I & A^{-1}B \\\ 0 & I \\end{pmatrix}
 \\]
 
 - [**inverse of the block matrix**]
 \\[
 \\begin{pmatrix}
-A \& B \\\
-C \& D \\\
+A & B \\\
+C & D \\\
 \\end{pmatrix}^{-1} = \\begin{pmatrix} 
-A^{-1}+A^{-1}B(D-CA^{-1}B)^{-1}CA^{-1} \& -A^{-1}B(D-CA^{-1}B)^{-1} \\\
--(D-CA^{-1}B)^{-1}CA^{-1} \& (D-CA^{-1}B)^{-1} \\\
+A^{-1}+A^{-1}B(D-CA^{-1}B)^{-1}CA^{-1} & -A^{-1}B(D-CA^{-1}B)^{-1} \\\
+-(D-CA^{-1}B)^{-1}CA^{-1} & (D-CA^{-1}B)^{-1} \\\
 \\end{pmatrix}
 \\]
 
     special case, for diagonal block matrix, we have,
 \\[
 \\begin{pmatrix}
-A \& 0 \\\
-0 \& B
-\\end{pmatrix}^{-1} = \\begin{pmatrix} A^{-1} \& 0  \\\
-0 \& B^{-1} \\\ \\end{pmatrix}
+A & 0 \\\
+0 & B
+\\end{pmatrix}^{-1} = \\begin{pmatrix} A^{-1} & 0  \\\
+0 & B^{-1} \\\ \\end{pmatrix}
 \\]
 
     for upper triangle block matrix,
 \\[
 \\begin{pmatrix}
-A \& C \\\
-0 \& B
-\\end{pmatrix}^{-1} = \\begin{pmatrix} A^{-1} \& -A^{-1}CB^{-1} \\\
-0 \& B^{-1} \\\ \\end{pmatrix}
+A & C \\\
+0 & B
+\\end{pmatrix}^{-1} = \\begin{pmatrix} A^{-1} & -A^{-1}CB^{-1} \\\
+0 & B^{-1} \\\ \\end{pmatrix}
 \\]
 
     for lower triangle block matrix,
 \\[
 \\begin{pmatrix}
-A \& 0 \\\
-C \& B
-\\end{pmatrix}^{-1} = \\begin{pmatrix} A^{-1} \& 0  \\\
--B^{-1}CA^{-1} \& B^{-1} \\\ \\end{pmatrix}
+A & 0 \\\
+C & B
+\\end{pmatrix}^{-1} = \\begin{pmatrix} A^{-1} & 0  \\\
+-B^{-1}CA^{-1} & B^{-1} \\\ \\end{pmatrix}
 \\]
 
     for subordinary diagonal block matrix,
 \\[
 \\begin{pmatrix}
-0 \& A \\\
-B \& 0
-\\end{pmatrix}^{-1} = \\begin{pmatrix} 0 \& B^{-1} \\\
-A^{-1} \& 0 \\\ \\end{pmatrix}
+0 & A \\\
+B & 0
+\\end{pmatrix}^{-1} = \\begin{pmatrix} 0 & B^{-1} \\\
+A^{-1} & 0 \\\ \\end{pmatrix}
 \\]   
 
 
@@ -127,10 +127,10 @@ A^{-1} \& 0 \\\ \\end{pmatrix}
 - [**definition**] block diagonal matrix is a block matrix that is a square matrix, and having main diagonal block matrices.
 \\[
 A=\\begin{pmatrix}
-A\_1 \& 0 \& ... \& 0 \\\
-0 \& A\_2 \& ... \& 0 \\\
-\\vdots \& \\vdots \& \\ddots \& \\vdots \\\
-0 \& 0 \& ... \& A\_n \\\
+A\_1 & 0 & ... & 0 \\\
+0 & A\_2 & ... & 0 \\\
+\\vdots & \\vdots & \\ddots & \\vdots \\\
+0 & 0 & ... & A\_n \\\
 \\end{pmatrix}
 \\]
 - [**determinat**] 
