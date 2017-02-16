@@ -2,7 +2,7 @@
 layout: post
 title: sufficient statistic and conjugate
 date: 2017-02-15 21:45
-categories: MachineLeanring
+categories: MachineLearning
 comments: true
 ---
 
