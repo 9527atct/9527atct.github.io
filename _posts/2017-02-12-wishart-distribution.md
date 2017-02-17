@@ -1,6 +1,6 @@
 ---
 layout: postarticle
-title: Wishart Distribution
+title: wishart distribution
 date: 2017-02-12 14:11:05 +1000
 categories: MachineLearning
 comments: true

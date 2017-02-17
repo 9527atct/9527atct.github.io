@@ -2,7 +2,7 @@
 layout: postarticle
 title: multinomial distribution
 date: 2016-05-24 12:09:05 +1000 
-categories: Math
+categories: math
 comments: true
 ---
 

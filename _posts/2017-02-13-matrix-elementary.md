@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Matrix Elementary
+title: matrix elementary
 date: 2017-02-13 20:45
-categories: Math
+categories: math
 comments: true
 ---
 

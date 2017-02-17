@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postarticle
 title: sufficient statistic and conjugate
 date: 2017-02-15 21:45
 categories: MachineLearning

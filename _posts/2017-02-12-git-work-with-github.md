@@ -1,6 +1,6 @@
 ---
 layout: postarticle
-title: Git Wrok With Github
+title: git wrok with github
 date: 2017-02-12 14:11:05 +1000
 categories: technology
 comments: true

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: MLE and MAP
+title: mle and map
 date: 2016-04-27 15:24:05 +1000 
 categories: MachineLearning
 comments: true
