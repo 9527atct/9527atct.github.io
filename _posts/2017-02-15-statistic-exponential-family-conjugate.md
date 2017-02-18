@@ -20,7 +20,7 @@ comments: true
     \\[
         p(x|\\theta,t)=p(x|t)
     \\]
-    - [**from prof. zhang manuscript**]  
+    - [**from prof. zhihua Zhang's manuscript**]  
     The sequence $t\_1,...,t\_n$ is a sufficient statistic for $X\_1,...,X\_n$, if for $n\\geq 1$, the joint density for $X\_1,...,X\_n$ given $\\theta$ has the form,
     \\[
         p(x\_1,...,x\_n\|\\theta)=h\_n(t\_n,\\theta)g(x\_1,...,x\_n)=h\_{\\theta}(t\_n)g(x\_1,...,x\_n)
@@ -57,7 +57,29 @@ comments: true
         p(x\_1,...,x\_n\|t\_n,\\theta)=\\frac{p(x\_1,...,x\_n\|\\theta)}{p(t\_n\|\\theta)}=\\frac{g(x\_1,...,x\_n)}{G(t\_n)}
     \\]
     Thus we can see $p(x\_1,...,x\_n\|\\theta,t\_n)$ is independent with $\\theta$.
-
+    - [**example 1**]  
+    For a Bernoulli sequence $X\_1,...,X\_n$,
+    \\[
+    \\begin{split}
+    p(x\_1,...,x\_n)&=\\int\_0^1 p(x\_1,...,x\_n\|\\theta)dF(\\theta)\\\
+    &=\\int\_0^1 \\prod\_{i=1}^n B(x\|\\theta)dF(\\theta)\\\
+    &=\\int\_0^1 \\theta^{S\_n}(1-\\theta)^{n-S\_n}dF(\\theta)
+    \\end{split}
+    \\]
+    where, $S\_n=x\_1+...,+x\_n$. So,
+    \\[
+        p(x\_1,...+x\_n\|\\theta)=\\theta^{S\_n}(1-\\theta)^{n-S\_n}
+    \\]
+    Let $t\_n=[n,S\_n]$, then $p(x\_1,...,x_n\|\\theta)$ can be factorized into $h\_n=\\theta^{S\_n}(1-\\theta)^{n-S\_n}$ and $g=1$. So, $t\_n$ is the sufficient statistic of Bernoulli distribution.
+    - [**example 2: Normal Distribution**]  
+    \\[
+    \\begin{split}
+        p(x\_1,...,x\_n\|\\mu,\\lambda)&=\\prod\_{i=1}^n \\left(\\frac{\\lambda}{2\\pi}\\right)^{\\frac{1}{2}}\\exp\\left(-\\frac{\\lambda}{2}(x\_i -\\mu)^2 \\right)\\\
+        &=\\left(\\frac{\\lambda}{2\\pi}\\right)^{\\frac{n}{2}}\\exp\\left(-\\frac{\\lambda}{2}\\sum\_{i=1}^n(x\_i -\\mu)^2 \\right)\\\
+        &=\\left(\\frac{\\lambda}{2\\pi}\\right)^{\\frac{n}{2}}\\exp\\left(-\\frac{\\lambda}{2}[n(\\bar{x}-\\mu)^2+nS\_n^2]\\right)\\\
+    \\end{split}
+    \\]
+    where $\\bar{x}=\\frac{1}{n}\\sum\_{i=1}^nx\_i, S\_n^2=\\frac{1}{n}\\sum\_{i=1}^n(x\_i-\\bar{x})^2$. So the sufficient statistic can be $[n,\\bar{x},S\_n^2]$. Note that the sufficient statistic is not unique.
 
 ###Exponential Family###
 - [**one-parameter**]  
@@ -81,9 +103,25 @@ comments: true
     &=(1-\\theta)\\cdot\\exp(x\\log\\frac{\\theta}{1-\\theta})
     \\end{split}
     \\]
-    Then, we have, $f(x)=1,g(\\theta)=(1-\\theta),c=1,\\phi(\\theta)=\\log\\frac{\\theta}{1-\\theta},h(x)=x$.
+    Then, we have, $f(x)=1,g(\\theta)=(1-\\theta),c=1,\\phi(\\theta)=\\log\\frac{\\theta}{1-\\theta},h(x)=x$. 
+
     - [**poisson**]  
     \\[
         p(x\|\\theta)=\\frac{\\theta^x\\cdot e^{-\\theta}}{x!}=\\frac{1}{x!}\\exp(-\\theta)\\cdot\\exp(x\\log\\theta)
     \\]
     where, $f(x)=\\frac{1}{x!}, g(\\theta)=\\exp(-\\theta),c=1,h(x)=x,\\phi(\\theta)=\\log(\\theta)$.
+
+    - [**normal with unknown variance**]  
+    \\[
+    \\begin{split}
+        p(x\|\\theta)&=N(x\|0,\\sigma^2)\\\
+        &=\\left( \\frac{1}{2\\pi\\sigma^2}\\right)^{\\frac{1}{2}}\\exp\\left(-\\frac{x^2}{2\\sigma^2}\\right)\\\
+        &=\\left( \\frac{1}{2\\pi}\\right)^{\\frac{1}{2}}\\theta^{-\\frac{1}{2}}\\exp\\left(-\\frac{x^2}{2\\theta}\\right)\\\
+    \\end{split}
+    \\]
+    where, $f(x)=\\left( \\frac{1}{2\\pi}\\right)^{\\frac{1}{2}}, g(\\theta)=\\theta^{-\\frac{1}{2}},c=-1/2,h(x)=x^2,\\phi(\\theta)=\\theta^{-1}$.
+    - [**uniform**]  
+    \\[
+        p(x\|\\theta)=U(x\|[0,\\theta])=\\frac{1}{\\theta}
+    \\]
+    So, $f(x)=1,g(\\theta)=\\theta^{-1},c=1,h(x)=\\phi(\\theta)=0$. Since $\\mathcal{X}$ is $[0,\\theta]$, so it is no regular.
