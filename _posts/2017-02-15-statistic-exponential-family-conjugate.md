@@ -194,3 +194,64 @@ And keep on taking derivation on both sides, we will obtain,
 e^{-\\lambda}\\frac{\\lambda^2}{x!}=\\frac{1}{x!}\\exp(x\\log\\lambda-\\lambda)=\\frac{1}{x!}\\exp(x\\varphi-e^{\\varphi})
 \\]
 So, $E[y]=\\triangledown\_\\varphi b(\\varphi)=\\triangledown\_\\varphi e^\\varphi=e^\\varphi=\\lambda$.
+
+- [**theorem**]  
+If $X=(X\_1,...,X\_n)$ is random variable from a regular exponential family distribution such that
+\\[
+p(x\|\\theta)=\\prod\_{i=1}^n f(x\_i)[g(\\theta)]^n\\exp\\left( \\sum\_{j=1}^kc\_j\\phi\_j(\\theta)\\sum\_{i=1}^nh\_j(x\_i) \\right)
+\\]
+Then the conjugate family for $\\theta$ has the form
+\\[
+    p(\\theta\|\\tau)=[K(\\tau)]^{-1}[g(\\theta)]^{\\tau\_0}\\exp\\left( \\sum\_{j=1}^kc\_j\\phi(\\theta)\\tau\_j\\right)
+\\]
+where $[K(\\tau)]=\\int\_\\theta[g(\\theta)]^\\tau \\exp\\left(\\sum\_{j=1}^k c\_j\\phi\_j(\\theta)\\tau\_j \\right)d\\theta <\\infty$.
+    - [**explain from wiki**]  
+    Assume that the probability of a single observation follows an exponential family, parameterized using its natural parameter:
+    \\[
+        p(x\|\\eta)=h(x)g(\\eta)\\exp(\\eta^TT(x))
+    \\]
+    Then, for data $X=(X\_1,...,X\_n)$, the likelihood is computed as follows:
+    \\[
+        p(X\|\\eta)=\\left(\\prod\_{i=1}^n h(x\_i)\\right)g(\\eta)^n \\exp\\left(\\eta^T\\sum\_{i=1}^n T(x\_i) \\right) 
+    \\]
+    Then, for the above conjugate prior:
+    \\[
+        p(\\eta\|\\chi,\\nu)=f(\\chi,\\nu)g(\\eta)^\\nu\\exp(\\eta^T \\chi)
+    \\]
+    We can then compute the posterior as follows:
+    \\[
+    \\begin{split}
+    p(\\eta\|X,\\chi,\\nu)&\\propto p(X\|\\eta)p(\\eta\|\\chi,\\nu)\\\
+    &=\\left(\\prod\_{i=1}^n h(x\_i)\\right)g(\\eta)^n \\exp\\left(\\eta^T\\sum\_{i=1}^n T(x\_i) \\right)f(\\chi,\\nu)g(\\eta)^\\nu\\exp(\\eta^T \\chi)\\\
+    &\\propto g(\\eta)^n \\exp\\left(\\eta^T\\sum\_{i=1}^n T(x\_i) \\right) g(\\eta)^\\nu\\exp(\\eta^T \\chi)\\\
+    &\\propto g(\\eta)^{n+\\nu}\\exp\\left(\\eta^T \\left(\\chi+\\sum\_{i=1}^nT(x\_i)\\right)\\right)
+    \\end{split}
+    \\]
+    - [**example:bernoulli**]  
+    \\[
+    \\begin{split}
+    p(x\|\\theta)&=\\prod\_{i=1}^n \\theta^{x\_i}(1-\\theta)^{(1-x\_i)}\\\
+    &=(1-\\theta)^n \\exp\\left(\\log\\frac{\\theta}{1-\\theta}\\sum\_{i=1}^nx\_i \\right)
+    \\end{split}
+    \\]
+    So, the conjugate prior can be,
+    \\[
+    \\begin{split}
+    p(\\theta\|\\tau)&\\propto (1-\\theta)^{\\tau\_0} \\exp\\left(\\log\\frac{\\theta}{1-\\theta}\\tau\_1 \\right) \\\
+    &\\propto (1-\\theta)^{\\tau\_0}\\left(\\frac{\\theta}{1-\\theta}\\right)^\\tau\_1\\\
+    &\\propto \\theta^{\\tau\_1}(1-\\theta)^{\\tau\_0-\\tau\_1}
+    \\end{split}
+    \\]
+    which is a beta distribution. 
+    The update rule is,
+    \\[
+    \\begin{split}
+    \\chi' &= \\chi + \\sum\_{i=1}^nT(x\_i)\\\
+    \nu' &=\nu + n\\\
+    \\end{split}
+    \\]
+    Then, the posterior has the form,
+    \\[
+    p(\\theta\|X,\\tau)\\propto \\theta^{\\sum\_{i=1}^n x\_i +\\tau\_1}(1-\\theta)^{n-\\sum\_{i=1}^n x\_i +\\tau\_0-\\tau\_1}
+    \\]
+    which is alos a beta distribution.
