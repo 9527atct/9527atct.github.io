@@ -84,7 +84,7 @@ comments: true
 
  
 
-### Exponential Family ###
+### One-Parameter Exponential Family ###
 - [**one-parameter**]  
     A pdf is said to belong to one-parameter exponential family if it is of the form 
     \\[
@@ -128,3 +128,69 @@ comments: true
         p(x\|\\theta)=U(x\|[0,\\theta])=\\frac{1}{\\theta}
     \\]
     So, $f(x)=1,g(\\theta)=\\theta^{-1},c=1,h(x)=\\phi(\\theta)=0$. Since $\\mathcal{X}$ is $[0,\\theta]$, so it is no regular.
+
+
+###K-Parameter Exponential Family###
+- [**k-parameters exponential family**]  
+A pdf(pmf) $p(x\|\\theta), x\\in \\mathcal{X}$, which is labelled by $\\theta\\in\\Theta\\subseteq R$ is said to belong to *k-parameters exponential family* if it is of the form
+\\[
+p(x\|\\theta)=f(x)g(\\theta)\\exp\\left(\\sum_{j=1}^k c\_j\\cdot\\phi\_j(\\theta)h\_j(x) \\right)
+\\]
+Denoted by $E\_{f\_k}(x\|f,g,h,\\phi,c,\\theta)$.
+
+- [**sufficient statistic for $E\_{f\_k}$**]  
+If $X\_1,...,X\_n\\in \\mathcal{X}$ is an exchangeable sequence such that given regular $E\_{f\_k}(X\|f,g,h,\\phi,c,\\theta)$,
+\\[
+p(x\_1,...,x\_n\|\\theta)=\\prod\_{i=1}^n E\_{f\_k}(x\_i\|f,g,h,\\phi,c,\\theta)
+\\]
+Then $t\_n=t\_n(X\_1,...,X\_n)=[n,\\sum_{i=1}^n h\_1(X_i),...,\\sum_{i=1}^n h\_1(X_i)]$ is sufficient statistic of $X\_1,...,X\_n$.
+    - [**example:normal**]  
+    Let $\\theta=[\\mu,\\lambda]$,
+    \\[
+    \\begin{split}
+        p(x\|\\theta)&=N(x\|\\mu,\\lambda)\\\
+        &=\\left( \\frac{\\lambda}{2\\pi}\\right)^{\\frac{1}{2}}\\exp\\left(-\\frac{\\lambda}{2}(x-\\mu)^2 \\right)\\\
+        &=\\left( \\frac{\\lambda}{2\\pi}\\right)^{\\frac{1}{2}}\\lambda^{\\frac{1}{2}}\\exp\\left( -\\frac{\\lambda}{2}\\mu^2\\right)\\exp\\left(\\lambda\\mu x-\\frac{1}{2}\\lambda x^2\\right)
+    \\end{split}
+    \\]
+    So, $g(\\theta)=\\lambda^{\\frac{1}{2}}\\exp\\left( -\\frac{\\lambda}{2}\\mu^2\\right),c\_1=1,c\_2=-\\frac{1}{2},\\phi\_1(\\theta)=\\lambda\\mu,\\phi\_2(\\theta)=\\lambda,h\_1(x)=x,h\_2(x)=x^2$. Sufficient statistic: $t\_n=[n,x,x^2]$.
+
+### Natural Exponential Family###
+- [**definition from prof. zhang's manuscript**]  
+The pdf of exponential family,
+\\[
+    p(y\|\\varphi)=a(y)\\exp(y^T \\varphi-b(\\varphi))
+\\]
+where $y=(y\_1,...,y\_k),\\varphi=(\\varphi\_1,...,\\varphi\_k)$. Comparing to the previous form, we can see $y\_i=h\_i(x_i),\\varphi\_i=c\_i\\phi(\\theta)$.
+- [**wiki definition**]  
+The pdf of exponential family can be rewritten into another form:
+\\[
+    f(x\|\\theta)=h(x)\\exp(\\eta(\\theta)^TT(x)-A(\\theta))
+\\]
+
+- [**properties from wiki**]
+The mean vector and covariance matrix are
+\\[
+E[X]=\\triangledown_{\varphi}b(\\varphi);\\quad Cov[X]=\\triangledown\\triangledown^T b(\\varphi)
+\\]where $\\triangledown$ is the gradient, and $\\triangledown\\triangledown^T$ is the Hessian matrix.  
+**proof.** Since $\\int a(y)\\exp(y^T \\varphi-b(\\varphi))dy=1$, taking derivation on both sides.
+\\[
+\\begin{split}
+&\\int a(y)\\exp(y^T \\varphi-b(\\varphi))\\cdot (y-\\triangledown\_\\varphi b(\\varphi))dy=0 \\\
+\\Longrightarrow &\\int a(y)\\exp(y^T \\varphi-b(\\varphi))\\cdot y dy=\\int a(y)\\exp(y^T \\varphi-b(\\varphi))\\cdot \\triangledown\_\\varphi b(\\varphi)dy\\\
+\\Longrightarrow &E[y]=\\triangledown\_\\varphi b(\\varphi)\\\
+\\end{split}
+\\]
+And keep on taking derivation on both sides, we will obtain,
+\\[
+\\begin{split}
+&E[y^2]-(\\triangledown\_\\varphi b(\\varphi))^2=\\triangledown\\triangledown^T b(\\varphi)\\\
+\\Longrightarrow &E[y^2]-E^2[y]=\\triangledown\\triangledown^T b(\\varphi)\\\
+\\Longrightarrow &D(y)=\\triangledown\\triangledown^T b(\\varphi)\\\
+\\end{split}
+\\]
+- [**example: possion distribution**]  
+\\[
+e^{-\\lambda}\\frac{\\lambda^2}{x!}=\\frac{1}{x!}\\exp(x\\log\\lambda-\\lambda)=\\frac{1}{x!}\\exp(x\\varphi-e^{\\varphi})
+\\]
+So, $E[y]=\\triangledown\_\\varphi b(\\varphi)=\\triangledown\_\\varphi e^\\varphi=e^\\varphi=\\lambda$.
