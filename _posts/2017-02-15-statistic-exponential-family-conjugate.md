@@ -79,10 +79,12 @@ comments: true
         &=\\left(\\frac{\\lambda}{2\\pi}\\right)^{\\frac{n}{2}}\\exp\\left(-\\frac{\\lambda}{2}[n(\\bar{x}-\\mu)^2+nS\_n^2]\\right)\\\
     \\end{split}
     \\]
-    where $\\bar{x}=\\frac{1}{n}\\sum\_{i=1}^nx\_i, S\_n^2=\\frac{1}{n}\\sum\_{i=1}^n(x\_i-\\bar{x})^2$. So the sufficient statistic can be $[n,\\bar{x},S\_n^2]$. Note that the sufficient statistic is not unique.
-  
-###Exponential Family  
+    where $\\bar{x}=\\frac{1}{n}\\sum\_{i=1}^nx\_i, S\_n^2=\\frac{1}{n}\\sum\_{i=1}^n(x\_i-\\bar{x})^2$. So the sufficient statistic can be $[n,\\bar{x},S\_n^2]$. Note that the sufficient statistic is not unique.  
 
+
+ 
+
+### Exponential Family ###
 - [**one-parameter**]  
     A pdf is said to belong to one-parameter exponential family if it is of the form 
     \\[
