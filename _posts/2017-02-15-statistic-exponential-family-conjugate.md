@@ -80,8 +80,9 @@ comments: true
     \\end{split}
     \\]
     where $\\bar{x}=\\frac{1}{n}\\sum\_{i=1}^nx\_i, S\_n^2=\\frac{1}{n}\\sum\_{i=1}^n(x\_i-\\bar{x})^2$. So the sufficient statistic can be $[n,\\bar{x},S\_n^2]$. Note that the sufficient statistic is not unique.
+  
+###Exponential Family  
 
-###Exponential Family###
 - [**one-parameter**]  
     A pdf is said to belong to one-parameter exponential family if it is of the form 
     \\[
