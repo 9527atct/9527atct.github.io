@@ -6,6 +6,69 @@ categories: MachineLearning
 comments: true
 ---
 
+### Examples of Exponential family ###
+- **normal** 
+    \\[
+        f(x\|\\mu,\\sigma^2)=\\frac{1}{\\sqrt{2\\pi}\\sigma}\\exp\\left( -\\frac{(x-\\mu)^2}{2\\sigma^2} \\right)
+    \\]
+[$E(X)=\\mu; Var(X)=\\sigma^2$]   
+
+- **exponential**  
+\\[
+    f(x\|\\lambda)=\\lambda \\exp(-\\lambda x)
+\\]
+[$E(X)=\\lambda^{-1}; Var(X)=\\lambda^{-2}$]  
+
+- **gamma**  
+\\[
+f(x\|\\alpha,\\beta)=\\frac{\\beta^{\\alpha}}{\\Gamma(\\alpha)} x^{\\alpha-1}\\exp(-\\beta x)
+\\]
+[$E(X)=\\frac{\\alpha}{\\beta}; Var(X)=\\frac{\\alpha}{\\beta^2}$]  
+- **chi-squared**  
+\\[
+f(x\|k)=\\frac{1}{2^{k/2}\\Gamma(k/2)}x^{k/2-1}\\exp\\left(-\\frac{x}{2}\\right)
+\\]
+[$E(X)=k; Var(X)=2k$]  
+- **beta** 
+\\[
+f(x\|\\alpha,\\beta)=\\frac{\\Gamma(\\alpha+\\beta)}{\\Gamma(\\alpha)\\Gamma(\\beta)}\\cdot x^{\\alpha-1}(1-x)^{\\beta-1}
+\\]
+[$E(X)=\\frac{\\alpha}{\\alpha+\\beta}; Var(X)=\\frac{\\alpha\\beta}{(\\alpha+\\beta)^2(\\alpha+\\beta+1)}$]  
+- **dirichlet**  
+\\[
+f(x\|\\alpha)=\\frac{\\Gamma(\\sum\_{i=1}^k \\alpha\_i)}{\\prod\_{i=1}^k \\Gamma(\\alpha\_i)}x\_i^{\\alpha\_i-1}
+\\]
+where $k\\geq 2$ is number of categories, $x\_1,...,x\_k$ where $x\_i\\in(0,1), \\sum\_{i=1}^k x\_i =1$. [$E(X)=\\frac{\\alpha\_i}{\\sum\_j \\alpha\_j};Var(X\_i)=\\frac{\\alpha\_i(\\alpha\_0-\\alpha\_i)}{\\alpha\_0^2(\\alpha\_0 + 1)}$, where $\\alpha\_0=\\sum\_{j=1}^k \\alpha\_j$; $Cov(X\_i,X\_j)=\\frac{-\\alpha\_i\\alpha\_j}{\\alpha\_0^2(\\alpha\_0+1)}$]   
+- **bernoulli** 
+\\[
+f(x\|p)= p^k(1-p)^{1-k}
+\\]
+[$E(X)=p; Var(X)=p(1-p)$]   
+- **categorical** 
+\\[
+p(x)=[x=1]p\_1 +...+[x=k]p\_k
+\\]
+$[x=i]$ is the Iverson bracket. [$E([x=i])=p\_i; Var([x=i])=p\_i(1-p\_i); Cov([x=i],[x=j]=-p\_ip\_j$ this is the mean of the Iverson bracket $[x=i]$ and not the mean of $x$]   
+- **poisson** 
+\\[
+f(x=k\|\\lambda)\\frac{1}{k!}\\lambda^k \\exp(-\\lambda)
+\\]
+$E(X)=\\lambda, Var(X)=\\lambda$.
+- **wishart**  
+If $S$ is $W\_p(\\Sigma, r)$  , then the density function of $S$ is,
+\\[
+p(S)=\\frac{ |S|^{\\frac{r-p-1}{2}} \\cdot exp(-\\frac{1}{2} Tr(\\Sigma^{-1}S))  }{ 2^{rp/2} \\cdot \\pi^{\\frac{p(p-1)}{4}} \\cdot |\\Sigma |^{r/2} \\cdot \\prod\_{i=1}^p \\Gamma (\\frac{r-i+1}{2}) }
+\\]
+$E(S)=r\\Sigma$, $Var(S\_{ij})=r(\\sigma\_{ij}^2+\\sigma\_{ii}\\sigma\_{jj})$, $r$ is the freedom.
+- **inverse wishart**  
+$S^{-1}$ is said to have an inverse wishart distribution $W\_p^{-1}(\\Sigma,r)$, if its pdf ($M=S^{-1}$)
+\\[
+p(M)=\\frac{|M|^{-\\frac{r+p+1}{2}} \\cdot eTr(-\\frac{1}{2} \\Sigma^{-1} M^{-1})}{2^{rp/2} \\cdot \\pi^{p(p-1)/4} \\cdot |\\Sigma |^{r/2} \\cdot \\prod\_{i=1}^p \\Gamma (\\frac{r+1-i}{2}) }
+\\]
+Let $\\Psi=\\Sigma^{-1}$, then,
+$E(X)=\\frac{\\Psi}{r-p-1}$, $Var(S\_{ij}=\\frac{2\\psi\_{ii}^2}{(r-p-1)^2(r-p-3)}$, $Cov(s\_{ij},s\_{kl})=\\frac{2\\psi\_{ij}\\psi\_{kl}+(r-p-1)(\\psi\_{ik}\\phi_{jl}+\\psi\_{il}\\psi\_{kj})}{(r-p)(r-p-1)^2(r-p-3)}$
+
+
 ### Statistic ###
 - [**definition**]  
     Given random variables (vectors) $X\_1,...,X\_n$ w.r.t. sets of possible values $\\mathcal{X}\_1,...,\\mathcal{X}\_n$, respectively. A random vector $t\_n:\\mathcal{X}\_1 \\times \\mathcal{X}\_2 \\times ... \\times \\mathcal{X}\_n \\rightarrow R^{k(n)}$ is called a $k(n)$ dimensional statistic.
