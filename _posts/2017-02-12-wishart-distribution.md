@@ -38,7 +38,7 @@ p(S)=\\frac{ |S|^{\\frac{r-p-1}{2}} \\cdot exp(-\\frac{1}{2} Tr(\\Sigma^{-1}S)) 
 
 
   
-
+<h1></h1>
 ### Inverse Wishart Distribution ###
 + [**definition**] $S^{-1}$ is said to have an inverse wishart distribution $W\_p^{-1}(\\Sigma,r)$, if its pdf ($M=S^{-1}$)
 \\[

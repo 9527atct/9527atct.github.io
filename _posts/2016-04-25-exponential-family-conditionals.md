@@ -33,9 +33,9 @@ In general, exponential family is often written as,
 p( \mathbf{x}| \theta) = h( \mathbf{x}) \exp [ \eta ( \theta)^T s ( \mathbf{x}) -A( \eta( \theta))]
 \\]
 where $ \eta$ is a function that maps the parameters $\theta$ to the natural parameters $ \eta = \eta ( \theta)$. if $dim( \theta) < dim( \eta ( \theta))$, it is called a curved exponential family, which means we have more sufficient statistics than parameters.
-
+<h1></h1>
 ### example ###
----------------
+
 
 The Bernoulli distribution can be written in exponential family form as follows:
 \\[
@@ -50,6 +50,7 @@ Ber(x| \mu)= (1- \mu) \exp [x \ln \frac{ \mu}{1- \mu}]
 \\]
 where $s(x)=x, \theta = \ln \frac{ \mu}{1- \mu}$ 
 
+<h1></h1>
 ### MLE for an exponential family ###
 Given $D = (x_1,...,x_n)$, $x_i \in R^d , \theta \in R^k , x_1,...,x_n \sim p(x|  \theta) $, Then, MLE is,
 \\[

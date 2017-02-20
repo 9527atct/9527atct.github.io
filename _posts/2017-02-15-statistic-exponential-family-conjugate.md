@@ -68,7 +68,7 @@ p(M)=\\frac{|M|^{-\\frac{r+p+1}{2}} \\cdot eTr(-\\frac{1}{2} \\Sigma^{-1} M^{-1}
 Let $\\Psi=\\Sigma^{-1}$, then,
 $E(X)=\\frac{\\Psi}{r-p-1}$, $Var(S\_{ij}=\\frac{2\\psi\_{ii}^2}{(r-p-1)^2(r-p-3)}$, $Cov(s\_{ij},s\_{kl})=\\frac{2\\psi\_{ij}\\psi\_{kl}+(r-p-1)(\\psi\_{ik}\\phi_{jl}+\\psi\_{il}\\psi\_{kj})}{(r-p)(r-p-1)^2(r-p-3)}$
 
-
+<h1></h1>
 ### Statistic ###
 - [**definition**]  
     Given random variables (vectors) $X\_1,...,X\_n$ w.r.t. sets of possible values $\\mathcal{X}\_1,...,\\mathcal{X}\_n$, respectively. A random vector $t\_n:\\mathcal{X}\_1 \\times \\mathcal{X}\_2 \\times ... \\times \\mathcal{X}\_n \\rightarrow R^{k(n)}$ is called a $k(n)$ dimensional statistic.
@@ -146,7 +146,7 @@ $E(X)=\\frac{\\Psi}{r-p-1}$, $Var(S\_{ij}=\\frac{2\\psi\_{ii}^2}{(r-p-1)^2(r-p-3
 
 
  
-
+<h1></h1>
 ### One-Parameter Exponential Family ###
 - [**one-parameter**]  
     A pdf is said to belong to one-parameter exponential family if it is of the form 
@@ -192,7 +192,7 @@ $E(X)=\\frac{\\Psi}{r-p-1}$, $Var(S\_{ij}=\\frac{2\\psi\_{ii}^2}{(r-p-1)^2(r-p-3
     \\]
     So, $f(x)=1,g(\\theta)=\\theta^{-1},c=1,h(x)=\\phi(\\theta)=0$. Since $\\mathcal{X}$ is $[0,\\theta]$, so it is no regular.
 
-
+<h1></h1>
 ###K-Parameter Exponential Family###
 - [**k-parameters exponential family**]  
 A pdf(pmf) $p(x\|\\theta), x\\in \\mathcal{X}$, which is labelled by $\\theta\\in\\Theta\\subseteq R$ is said to belong to *k-parameters exponential family* if it is of the form
@@ -218,6 +218,7 @@ Then $t\_n=t\_n(X\_1,...,X\_n)=[n,\\sum_{i=1}^n h\_1(X_i),...,\\sum_{i=1}^n h\_1
     \\]
     So, $g(\\theta)=\\lambda^{\\frac{1}{2}}\\exp\\left( -\\frac{\\lambda}{2}\\mu^2\\right),c\_1=1,c\_2=-\\frac{1}{2},\\phi\_1(\\theta)=\\lambda\\mu,\\phi\_2(\\theta)=\\lambda,h\_1(x)=x,h\_2(x)=x^2$. Sufficient statistic: $t\_n=[n,x,x^2]$.
 
+<h1></h1>
 ### Natural Exponential Family###
 - [**definition from prof. zhang's manuscript**]  
 The pdf of exponential family,
