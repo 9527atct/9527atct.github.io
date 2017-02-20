@@ -1,11 +1,11 @@
 ---
 layout: postarticle
 title: probability inequality
-date: 2017-02-12 14:11:05 +1000
+date: 2017-02-20 14:11:05 +1000
 categories: MachineLearning
 comments: true
 ---
-<h1></h1>
+
 ### Jensen Inequality ###
 If $g$ is convex, then 
     \\[
@@ -13,14 +13,14 @@ If $g$ is convex, then
     \\]
     $f(x)=\\log(x)$ is not convex, but $f(x)=-\\log(x)$ is a convex function.
 
-<h1></h1>
+
 ###Cauchy-Schwartz Inequality###
 If $X$ and $Y$ have finite variances, then,
 \\[
     E|XY|\\leq \\sqrt{E(X^2)E(Y^2)}
 \\]
 
-<h1></h1>
+
 ###Markov Inequality###
 For all $t\\ge 0$,
 \\[
@@ -52,7 +52,7 @@ P(\\{Y\\geq t\\})\\leq P(\\phi(Y)\\geq \\phi(t))=\\frac{E(\\phi(Y))}{\\phi(t)}
     \\]
 
 
-<h1></h1>
+
 ###Cramer-Chernoff Method###
 Let $Z$ be a real-valued random variable. For all $\\lambda\\geq 0$, we have,
 \\[
