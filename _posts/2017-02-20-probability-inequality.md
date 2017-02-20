@@ -11,17 +11,17 @@ If $g$ is convex, then
     \\[
         E[g(X)]\\geq g(E(X))
     \\]
-    $f(x)=\\log(x)$ is not convex, but $f(x)=-\\log(x)$ is a convex function.
-
-
-###Cauchy-Schwartz Inequality###
+    $f(x)=\\log(x)$ is not convex, but $f(x)=-\\log(x)$ is a convex function.  
+  
+      
+###Cauchy-Schwartz Inequality        
 If $X$ and $Y$ have finite variances, then,
 \\[
     E|XY|\\leq \\sqrt{E(X^2)E(Y^2)}
 \\]
 
-
-###Markov Inequality###
+      
+###Markov Inequality      
 For all $t\\ge 0$,
 \\[
 \\begin{split}
@@ -52,8 +52,8 @@ P(\\{Y\\geq t\\})\\leq P(\\phi(Y)\\geq \\phi(t))=\\frac{E(\\phi(Y))}{\\phi(t)}
     \\]
 
 
-
-###Cramer-Chernoff Method###
+      
+###Cramer-Chernoff Method      
 Let $Z$ be a real-valued random variable. For all $\\lambda\\geq 0$, we have,
 \\[
 P(\\{Z\\geq t\\})\\leq \\exp(-\\lambda t)\\cdot E(\\exp(\\lambda Z))
