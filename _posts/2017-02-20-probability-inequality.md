@@ -98,14 +98,14 @@ P(\\{Z\\geq t\\})\\leq \\exp\left(-\\psi\_Z^\*(\\lambda)\\right)=\\exp\\left(-\\
 \\]
 
 ***
-###Hoeffding's Lemma
+### Hoeffding's Lemma  
 Suppose $X$ is a real random variables with mean zero such that $p(x\\in[a,b])=1$. Then,
 \\begin{equation}
 E(e^{sX})\\leq \\exp(\\frac{1}{8}s^2(b-a)^2)
 \\end{equation}
 
 ***
-###Hoeffding's Inequality  
+### Hoeffding's Inequality    
 - [**brief introduce.**] In probability theory, Hoeffding's inequality provides an upper bound on the probability that the sum of random variables deviates from its expected value.  
 
 Let $X\_1,...,X\_n$ be independent random variables bounded by the interval $[0,1]: 0\\leq X\_i\\leq 1$. We define the empirical mean of these variables by 
