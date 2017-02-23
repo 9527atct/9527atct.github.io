@@ -98,14 +98,14 @@ P(\\{Z\\geq t\\})\\leq \\exp\left(-\\psi\_Z^\*(\\lambda)\\right)=\\exp\\left(-\\
 \\]
 
 ***
-### Hoeffding's Lemma  
+### Hoeffding's Lemma  (from wikipedia)
 Suppose $X$ is a real random variables with mean zero such that $p(x\\in[a,b])=1$. Then,
 \\begin{equation}
-E(e^{sX})\\leq \\exp(\\frac{1}{8}s^2(b-a)^2)
+E(e^{sX})\\leq \\exp\\left(\\frac{1}{8}s^2(b-a)^2\\right)
 \\end{equation}
 
 ***
-### Hoeffding's Inequality    
+### Hoeffding's Inequality  (from wikipedia)  
 - [**brief introduce.**] In probability theory, Hoeffding's inequality provides an upper bound on the probability that the sum of random variables deviates from its expected value.  
 
 Let $X\_1,...,X\_n$ be independent random variables bounded by the interval $[0,1]: 0\\leq X\_i\\leq 1$. We define the empirical mean of these variables by 
@@ -147,7 +147,7 @@ To get the best possible upper bound, we find the minimum of the right hand side
 \\[
 P(S\_n-E(S\_n)\\geq t)\\leq \\exp\\left(-\\frac{2t^2}{\\sum\_{i=1}^n(b\_i-a\_i)^2}\\right)
 \\]
-Here, we can using the cramer transform, that is,
+By the way, here, we can using the cramer transform, that is,
 \\[
 \\psi\_X(s)=\\frac{1}{8}s^2\\sum\_{i=1}^n(b\_i-a\_i)^2
 \\]
@@ -155,3 +155,20 @@ and the convex conjugate is
 \\[
 \\psi^*\_X(t)=\\frac{2t^2}{\\sum\_{i=1}^n(b\_i-a\_i)^2}
 \\]
+
+***
+### Bennett's Inequality -- (from wikipedia)
+- [**brief introduce**] In probability thoery, Bennett's Inequality provides an uppder bound on the probability that the sum of independent variables deviates from its expected value by more than any specified amount.
+- [**theorem**]  
+Let $X\_1,...,X\_n$ be independent random variables, and assume (for simplicity but without loss of generality) they all have zero expected value. Further assume $\|X\_j\|\\leq a$ almost surely for all $i$, and let,
+\\[
+\\sigma^2=\\frac{1}{n}\\sum\_{i=1}^n Var(X\_i)
+\\]
+Then for any $t\\geq 0$,
+\\[
+P\\left(\\sum\_{i=1}^n X\_i >t \\right)\\leq \\exp\\left( -\\frac{n\\sigma^2}{a^2}h\\left(\\frac{at}{n\\sigma^2}\\right) \\right)
+\\]
+where, $h(u)=(1+u)\\log(1+u)-u$.
+
+***
+### Bernstein's Inequality ###
