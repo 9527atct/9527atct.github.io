@@ -172,3 +172,81 @@ where, $h(u)=(1+u)\\log(1+u)-u$.
 
 ***
 ### Bernstein's Inequality ###
+Let $X\_1,...,X\_n$ be independent zero-mean variables. Suppose that $\|X\_i\|\\leq M$ almost surely, for all $i$. Then, for all positive $t$,
+\\[
+P\\left(\\sum\_{i=1}^n X\_i > t\\right)\\leq \\exp\\left(-\\frac{t^2}{2\\left(\\sum\_{j=1}^n E[X\_j^2] +\\frac{Mt}{3}\\right) } \\right)
+\\]
+- [**proof.**] Let $h(x)=(1+x)\\log(1+x)-x$ for $x\\geq 0$. And $h(x)\\geq \\frac{x^2}{2(1+\\frac{x}{3})}=g(x)$ (*can be proofed by using taylor's expansion*). So, from Bennett's inequality, it's easy to get,
+\\[
+\\begin{split}
+P\\left(\\sum\_{i=1}^n X\_i >t\\right)&\\leq \\exp\\left( -\\frac{n\\sigma^2}{a^2}h\\left(\\frac{at}{n\\sigma^2}\\right)\\right)\\\
+&\\leq \\exp\\left( -\\frac{n\\sigma^2}{a^2}g(\\frac{at}{n\\sigma^2})\\right)\\\
+&=\\exp\\left(-\\frac{t^2}{2\\left(\\sum\_{j=1}^n E[X\_j^2]+\\frac{at}{3}\\right)}\\right)
+\\end{split}
+\\]
+
+
+***
+### Random Projection
+Let $U=[u\_1,...,u\_p]^T\\in R^p$, $R\\in R^{p\\times d}, R^TR=I\_d$. Let $V=\\sqrt{\\frac{p}{d}}R^TU$. Then $E(\\mid\\mid V\\mid\\mid\_2^2)=\|\|U\|\|\_2^2$.
+
+- [**lemma**]  
+    Let $R$ be a random matrix of order $k\\times d$, i.e.,$R\_{ij}\\sim N(0,1)$, and $u$ be any fixed vector $\\in R^{d}$. Define $v=\\frac{1}{\\sqrt{k}}R\\cdot u$. Thus $v\\in R^k$ and $v\_i=\\frac{1}{\\sqrt{k}}\\sum\_i R\_{ij}u\_j$. Then,
+    - $E[\|\| v \|\|\_2^2]=\|\| u\|\|\_2^2$
+    - $P(\|\|\|v\|\|^2 -\|\|u\|\|^2 \\geq \|\| u\|\|^2\|)\\leq 2\\exp\\left(-(\\epsilon^2-\\epsilon^3)\\frac{k}{4} \\right)$  
+    **proof1.** 
+\\[
+\\begin{split}
+E(\|\|v\|\|\_2^2)&= E\\left( \\sum\_i v\_i^2\\right)\\\
+&=\\sum\_i^k E(v\_i^2)\\\
+&=\\sum\_i^k\\frac{1}{k}E\\left(\\left(\\sum\_i R\_{ij}u\_j\\right)^2\\right)\\\
+&=\\sum\_{k=1}^k \\frac{1}{k}\\sum\_{1\\leq j\\leq d} u\_j^2\\\
+&=\\sum\_{1\\leq j\\leq d} u\_j^2\\\
+&=\|\|u\|\|\_2^2
+\\end{split}
+\\]
+
+    **proof2**  
+    Let $X=k\\cdot \\frac{\|\|v\|\|^2}{\|\|u\|\|^2}=\\frac{\\sum\_{j=1}^k (R\_{j} u)^2}{\|\| u\|\|^2}=\\sum\_{j=1}^k X\_j^2$, where $X\_j=\\frac{R\_ju}{\|\|u\|\|}$. Since $R\_j \\sim N(0,I\_p)$, so, $X\_i\\sim N(0,1)$.
+\\[
+\\begin{split}
+P\\left(\\parallel v\\parallel^2 \\geq (1+\\epsilon)\\parallel u\\parallel^2\\right)&= P(X\\geq (1+\\epsilon)\\cdot k)\\\
+&= P(e^{\\lambda X}\\geq e^{\\lambda(1+\\epsilon)k})\\\
+&\\leq \\frac{E(e^{\\lambda X})}{e^{\\lambda(1+\\epsilon)k}}\\\
+&=\\frac{\\prod\_{i=1}^d E\\left( e^{\\lambda X\_i^2}\\right)}{e^{\\lambda(1+\\epsilon)k}}\\\
+&=\\left( \\frac{Ee^{\\lambda X\_i^2}}{e^{\\lambda(1+\\epsilon)}} \\right)^k
+\\end{split}
+\\]
+Since, $Ee^{\\lambda X\_i^2}=\\int e^{\\lambda X\_i^2}\\phi(x\_i)dx\_i =\\frac{1}{\\sqrt{1-2\\lambda}} $, where $\\phi(x)$ is the p.d.f. of the standard normal distribution. Thus,
+\\[
+P(X\\geq (1+\\epsilon)\\cdot k) \\leq \\left( \\frac{e^{-2(1+\\epsilon)\\lambda}}{1-2\\lambda} \\right)^{k/2}
+\\]
+where $\\lambda\\in (0,1/2)$.
+
+Let $\\lambda=\\frac{\\epsilon}{2(1+\\epsilon)}$, then 
+\\[
+P(X\\geq (1+\\epsilon)\\cdot k) \\leq \\left((1+\\epsilon)e^\\epsilon \\right)^{k/2}
+\\]
+And, $1+\\epsilon < e^{\\epsilon -\\frac{\\epsilon^2-\\epsilon^3}{2}}$. So,
+\\[
+P(X\\geq (1+\\epsilon)\\cdot k) \\leq e^\\left(-(\\epsilon^2-\\epsilon^3)k/4 \\right)
+\\]
+
+***
+### John-Lidenstrauss Lemma
+- [**brief introduction.**]  The lemma states that a small set of points in a high-dimensional can be embedded into a space of much lower dimension in such a way that distance between the points are nearly preserved. The map used for the embedding is at least Lipschitz, and can even be taken to be an orthogonal projection.
+- [**lemma**]  Let $R:R^p\\rightarrow R^d$. Let $A$ be finite subset of $R^p$ with $\|A\|=n$. Assume that for some $\\nu \\geq 1$, $R\_{ij}\\in G(\\nu)$, and $R\_{ij}\\sim N(0,1)$. And let $\\epsilon,\\sigma\\in (0,1)$. If $d\\geq 100\\nu^2 \\epsilon^{-2}\\log\\left(\\frac{n}{\\sqrt{\\sigma}} \\right)$. There with probability at least $1-\\sigma$,
+\\[
+(1-\\epsilon)\\parallel X-Y\\parallel^2 \\leq \\parallel R^TX-R^TY\\parallel^2\\leq (1+\\epsilon)\\parallel X-Y\\parallel^2
+\\]
+
+- [**Lipshitz.**]  In mathematical analysis, **Lipschitz continuity**, named after Rudolf Lipschitz, is a strong form of uniform continuity for functions. Intuitively, a Lipschitz continuous function is limited in how fast it can change: there exists a definite real number such that, for every pair of points on the graph of this function, the absolute value of the slope of the line connecting them is not greater than this real number; this bound is called a *Lipschitz constant* of the function. For instance, every function that has bounded first derivatives is Lipschitz.
+    + [**definition**]  
+    Given two metric space $(X,d\_X)$ and $(Y,d\_Y)$, where $d\_X,d\_Y$ denotes the metric on the set $X,Y$ respectively. A function $f:X\\rightarrow Y$ is called **Lipschitz continuous** if there exists a real constant $C\\geq 0$ such that, for all $x\_1,x\_2$ in $X$,
+    \\[
+        d\_Y(f(x\_1,x\_2))\\leq K d\_X(x\_1,x\_2)
+    \\]
+    Any such $K$ is referred to as a **Lipschitz constant** for the function $f$. The smallest constant is sometimes called **the (best) Lipschitz constant**.
+    + [**example**]  
+        - $f(x)=\\sqrt{x^2+5}$ defined for all real numbers is Linpschitz continuous with constant $K=1$.
+        - $f(x)=sin(x)$ is Lipschitz continuous because its derivative, the cosine function, is bounded above by 1 in absolute value.
