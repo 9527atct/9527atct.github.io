@@ -35,9 +35,9 @@ $sudo R
 ```
 $sudo find / -name "*RInside.h" | grep "usr/"
 /usr/local/lib/R/site-library/RInside/include/RInside.h
-\end{lstlisting}
+```
 以及库所在的路径，这些对后面C++编译环境特别重要。
-\begin{lstlisting}
+```
 $sudo find / -name "*RInside.so" | grep "usr/"
 /usr/local/lib/R/site-library/RInside/lib/libRInside.so
 /usr/local/lib/R/site-library/RInside/libs/RInside.so
