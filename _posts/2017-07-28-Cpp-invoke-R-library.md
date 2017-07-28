@@ -36,6 +36,7 @@ $sudo R
 $sudo find / -name "*RInside.h" | grep "usr/"
 /usr/local/lib/R/site-library/RInside/include/RInside.h
 ```
+
 以及库所在的路径，这些对后面C++编译环境特别重要。
 ```
 $sudo find / -name "*RInside.so" | grep "usr/"
@@ -64,13 +65,13 @@ C++默认编译命令“-lRcpp"所寻找的链接库为”libRcpp.so"，所以�
 这里主要是在ubntu环境下，用Codeblocks来搭建实验环境。首先新建一个空白工程。然后在[project]->[build options]选择[Search directories]->[Compiler]->[Add]，并添加以下搜索路径：
 ```
 /usr/share/R/include
-/home/jimi/R/x86_64-pc-linux-gnu-library/3.3/Rcpp/include
-/home/jimi/R/x86_64-pc-linux-gnu-library/3.3/RInside/include
+/usr/local/lib/R/site-library/RInside/include
+/usr/local/lib/R/site-library/Rcpp/include
 ```
 以及[Linker]选项卡，添加以下类库搜索路径：
 ```
-/home/jimi/R/x86_64-pc-linux-gnu-library/3.3/RInside/lib
-/home/jimi/R/x86_64-pc-linux-gnu-library/3.3/Rcpp/libs
+/usr/local/lib/R/site-library/RInside/lib/
+/usr/local/lib/R/site-library/Rcpp/libs
 ```
 
 [Linker settings]选项卡中[Link libraries]添加以下编译命令：
