@@ -198,19 +198,20 @@ int main(int argc, char* argv[]){
  }
 ```
     
+通过上面的例子可以看出，R与C++的交互主要通过以下两种方式。  
 
 - 发送命令至R   
-	- 字符串  
+	- 字符串  	
 	- C++对象赋于R代理对象
 ```
- std::string txt4= "print(weightsvec)"
- R.parseEvalQ(txt4);
+	 std::string txt4= "print(weightsvec)"
+	 R.parseEvalQ(txt4);
 ```
+这是C++程序中，通过文本串的形式，将所要的操作发送至R执行环境。
 
-
-
+	
 ```
-R["weightsvec"] = w;
+	R["weightsvec"] = w;
 ```  
 这里应该是先将C++对象传递给RInside对象，然后RInside对象再（wrap）传递给R代理对象。  
 
