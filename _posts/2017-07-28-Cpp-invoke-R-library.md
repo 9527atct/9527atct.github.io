@@ -113,7 +113,8 @@ SEXP verbose
 ```
 
 接下来，就是最重要的测试部分，新建一个带main函数的cpp文件，
-```C
+
+```
 #include <iostream>
 #include "interface.h"
 
@@ -160,7 +161,64 @@ R.parseEvalQ(txt3);
 return 0;
 }
 ```
-   
+
+### 1.4 RInside, Rcpp, R代码分析    
+
+下面将系统的分析一下C++与R的交互代码。  
+```
+int main(int argc, char* argv[]){
+    RInside R(argc,argv); //实例化R交互对象。
+    std::string txt4 =
+        "suppressMessages(library(fPortfolio));"
+        "lppData <- 100 * LPP2005.RET[, 1:6];"
+        "ewSpec <- portfolioSpec();"
+        "nAssets <- ncol(lppData);";
+    R.parseEvalQ(txt4);
+
+    const double dvec[6] = {0.1,0.1,0.1,0.1,0.3,0.3};
+    const std::vector<double> w(dvec, &dvec[6]);
+    R["weightsvec"] = w;
+    std::string txt4 = "print(weightsvec);";
+    R.parseEvalQ(txt4);
+    txt4 = "setWeights(ewSpec)<-weightsvec";
+    R.parseEvalQ(txt4);
+
+    txt4 =
+        "ewPf <- feasiblePortfolio(data=lppData, spec=ewSpec, constraints=\"LongOnly\");"
+        "print(ewPf); "
+        "vec <- getCovRiskBudgets(ewPf@portfolio);";
+    Rcpp::NumericVector V( (SEXP)R.parseEval(txt4));
+    Rcpp::CharacterVector names((SEXP)R.parseEval("names(vec)"));
+
+    std::cout<<"\n\n And now from C++\n\n";
+    for(int i=0; i<names.size();i++){
+        std::cout<<std::setw(16)<<names[i]<<"\t"
+                << std::setw(11)<<V[i]<<"\n";
+    }
+ }
+```
+    
+
+- 发送命令至R   
+	- 字符串  
+	- C++对象赋于R代理对象
+```
+ std::string txt4= "print(weightsvec)"
+ R.parseEvalQ(txt4);
+```
+
+
+
+```
+R["weightsvec"] = w;
+```  
+这里应该是先将C++对象传递给RInside对象，然后RInside对象再（wrap）传递给R代理对象。  
+
+- 接收R执行结果   
+```
+Rcpp::NumericVector V( (SEXP)R.parseEval(txt4));
+```
+然后就可以在C++环境中，对Rcpp对象进行处理。
      
         
 ### 2. R扩展——Rcpp包开发  
