@@ -164,6 +164,7 @@ return 0;
 
 ### 1.4 RInside, Rcpp, R代码分析    
 
+### 1.4.1 代码分析1  
 下面将系统的分析一下C++与R的交互代码。  
 ```
 int main(int argc, char* argv[]){
@@ -220,6 +221,74 @@ int main(int argc, char* argv[]){
 Rcpp::NumericVector V( (SEXP)R.parseEval(txt4));
 ```
 然后就可以在C++环境中，对Rcpp对象进行处理。
+     
+     
+     
+### 1.4.2 代码分析2（Rcpp中的as用法）  
+``` 
+int main(int argc, char* argv[])
+{
+try{
+        RInside R(argc, argv);
+        std::string txt;
+        txt = "m<-1.23";
+        double d1 = Rcpp::as<double>(R.parseEval(txt));
+        std::cout<< "d1:\t"<<d1<<std::endl;
+
+        txt = "M <- 1.0*1:6";
+        std::vector<double> d2 = Rcpp::as<std::vector<double> >(R.parseEval(txt));
+        std::cout<<"d2[0]:\t" <<d2[0]<<"\nd2[1]:\t"<<d2[1]<<std::endl;
+
+
+        std::string txt2 =
+            "x <- rnorm(10,0,1)";
+        std::vector<double> d3 = Rcpp::as<std::vector<double> >(R.parseEval(txt2));
+        cout<<"begin to print the result that received from R\n";
+        for(vector<double>::iterator iter=d3.begin(); iter<d3.end(); iter++){
+            cout<<*iter<<"\t";
+        }
+        cout<<"\n";
+
+        R["x"]=10;
+        R["y"]=20;
+        R.parseEval("z<-x+y");
+        int sum = R["z"];
+        std::cout<<"10+20="<<sum<<std::endl;
+
+        sum=R.parseEval("x+y");   //直接隐式转换，把R对象转化为C++对象。
+        std::cout<<"10+20="<<sum<<std::endl;
+
+    }catch(std::exception ex){
+        std::cerr<<"Exception caught:"<<ex.what()<<std::endl;
+    }catch(...){
+        std::cerr<<"Unknown exception caught"<<std::endl;
+    }
+```
+- Rcpp类库提供的as函数可以把R环境得到的SEXP对象转化为C++对象（基本对象如int, double等以及stl对象如vector,map等）。另外，R["var_name"]可以直接存取R环境中的对象，也可以当作右值赋于一个C++对象，此时发生as的隐式转换。
+     
+### 1.4.3 C++函数输出到R环境  
+```
+std::string hello( std::string who ){
+    std::string result( "hello " ) ;
+    result += who ;
+    return result;
+} 
+
+int main(int argc, char *argv[]) {
+
+    // create an embedded R instance
+    RInside R(argc, argv);               
+
+    // expose the "hello" function in the global environment
+    R["hello"] = Rcpp::InternalFunction( &hello ) ;
+   
+    // call it and display the result
+    std::string result = R.parseEvalNT("hello(\"world\")") ;
+    std::cout << "hello( 'world') =  " << result << std::endl; 
+
+    exit(0);
+}
+```
      
         
 ### 2. R扩展——Rcpp包开发  
