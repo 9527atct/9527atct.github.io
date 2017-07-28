@@ -159,3 +159,135 @@ R.parseEvalQ(txt3);
 return 0;
 }
 ```
+   
+     
+        
+### 2. R扩展——Rcpp包开发  
+
+R开发虽然很容易，但涉及到一些底层操作，如循环的时候，需要用C++的内存操作来加速。 此外， C/C++已有一些开发好的库，没必要用R重写，可以为R所调用。  
+
+
+### 2.1 .C调用
+这种方式使用C语言由R调用，主要有以下几个步骤：
+
+* C语言编写的函数
+* 编译
+* 加载
+* 调用
+   
+下面，给出一个简单的示例    
+
+### 2.1.1 C语言写的函数    
+```C
+void double_me(int* x)
+{
+	*x = *x+*x;	
+}
+```  
+
+### 2.1.2 编译  
+```
+$R CMD SHLIB doubler.c
+```  
+
+
+### 2.1.3 加载  
+```
+dyn.load("doubler.so")
+```
+  
+### 2.1.4 调用  
+```
+.C("double", x=as.integer(4))
+```  
+这种方式虽然简单易懂，但R提供的语言接口过于复杂，容易出错，不好管理。
+
+
+### 2.2 使用Rcpp包服务扩展R包  
+
+Rcpp程序包为用R调用C++代码提供了便利。使用C++来扩展R包，Rcpp及RInside提供了无缝的衔接。
+
+### 2.2.1 使用Rcpp构建扩展包框架    
+
+在R环境中，可以可使用Rcpp包提供的函数(Rcpp.package.skeleton)得到扩展包的框架。
+```
+>libirary(Rcpp)
+>Rcpp.package.skeleton( "Project_Name" )
+```
+
+在生成的R包 skeleton中， 可以找到rcpp\_hello\_world.cpp文件， 可以尝试添加几个函数， 修改成如下样式 （注意以下代码为C++文件,扩展名为cpp)
+
+```
+#include <Rcpp.h>
+using namespace Rcpp;
+using namespace std;
+// 注意 #include <Rcpp.h> 是调用Rcpp的必要条件
+RcppExport SEXP intVec1a(SEXP vec) {
+   Rcpp::NumericVector prod_vec(vec);
+   int prod = 1;
+   for (int i=0; i<vec2.size(); i++) {
+       prod *= vec2[i];
+   }
+   return (wrap(prod));
+}
+
+RcppExport SEXP square2(SEXP s)
+{ 
+ double s_c = Rcpp::as<double>(s);
+ double squared = s_c*s_c;
+ return (wrap(squared));
+}
+
+RcppExport SEXP expfun(SEXP x){
+double x2 = Rcpp::as<double>(x);
+double ans=1.0, term=1.0, eps=1e-16;
+int n=0;
+while (fabs(term)>eps){
+   n++;
+   term = term * x2 / n;
+   ans = ans + term;
+}
+  return(wrap(ans));
+}
+```
+
+### 2.2.2 编译与安装自定义包   
+编译：将R的工作目录设定为当前包所在的目录，在R环境中输入，
+```
+>compileAttributes()
+```
+在windows console或linux bash环境下，输入，
+```
+$R CMD INSTALL Project_Name
+```
+
+### 2.2.3 调用  
+进入R环境，
+```
+>library(Project_Name)
+>.Call('square2', s= 520)
+>.Call('prod_vec', vec= c(3, 4, 5))
+>.Call('expfun', x=3)
+```
+
+### 2.2.4 卸载  
+进入R环境，
+```
+>remove.packages("package name")
+```
+
+### 2.2.5 Wrap  
+每次调用都需要调用.Call，不是很方便，可以用R函数包装一下。
+```
+expfunR <- function(xx){
+   return( .Call('expfun', x= xx))
+}
+
+square2R <- function(ss){
+   return( .Call('square2', s= ss))
+}
+
+intVecR <- function(x){
+   return(.Call('prod_vec', vec= x))
+}
+```
