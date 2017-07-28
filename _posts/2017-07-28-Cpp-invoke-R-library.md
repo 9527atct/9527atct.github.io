@@ -161,6 +161,11 @@ R.parseEvalQ(txt3);
 return 0;
 }
 ```
+- 一个重要结论：Rcpp提供了两个关键函数用于R与C++之间的数据通信。
+	- Rcpp::as(): 将R中的对象转化为C++对象
+	- Rcpp::wrap(): 将C++对象转化为R对象
+
+
 
 ### 1.4 RInside, Rcpp, R代码分析    
 
