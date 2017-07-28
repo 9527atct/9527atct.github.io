@@ -5,13 +5,14 @@ date: 2017-07-28 10:40:05 +1000
 categories: technology
 comments: true
 ---
-
-###1. C++调用R
+  
+###1. C++调用R  
 有时为了调试C++程序，必须在C++环境中模拟R的一些功能，如传输数据到算法，返回结果到R，以及调用R中已有的一些功能函数。这时需要使用到的第三方类库主要有RInside, Rcpp以及R提供的头文件。
 
+  
+####1.1 类库准备  
 
-####1.1 类库准备
-#####1.1.1 R头文件
+#####1.1.1 R头文件  
 若需要调用R所提供的功能以及与R交互，那么需要找到R所提供的接口文件“R.h, Rmath.h”，以及库文件"libR.so"。
 ```
 $sudo find / -name "Rmath.h" | grep "usr/"
@@ -21,8 +22,8 @@ $sudo find / -name "*R.so" | grep "usr/"
 /usr/lib/R/lib/libR.so
 ```
 
-
-#####1.1.2 RInside安装
+  
+#####1.1.2 RInside安装  
 RInside的安装比较容易。这是一个R的C++扩展包，只需要在R的环境中使用一般的包安装流程就可以实现。现在给出ubuntu环境下的安装步骤，不加说明，默认操作系统为ubuntu。
 ```
 $sudo R
@@ -39,8 +40,8 @@ $sudo find / -name "*RInside.so" | grep "usr/"
 /usr/local/lib/R/site-library/RInside/lib/libRInside.so
 /usr/local/lib/R/site-library/RInside/libs/RInside.so
 ```
-
-#####1.1.3 Rcpp安装
+  
+#####1.1.3 Rcpp安装  
 Rcpp的安装与RInside过程类似，在R环境中使用一般的包安装策略就可以实现。
 ```
 $sudo R
@@ -56,8 +57,8 @@ $cd /usr/local/lib/R/site-library/Rcpp/libs
 $sudo cp Rcpp.so libRcpp.so
 ```
 C++默认编译命令“-lRcpp"所寻找的链接库为”libRcpp.so"，所以需要对Rcpp.so 重命名。
-
-####1.2 环境搭建
+  
+####1.2 环境搭建  
 这里主要是在ubntu环境下，用Codeblocks来搭建实验环境。首先新建一个空白工程。然后在[project]->[build options]选择[Search directories]->[Compiler]->[Add]，并添加以下搜索路径：
 ```
 /usr/share/R/include
@@ -78,8 +79,8 @@ Rcpp
 ```
 
 至此，所需要的环境已基本建立好了。下面以clusterpathRcpp类库为例来具体分析R与C++之间的交互。 clusterpathRcpp可以在http://R-Forge.R-project.org这里下载。
-
-####1.3 clusterpathRcpp源代码分析
+  
+####1.3 clusterpathRcpp源代码分析  
 在clusterpathRcpp的类库目录src下把所有的C++文件加入到codeblocks当前工程，同时新建interface.cpp的头文件“interface.h"。因为cpp文件多次include的情况下，每次编译会出现重复定义的情况。
 ```
 #ifndef INTERFACE_H_INCLUDED
