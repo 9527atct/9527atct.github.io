@@ -85,7 +85,7 @@ Rcpp
   
 ### 1.3 clusterpathRcpp源代码分析  
 在clusterpathRcpp的类库目录src下把所有的C++文件加入到codeblocks当前工程，同时新建interface.cpp的头文件“interface.h"。因为cpp文件多次include的情况下，每次编译会出现重复定义的情况。
-```
+```C
 #ifndef INTERFACE_H_INCLUDED
 #define INTERFACE_H_INCLUDED
 
@@ -114,7 +114,7 @@ SEXP verbose
 
 接下来，就是最重要的测试部分，新建一个带main函数的cpp文件，
 
-```
+```C
 #include <iostream>
 #include "interface.h"
 
@@ -166,7 +166,7 @@ return 0;
 
 ### 1.4.1 代码分析1  
 下面将系统的分析一下C++与R的交互代码。  
-```
+```C
 int main(int argc, char* argv[]){
     RInside R(argc,argv); //实例化R交互对象。
     std::string txt4 =
@@ -225,7 +225,7 @@ Rcpp::NumericVector V( (SEXP)R.parseEval(txt4));
      
      
 ### 1.4.2 代码分析2（Rcpp中的as用法）  
-``` 
+```C
 int main(int argc, char* argv[])
 {
 try{
@@ -267,7 +267,7 @@ try{
 - Rcpp类库提供的as函数可以把R环境得到的SEXP对象转化为C++对象（基本对象如int, double等以及stl对象如vector,map等）。另外，R["var_name"]可以直接存取R环境中的对象，也可以当作右值赋于一个C++对象，此时发生as的隐式转换。
      
 ### 1.4.3 C++函数输出到R环境  
-```
+```C
 std::string hello( std::string who ){
     std::string result( "hello " ) ;
     result += who ;
