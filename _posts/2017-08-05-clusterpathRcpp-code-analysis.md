@@ -7,10 +7,14 @@ comments: true
 ---
 
 
-### clusterpathRcpp  
+### l1 penalty clustering method    
+$\ell$1正则项的聚类效果。这一问题的的目标函数可以写成，
+\\[
+\sum\_{k=1}^p \left[ \frac{1}{2} \sum\_{i=1}^n (\alpha\_{ik}-X\_{ik})^2 \right]
+\\] 
 先看一下效果：
  
-<img src="{{ BASE_PATH }}/photo/clusterpathRcpp/1Dl1.png" />
+<img src="{{ BASE_PATH }}/photo/clusterpathRcpp/1Dl1.png"/>
 
 ### 1. STL 简介  
 
