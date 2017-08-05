@@ -7,7 +7,7 @@ comments: true
 ---
 
 
-### $\ell_1$ penalty clustering method    
+### 1. $\ell_1$ penalty clustering method    
 $\ell_1$正则项的聚类效果。这一问题的的目标函数可以写成，
 \\[
 \sum\_{k=1}^p \left[ \frac{1}{2} \sum\_{i=1}^n (\alpha\_{ik}-X\_{ik})^2 +\lambda \sum\_{i<j} w\_{ij} \lvert \alpha\_{ik}-\alpha\_{jk} \rvert \right] = \sum\_{k=1}^p f\_1(\alpha^k,X^k)
@@ -23,11 +23,35 @@ x <- c(-3,-2,0,3,5)
 df <- clusterpath.l1.id(x)
 plot(df)
 ```
-先看一下效果： 
-<img src="{{ BASE_PATH }}/photo/clusterpathRcpp/1Dl1.png"/>
-这是一个针对只有一维特征的数据矩阵（向量）的$\ell_1$的聚类算法执行结果。
+得到的聚类结果为：
+```
+> df
+   alpha    lambda row     col gamma norm solver
+1    0.6 1.1333333   1 alpha.1     0    1   path
+2    0.6 1.1333333   2 alpha.1     0    1   path
+3    0.6 1.1333333   3 alpha.1     0    1   path
+4    0.6 1.1333333   4 alpha.1     0    1   path
+5    0.6 1.1333333   5 alpha.1     0    1   path
+6    0.0 0.8333333   1 alpha.1     0    1   path
+7    0.0 0.8333333   2 alpha.1     0    1   path
+8    0.0 0.8333333   3 alpha.1     0    1   path
+9   -1.0 0.5000000   1 alpha.1     0    1   path
+10  -1.0 0.5000000   2 alpha.1     0    1   path
+11  -3.0 0.0000000   1 alpha.1     0    1   path
+12  -2.0 0.0000000   2 alpha.1     0    1   path
+13   0.0 0.0000000   3 alpha.1     0    1   path
+14   1.0 1.0000000   4 alpha.1     0    1   path
+15   1.0 1.0000000   5 alpha.1     0    1   path
+16   3.0 0.0000000   4 alpha.1     0    1   path
+17   5.0 0.0000000   5 alpha.1     0    1   path
+```
+以及plot出来的效果：   
 
-### 1.1 R代码分析  
+<img src="{{ BASE_PATH }}/photo/clusterpathRcpp/1Dl1.png"/>  
+
+很明显，这是一个针对只有一维特征的数据矩阵（向量）的$\ell_1$的聚类算法执行结果。  
+
+### 1.1. R代码分析  
 把上述代码保存至一个R文件中，并使用调试模式，导航至`df<-clusterpath.l1.id(x)`，可以看到`clusterpath.l1.id`这个函数的具体内容：
 ```
 function (x, LAPPLY = if (require(multicore)) mclapply else lapply) 
