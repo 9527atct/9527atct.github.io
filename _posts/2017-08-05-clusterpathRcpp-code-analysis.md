@@ -10,7 +10,7 @@ comments: true
 ### l1 penalty clustering method    
 $\ell$1正则项的聚类效果。这一问题的的目标函数可以写成，
 \\[
-\sum\_{k=1}^p \left[ \frac{1}{2} \sum\_{i=1}^n (\alpha\_{ik}-X\_{ik})^2 \right]
+\sum\_{k=1}^p \left[ \frac{1}{2} \sum\_{i=1}^n (\alpha\_{ik}-X\_{ik})^2 +\lambda \sum\_{i<j} w\_{ij} \lvert \alpah\_{ik}-\alpha\_{jk} \rvert \right]
 \\] 
 先看一下效果：
  
