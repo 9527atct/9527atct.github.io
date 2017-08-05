@@ -16,10 +16,37 @@ $\ell_1$正则项的聚类效果。这一问题的的目标函数可以写成，
 \\[
 \min\_{\alpha \in \mathbb{R}^{n\times p}} f\_1(\alpha,X)=\sum\_{k=1}^p \min\_{\alpha^k \in \mathbb{R}^n} f\_1(\alpha^k,X^k)
 \\]
-对于每一个子问题，可以使用FLSA path algorithm来解决。
-先看一下效果：
- 
+对于每一个子问题，可以使用FLSA path algorithm来解决。详细的理论分析将会在文章的后面部分给出。现在先从实验上有一个大致的直觉印象。在R环境中，执行以下代码。
+```
+library(clusterpathRcpp)
+x <- c(-3,-2,0,3,5)
+df <- clusterpath.l1.id(x)
+plot(df)
+```
+先看一下效果： 
 <img src="{{ BASE_PATH }}/photo/clusterpathRcpp/1Dl1.png"/>
+这是一个针对只有一维特征的数据矩阵（向量）的$\ell_1$的聚类算法执行结果。
+
+### 1.1 R代码分析  
+把上述代码保存至一个R文件中，并使用调试模式，导航至`df<-clusterpath.l1.id(x)`，可以看到`clusterpath.l1.id`这个函数的具体内容：
+```
+function (x, LAPPLY = if (require(multicore)) mclapply else lapply) 
+{
+  x <- as.matrix(x)
+  dfs <- LAPPLY(1:ncol(x), function(k) {
+    L <- .Call("join_clusters_convert", x[, k], PACKAGE = "clusterpathRcpp")
+    data.frame(L[1:2], row = factor(L$i + 1), col = factor(k), 
+      gamma = factor(0), norm = factor(1), solver = factor("path"))
+  })
+  df <- do.call(rbind, dfs)
+  if (!is.null(rownames(x))) 
+    levels(df$row) <- rownames(x)
+  levels(df$col) <- alphacolnames(x)
+  d <- structure(df, data = x, class = c("l1", "clusterpath", 
+    "data.frame"))
+  unique(d)
+}
+```
 
 ### 1. STL 简介  
 
