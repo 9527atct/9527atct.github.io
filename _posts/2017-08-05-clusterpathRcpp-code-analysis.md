@@ -93,11 +93,11 @@ function (x, LAPPLY = if (require(multicore)) mclapply else lapply)
   unique(d)
 }
 ```
-可以看出，`clusterpath.l1.id`调用了`lapply`这个函数，而这个函数的主要作用是，对第一个参数`1:ncol(x)`的第一个成员执行`function(k)`并返回一个和`1：ncol(x)`维度一致的结果向量。
+可以看出，`clusterpath.l1.id`调用了`lapply`这个函数，而这个函数的主要作用是，对第一个参数`1:ncol(x)`的每一个成员执行`function(k)`，这里`k`是形参，接收`1:ncol(x)`中的每一个具体值，处理完后返回一个和`1：ncol(x)`维度一致的结果向量。
 
 `1:ncol(x)`显然是一个数字序列，代表数据集`x`的每一列。而`function(k)`则是对每一列数据按特定的逻辑处理。这一逻辑正是C++函数`join_clusters_convert`。
 
-继续跟进`join_clusters_convert`，了解这个逻辑是怎么处理的？想法是好的，现实是残酷的。如果是matlab，这是可能的，但在R环境下，实在是没找到怎么调试的办法。或许我太挫，有知道的可以联系我，万分感谢！
+继续跟进`join_clusters_convert`，了解这个逻辑是怎么处理的？想法是好的，现实是残酷的。如果是matlab，这是可能的，但在R环境下，实在是没找到怎么调试的办法。或许我太嫩，调试方法羞于见我也说不定！有知道的GGJJDDMM可以联系我啊，万分感谢！
 
 直接调试，不太可能，辣么，可不可以在C++环境中调试呢？答案是”当然可以！“。可见，前期工作也没白费，正好派上用场。下面就快速用codeblocks搭建好环境，当然是选择ubuntu啦！没有为什么，就特么用的爽！具体步骤可以参考[Cpp invoke R library](http://9527atct.github.io/technology/2017/07/28/Cpp-invoke-R-library.html)
 
