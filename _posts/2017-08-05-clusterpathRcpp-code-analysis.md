@@ -10,8 +10,13 @@ comments: true
 ### l1 penalty clustering method    
 $\ell$1正则项的聚类效果。这一问题的的目标函数可以写成，
 \\[
-\sum\_{k=1}^p \left[ \frac{1}{2} \sum\_{i=1}^n (\alpha\_{ik}-X\_{ik})^2 +\lambda \sum\_{i<j} w\_{ij} \lvert \alpah\_{ik}-\alpha\_{jk} \rvert \right]
+\sum\_{k=1}^p \left[ \frac{1}{2} \sum\_{i=1}^n (\alpha\_{ik}-X\_{ik})^2 +\lambda \sum\_{i<j} w\_{ij} \lvert \alpha\_{ik}-\alpha\_{jk} \rvert \right] = \sum\_{k=1}^p f\_1(\alpha^k,X^k)
 \\] 
+其中，$\alpha^k \in \mathbb{R}^n$是$\alpha$的第$k$列。 这样，关于矩阵$X$的最小化问题就等价于$p$个分隔开的最小化子问题，
+\\[
+\min\_{\alpha} f\_1(\alpha,X)=\sum\_{k=1}^p \min\_{\alpha^k \in \mathbb{R}^n} f\_1(\alpha^k,X^k)
+\\]
+对于每一个子问题，可以使用FLSA path algorithm来解决。
 先看一下效果：
  
 <img src="{{ BASE_PATH }}/photo/clusterpathRcpp/1Dl1.png"/>
