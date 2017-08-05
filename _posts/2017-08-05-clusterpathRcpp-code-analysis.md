@@ -1,10 +1,16 @@
 ---
 layout: postarticle
-title: Cpp  kindergarten 
-date: 2017-07-29 21:25:05 +1000
+title: clusterpathRcpp code analysis
+date: 2017-08-05 09:25:05 +1000
 categories: technology
 comments: true
 ---
+
+
+### clusterpathRcpp  
+先看一下效果：
+ 
+<img src="{{ BASE_PATH }}/photo/clusterpathRcpp/1Dl1.png" />
 
 ### 1. STL 简介  
 
@@ -63,6 +69,7 @@ STL中算法大部分不作为某些特定容器类的成员函数，它们是�
 - 双向迭代器
 - 随机访问迭代器
 - 流迭代器
+
 
 
 
