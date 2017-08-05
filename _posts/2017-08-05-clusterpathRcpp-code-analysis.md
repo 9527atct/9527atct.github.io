@@ -14,7 +14,7 @@ $\ell_1$正则项的聚类效果。这一问题的的目标函数可以写成，
 \\] 
 其中，$\alpha^k \in \mathbb{R}^n$是$\alpha$的第$k$列。 这样，关于矩阵$X$的最小化问题就等价于$p$个分隔开的最小化子问题，
 \\[
-\min\_{\alpha \in \mathbb{R}^{n\times p} f\_1(\alpha,X)=\sum\_{k=1}^p \min\_{\alpha^k \in \mathbb{R}^n} f\_1(\alpha^k,X^k)
+\min\_{\alpha \in \mathbb{R}^{n\times p}} f\_1(\alpha,X)=\sum\_{k=1}^p \min\_{\alpha^k \in \mathbb{R}^n} f\_1(\alpha^k,X^k)
 \\]
 对于每一个子问题，可以使用FLSA path algorithm来解决。
 先看一下效果：
