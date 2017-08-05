@@ -52,10 +52,7 @@ plot(df)
 很明显，这是一个针对只有一维特征的数据矩阵（向量）的$\ell_1$的聚类算法执行结果。从结果到图形，光看最后那一句肯定是会蒙圈的，至少，我刚看到的时候是晕的。这里面包含了好几个代码上的trick。下面将一一解开。  
 
 ### 1.1. R代码分析    
-把上述代码保存至一个R文件中，并使用调试模式(如果不会，可以自行度娘或勾勾，关键词“R, Rstudio, debug")。
-
-先解决这个图是**怎么画**出来的吧！这个比较容易点，相对来说更直观的感受到R数据展示（绘图）的强大！  
-导航至`plot(df)`，跟进(step into function "SHIFT+F4")，得到如下代码，
+把上述代码保存至一个R文件中，并使用调试模式(如果不会，可以自行度娘或勾勾，关键词“R, Rstudio, debug")。先解决这个图是**怎么画**出来的吧！这个比较容易点，相对来说更直观的感受到R数据展示（绘图）的强大！导航至`plot(df)`，跟进(step into function "SHIFT+F4")，得到如下代码，
 ```
 function (x, type = "l", main = "The entire regularization path of optimal solutions for each variable", 
 	xlab = expression(paste("location in the regularization path  ", 
@@ -68,13 +65,7 @@ function (x, type = "l", main = "The entire regularization path of optimal solut
 		strip = strip, ...)
 }
 ```
-是不是和想像的不一样？原来clusterpathRcpp重新定义了plot。。。套路太深，有点想回农村，有木有！看到的不一定是你想的那样的，还是too young。。。
-
-有了df的结果数据，和plot的逻辑，可以自已去plot的玩了。比如"type='p'", 把col去掉，group=row去掉，还可以把xyplot换掉等等。不会玩的可以看[R Graph](http://9527atct.github.io/technology/2017/08/04/R-Graph.html) 。
-
-下面重点来了，这个算法是**怎么处理数据**的呢？
-
-导航至`df<-clusterpath.l1.id(x)`，可以看到`clusterpath.l1.id`这个函数的具体内容：
+是不是和想像的不一样？原来clusterpathRcpp重新定义了plot。。。套路太深，有点想回农村，有木有！看到的不一定是你想的那样的，还是too young。。。有了df的结果数据，和plot的逻辑，可以自已去plot的玩了。比如"type='p'", 把col去掉，group=row去掉，还可以把xyplot换掉等等。不会玩的可以看[R Graph](http://9527atct.github.io/technology/2017/08/04/R-Graph.html) 。下面重点来了，这个算法是**怎么处理数据**的呢？导航至`df<-clusterpath.l1.id(x)`，可以看到`clusterpath.l1.id`这个函数的具体内容：
 ```
 function (x, LAPPLY = if (require(multicore)) mclapply else lapply) 
 {
@@ -93,13 +84,7 @@ function (x, LAPPLY = if (require(multicore)) mclapply else lapply)
   unique(d)
 }
 ```
-可以看出，`clusterpath.l1.id`调用了`lapply`这个函数，而这个函数的主要作用是，对第一个参数`1:ncol(x)`的每一个成员执行`function(k)`，这里`k`是形参，接收`1:ncol(x)`中的每一个具体值，处理完后返回一个和`1：ncol(x)`维度一致的结果向量。
-
-`1:ncol(x)`显然是一个数字序列，代表数据集`x`的每一列。而`function(k)`则是对每一列数据按特定的逻辑处理。这一逻辑正是C++函数`join_clusters_convert`。
-
-继续跟进`join_clusters_convert`，了解这个逻辑是怎么处理的？想法是好的，现实是残酷的。如果是matlab，这是可能的，但在R环境下，实在是没找到怎么调试的办法。或许我太嫩，调试方法羞于见我也说不定！有知道的GGJJDDMM可以联系我啊，万分感谢！
-
-直接调试，不太可能，辣么，可不可以在C++环境中调试呢？答案是”当然可以！“。可见，前期工作也没白费，正好派上用场。下面就快速用codeblocks搭建好环境，当然是选择ubuntu啦！没有为什么，就特么用的爽！具体步骤可以参考[Cpp invoke R library](http://9527atct.github.io/technology/2017/07/28/Cpp-invoke-R-library.html)
+可以看出，`clusterpath.l1.id`调用了`lapply`这个函数，而这个函数的主要作用是，对第一个参数`1:ncol(x)`的每一个成员执行`function(k)`，这里`k`是形参，接收`1:ncol(x)`中的每一个具体值，处理完后返回一个和`1：ncol(x)`维度一致的结果向量。`1:ncol(x)`显然是一个数字序列，代表数据集`x`的每一列。而`function(k)`则是对每一列数据按特定的逻辑处理。这一逻辑正是C++函数`join_clusters_convert`。继续跟进`join_clusters_convert`，了解这个逻辑是怎么处理的？想法是好的，现实是残酷的。如果是matlab，这是可能的，但在R环境下，实在是没找到怎么调试的办法。或许我太嫩，调试方法羞于见我也说不定！有知道的GGJJDDMM可以联系我啊，万分感谢！直接调试，不太可能，辣么，可不可以在C++环境中调试呢？答案是”当然可以！“。可见，前期工作也没白费，正好派上用场。下面就快速用codeblocks搭建好环境，当然是选择ubuntu啦！没有为什么，就特么用的爽！具体步骤可以参考[Cpp invoke R library](http://9527atct.github.io/technology/2017/07/28/Cpp-invoke-R-library.html)
 
 环境搭建好之后，来看一看我们的测试代码。
 ```
