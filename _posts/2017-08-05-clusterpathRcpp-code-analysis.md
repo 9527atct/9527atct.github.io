@@ -124,6 +124,120 @@ int main(int argc, char* argv[])
 }
 ```
 是不是相当的easy? 程序猿都是活雷锋，RInside, Rcpp, 简直是太TM好用了！若对代码有疑问，请移步[Cpp invoke R library](http://9527atct.github.io/technology/2017/07/28/Cpp-invoke-R-library.html)。
+  
+ ---   
+     
+### 1.2 C++代码分析  
+
+先来看一下涉及到的数据结构： 
+```C
+struct Cluster;
+// Doubly-linked list of clusters
+typedef std::list<Cluster*> Clusters;
+// events are represented as a map, thus e->first is lambda and
+// e->second is the pointer to the top cluster of the merge event.
+typedef std::multimap<double,Clusters::iterator> Events;
+typedef std::pair<double,Clusters::iterator> Event;
+
+struct Cluster {
+  int total;
+  double v;
+  std::vector<int> i;//row indices and cluster size
+  double alpha;
+  double lambda;
+  Cluster *child1;
+  Cluster *child2;
+  Events::iterator merge_with_next;
+};
+``` 
+
+下面先来分析`join_clusters_convert`的内容
+```C
+RcppExport SEXP join_clusters_convert(SEXP xR){
+  NumericVector x(xR); //接收R传递的数据集，并交给Rcpp::NumericVector对象。
+  Cluster *tree=make_clusters_l1(&x[0],x.length()); //使用l1正则项聚类
+  SEXP L=tree2list(tree);
+  delete_tree(tree);
+  return L;
+}
+```
+跟进`make_clusters_l1`：
+```
+Cluster* make_clusters_l1(double *x, int N){
+  double v,sign;
+  Cluster *c,*next;  //类簇指针变量
+  Clusters::iterator it,next_it,other; //list迭代器，访问clusters内容。
+  Clusters clusters;  //类族集，是个std::list.
+  
+  //初使化类族集，数据集当前维度的每一行都是一个类族。
+  //所有的类簇存放进clusters
+  //clusters是一个std::list
+  //create new list of clusters for this dimension
+  for(int i=0;i<N;i++){
+    c = new Cluster;   //结构可以new
+    c->alpha=x[i];    //当前类簇的中心值
+    (c->i).push_back(i);  //行号及统计类簇个成员数
+    c->lambda=0.0;
+    c->child1=NullCluster;
+    c->child2=NullCluster;
+    clusters.push_back(c);//constant
+  }
+  
+
+  //std::cout<<"before sort:\n";
+  //print_clusters(clusters);
+  //排序，根据alpha值大小。
+  clusters.sort(compare_alpha);
+  //std::cout<<"after sort:\n";
+  //print_clusters(clusters);
+
+  //合并相同alpha值的类簇
+  //因为排好序，所以可以相邻比较。
+  next_it=it=clusters.begin();
+  next_it++;
+  while(next_it!=clusters.end()){
+    c=*it;
+    next=*next_it;
+    // check if it and next_it have the same alpha value
+    if(next->alpha == c->alpha){
+      //then merge the 2
+      c->i.insert(c->i.end(),next->i.begin(),next->i.end());
+      next_it=clusters.erase(next_it);  //返回值为指向擦除对象的next值
+    }else{
+      next_it++;
+      it++;
+    }
+  }
+
+  std::cout<<"\nafter merge\n";
+  print_clusters(clusters);
+
+  // calculate cluster velocities for identity weights. first element
+  // is smallest alpha value, with N-1 other clusters above it. thus
+  // it has a velocity of N-1. Next cluster up has N-2 clusters above
+  // and 1 cluster below = velocity of N-3, etc. UNLESS there are
+  // multiple points with the same exact value, in which case we need
+  // to scale the velocity by cluster size.
+  for(it=clusters.begin();it!=clusters.end();it++){
+    (*it)->total = (*it)->i.size();
+    v=0.0;
+    sign=-1.0;
+    for(other=clusters.begin();other!=clusters.end();other++){
+      if(other==it){
+	sign=1.0;
+      }else{
+	v += sign * (*other)->i.size();
+      }
+    }
+    //TDH alternate parameterization
+    (*it)->v = v;
+    //(*it)->v = v/((double)N-1);
+  }
+  //print_clusters(clusters);
+  return join_clusters(clusters);
+}
+```
+
 
   
  ---   
