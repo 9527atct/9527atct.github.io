@@ -240,15 +240,20 @@ Cluster* make_clusters_l1(double *x, int N){
 对于后面的velocity，可以参考以下lamma.  
 **Lemma**. Let $C=\\{i:\alpha\_i=\alpha\_C\\} \subseteq \\{1,...,n\\}$ be the cluster formed after the fusion of all points in $C$, and let $w\_{jC}=\sum\_{i\in C} w\_{ij}$. At any point in the regulariation path, the slope of its coefficient is given by,
 \\[
-v\_C = \frac{d\alpha\_C}{d\lambda}=\frac{1}{\lvert C\rvert}\sum\_{j\notin C}w\_{jC} sign(\alpha_j-\alpha_C)
+v\_C = \frac{d\alpha\_C}{d\lambda}=\frac{1}{\lvert C\rvert}\sum\_{j\notin C}w\_{jC} \textrm{sign}(\alpha_j-\alpha_C)
 \\]
 
+**proof.** Consider the following sufficient optimality condition, for all $i=1,...,n$:
+\\[
+0=\alpha\_i - X\_i + \lambda \sum\_{\substack{j\neq i \\ \alpha\_i\neq \alpha\_j}}  w\_{ij} \textrm{sign}(\alpha\_i - \alpha\_j) + \lambda \sum\_{ \substack{j\neq i\\ \alpha\_i =\alpha\_j} } w\_{ij}\beta\_{ij}
+\\]
+with $\lvert \beta\_{ij}\rvert \leq 1$ and $\beta\_{ij}=\beta\_{ji}$.
 
 
   
  ---   
 
-### 1. STL 简介  
+### A. STL 简介  
 
 STL(Standard Template Library)是C++的一个标准模板库，现在作为C++的一部分嵌入到编译器，所以只要有C++编译器，那么都可以使用STL。该库集成了诸多常用的基本数据结构与算法，高度体现了可复用性。  
 
@@ -258,7 +263,7 @@ STL将代码抽象为三个主要的类别：container(容器)、algorithm(算�
   
  ---   
     
-### 1.1 容器  
+### A.1 容器  
 
 容器主要用于存放数据。可以理解为一种数据结构。在实际应用中，根据所处理的数据类型，选择合适的容器。STL 中的容器有顺序容器和关联容器，容器适配器（congtainer adapters ：stack,queue ，priority queue ），位集（bit_set ）串包(string_package) 等等。 以下是一些常用的容器。  
 
@@ -279,7 +284,7 @@ STL将代码抽象为三个主要的类别：container(容器)、algorithm(算�
   
  ---   
     
-### 1.2 算法  
+### A.2 算法  
 
 STL中算法大部分不作为某些特定容器类的成员函数，它们是泛型的。这就说明了算法可以适配大部分的容器。泛型算法有4类基本的类型。
 
@@ -300,7 +305,7 @@ STL中算法大部分不作为某些特定容器类的成员函数，它们是�
 
 其它具体的算法可以到查看C++ reference.
 
-### 1.3 迭代器  
+### A.3 迭代器  
 迭代器实际上是一种泛化指针。如果一个迭代器指向了容器中的某一成员，那么迭代器可以通过自增自减来遍历容器中的所员。迭代器是联系容器和算法的媒介，是算法操作容器的接口。STL定义了6种迭代器。
 
 - 输入迭代器
