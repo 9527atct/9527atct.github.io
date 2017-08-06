@@ -247,8 +247,15 @@ v\_C = \frac{d\alpha\_C}{d\lambda}=\frac{1}{\lvert C\rvert}\sum\_{j\notin C}w\_{
 \\[
 0=\alpha\_i - X\_i + \lambda \sum\_{\substack{j\neq i \\ \alpha\_i\neq \alpha\_j}}  w\_{ij} \textrm{sign}(\alpha\_i - \alpha\_j) + \lambda \sum\_{ \substack{j\neq i\\ \alpha\_i =\alpha\_j} } w\_{ij}\beta\_{ij}
 \\]
-with $\lvert \beta\_{ij}\rvert \leq 1$ and $\beta\_{ij}=\beta\_{ji}$.
-
+with $\lvert \beta\_{ij}\rvert \leq 1$ and $\beta\_{ij}=\beta\_{ji}$. We can rewrite the optimality condition for all $i\in C$:
+\\[
+0=\alpha\_i - X\_i + \lambda \sum\_{j\notin C}  w\_{ij} \textrm{sign}(\alpha\_C - \alpha\_j) + \lambda \sum\_{i\neq j \in C } w\_{ij}\beta\_{ij}
+\\]
+Furthermore, by summing each of these equations, we obtain the following:
+\\[
+\alpha\_C = \bar{X}\_C + \frac{\lambda}{\lvert C \rvert} \sum\_{j\notin C} w\_{jC}\textrm{sign}(\alpha\_j -\alpha\_C)
+\\]
+where $\bar{X}\_C=\sum\_{i\in C} X\_i /\lvert C\rvert$. Taking the derivative with respect to $\lambda$ gives us the slope $v\_C$ of the coefficient line for cluster $C$, proving the Lamma.
 
   
  ---   
