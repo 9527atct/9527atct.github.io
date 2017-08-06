@@ -238,14 +238,39 @@ Cluster* make_clusters_l1(double *x, int N){
 }
 ```
 上述代码的velocity输出为，
-```
-row   vc
--3	 4
--2	 2
- 0	 0
- 3	-2
- 5	-4
-```
+
+<table class="table table-bordered table-striped table-condensed" align="center" valign="center">  
+    <tr>  
+        <td>alpha</td>  
+    <td>lambda</td>  
+    <td>velocity</td>
+    </tr>  
+    <tr>  
+        <td>-3</td>  
+    <td>0</td>  
+    <td>4</td>
+    </tr>
+    <tr>  
+        <td>-2</td>  
+    <td>0</td>  
+    <td>2</td>
+    </tr>
+    <tr>  
+        <td>0</td>  
+    <td>0</td>  
+    <td>0</td>
+    </tr>
+    <tr>  
+        <td>3</td>  
+    <td>0</td>  
+    <td>-2</td>
+    </tr>
+    <tr>  
+        <td>5</td>  
+    <td>0</td>  
+    <td>-4</td>
+    </tr>
+</table>
 这里的velocity表示的是最优条件下，类簇内的均值对lambda的变化率（斜率，速率）。对于velocity的求法，可以参考以下lamma.  
 **Lemma**. Let $C=\\{i:\alpha\_i=\alpha\_C\\} \subseteq \\{1,...,n\\}$ be the cluster formed after the fusion of all points in $C$, and let $w\_{jC}=\sum\_{i\in C} w\_{ij}$. At any point in the regulariation path, the slope of its coefficient is given by,
 \\[
@@ -266,6 +291,86 @@ Furthermore, by summing each of these equations, we obtain the following:
 \\]
 where $\bar{X}\_C=\sum\_{i\in C} X\_i /\lvert C\rvert$. Taking the derivative with respect to $\lambda$ gives us the slope $v\_C$ of the coefficient line for cluster $C$, proving the Lamma.
 
+
+`join_clusters`:
+```
+Cluster* join_clusters(Clusters clusters){
+  int ni,nj;
+  Clusters::iterator it,prev_it,next_it;
+  Events events;
+  // set to 0 here to avoid compiler warnings.
+  Cluster *c=0,*ci,*cj,*prev_cluster=0;
+  Event e;
+  Events::iterator e_it,new_event;
+  double lambda;
+  for(prev_it=clusters.begin(),it=clusters.begin(),it++;
+      it!=clusters.end();
+      it++,prev_it++){
+    c=*it;
+    prev_cluster=*prev_it;
+    // calculate initial events list from intersection of all adjacent
+    // lines
+    lambda=(prev_cluster->alpha - c->alpha)/(c->v - prev_cluster->v);
+    if(lambda>0){//only insert if greater than 0!
+      e=Event(lambda,prev_it);
+      e_it = events.insert(e);//logarithmic
+      prev_cluster->merge_with_next = e_it;
+    }
+    prev_cluster=c;
+  }
+
+  while(events.size()>0){
+    do{
+      e_it=events.begin();//constant
+      lambda=e_it->first;
+      // follow links and define current clusters
+      it=next_it=e_it->second;
+      ci= *it;
+      ++next_it;
+      cj= *next_it;
+      ni=ci->i.size();
+      nj=cj->i.size();
+
+      //print_events(events);
+      //print_clusters(clusters);
+
+      //Make the new cluster object
+      c = new Cluster;
+      c->i.reserve(ni+nj);
+      c->i.insert(c->i.end(),ci->i.begin(),ci->i.end());
+      c->i.insert(c->i.end(),cj->i.begin(),cj->i.end());
+      c->total=ci->total+cj->total+c->i.size();
+      //calculate new velocity of joined lines
+      c->v=(ni*ci->v + nj*cj->v)/(ni+nj);
+      //store other data...
+      c->lambda=lambda;
+      c->alpha= ci->alpha + (c->lambda - ci->lambda)*ci->v;
+      c->child1=ci;
+      c->child2=cj;
+
+      //set up pointers to neighboring clusters
+      prev_it=e_it->second;
+      prev_it--;
+      ++next_it;
+
+      //We have prev-ci-cj-next, we remove ci==it from the list (erase)
+      //and set cj==it after to a pointer to new cluster
+      it=clusters.erase(it);//linear on the number of elements erased==constant
+      *it=c;
+
+      if(it!=clusters.begin()){//constant
+	prev_cluster= *prev_it;
+	insert_new_event(&events,c,prev_cluster,prev_it,prev_cluster);
+      }
+      if(next_it != clusters.end()){//constant
+	insert_new_event(&events,c,*next_it,it,cj);
+      }
+      events.erase(e_it);//constant
+    }while( events.begin()->first == lambda );
+  }
+  return c;
+}
+```
   
  ---   
 
