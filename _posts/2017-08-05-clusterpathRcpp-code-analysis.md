@@ -6,7 +6,9 @@ categories: technology
 comments: true
 ---
 
-
+  
+ ---   
+    
 ### 1. $\ell_1$ penalty clustering method    
 $\ell_1$正则项的聚类效果。这一问题的的目标函数可以写成，
 \\[
@@ -50,7 +52,9 @@ plot(df)
 <img src="{{ BASE_PATH }}/photo/clusterpathRcpp/1Dl1.png"/>  
 
 很明显，这是一个针对只有一维特征的数据矩阵（向量）的$\ell_1$的聚类算法执行结果。从结果到图形，光看最后那一句肯定是会蒙圈的，至少，我刚看到的时候是晕的。这里面包含了好几个代码上的trick。下面将一一解开。  
-
+  
+ ---   
+    
 ### 1.1. R代码分析    
 把上述代码保存至一个R文件中，并使用调试模式(如果不会，可以自行度娘或勾勾，关键词“R, Rstudio, debug")。先解决这个图是**怎么画**出来的吧！这个比较容易点，相对来说更直观的感受到R数据展示（绘图）的强大！导航至`plot(df)`，跟进(step into function "SHIFT+F4")，得到如下代码，
 ```
@@ -121,6 +125,8 @@ int main(int argc, char* argv[])
 ```
 是不是相当的easy? 程序猿都是活雷锋，RInside, Rcpp, 简直是太TM好用了！若对代码有疑问，请移步[Cpp invoke R library](http://9527atct.github.io/technology/2017/07/28/Cpp-invoke-R-library.html)。
 
+  
+ ---   
 
 ### 1. STL 简介  
 
@@ -129,7 +135,9 @@ STL(Standard Template Library)是C++的一个标准模板库，现在作为C++�
 STL将代码抽象为三个主要的类别：container(容器)、algorithm(算法)、iterator(迭代器)。  
 
 网上有一个比较通俗的说法。容器相当于是装东西的东西，如装水的杯子。算法相当于对容器内的东西进行一种操作，如往杯子里倒水。迭代器相当于操作杯子的水的载体，如向水杯里倒水时的水壶，汤勺等。  
-
+  
+ ---   
+    
 ### 1.1 容器  
 
 容器主要用于存放数据。可以理解为一种数据结构。在实际应用中，根据所处理的数据类型，选择合适的容器。STL 中的容器有顺序容器和关联容器，容器适配器（congtainer adapters ：stack,queue ，priority queue ），位集（bit_set ）串包(string_package) 等等。 以下是一些常用的容器。  
@@ -148,7 +156,9 @@ STL将代码抽象为三个主要的类别：container(容器)、algorithm(算�
 - queue, 队列，先进先出
 - map, 映射，由{键，值}对组成的集合
 - multimap, 允许键对有相等的次序的映射
-
+  
+ ---   
+    
 ### 1.2 算法  
 
 STL中算法大部分不作为某些特定容器类的成员函数，它们是泛型的。这就说明了算法可以适配大部分的容器。泛型算法有4类基本的类型。
