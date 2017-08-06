@@ -238,7 +238,7 @@ Cluster* make_clusters_l1(double *x, int N){
 }
 ```
 对于后面的velocity，可以参考以下lamma.  
-**Lemma**. Let $C=\{i:\alpha\_i=\alpha\_C\} \subseteq \{1,...,n\}$ be the cluster formed after the fusion of all points in $C$, and let $w\_{jC}=\sum\_{i\in C} w\_{ij}$. At any point in the regulariation path, the slope of its coefficient is given by,
+**Lemma**. Let $C=\\{i:\alpha\_i=\alpha\_C\\} \subseteq \\{1,...,n\\}$ be the cluster formed after the fusion of all points in $C$, and let $w\_{jC}=\sum\_{i\in C} w\_{ij}$. At any point in the regulariation path, the slope of its coefficient is given by,
 \\[
 v\_C = \frac{d\alpha\_C}{d\lambda}=\frac{1}{\lvert C\rvert}\sum\_{j\notin C}w\_{jC} sign(\alpha_j-\alpha_C)
 \\]
