@@ -237,7 +237,16 @@ Cluster* make_clusters_l1(double *x, int N){
   return join_clusters(clusters);
 }
 ```
-对于后面的velocity，可以参考以下lamma.  
+上述代码的velocity输出为，
+```
+row   vc
+-3	 4
+-2	 2
+ 0	 0
+ 3	-2
+ 5	-4
+```
+这里的velocity表示的是最优条件下，类簇内的均值对lambda的变化率（斜率，速率）。对于velocity的求法，可以参考以下lamma.  
 **Lemma**. Let $C=\\{i:\alpha\_i=\alpha\_C\\} \subseteq \\{1,...,n\\}$ be the cluster formed after the fusion of all points in $C$, and let $w\_{jC}=\sum\_{i\in C} w\_{ij}$. At any point in the regulariation path, the slope of its coefficient is given by,
 \\[
 v\_C = \frac{d\alpha\_C}{d\lambda}=\frac{1}{\lvert C\rvert}\sum\_{j\notin C}w\_{jC} \textrm{sign}(\alpha_j-\alpha_C)
