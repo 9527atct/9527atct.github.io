@@ -272,12 +272,12 @@ Cluster* make_clusters_l1(double *x, int N){
     </tr>
 </table>
 这里的velocity表示的是最优条件下，类簇内的均值对lambda的变化率（斜率，速率）。对于velocity的求法，可以参考以下lamma.  
-**Lemma 1**. Let $C=\\{i:\alpha\_i=\alpha\_C\\} \subseteq \\{1,...,n\\}$ be the cluster formed after the fusion of all points in $C$, and let $w\_{jC}=\sum\_{i\in C} w\_{ij}$. At any point in the regulariation path, the slope of its coefficient is given by,
+>**Lemma 1**. Let $C=\\{i:\alpha\_i=\alpha\_C\\} \subseteq \\{1,...,n\\}$ be the cluster formed after the fusion of all points in $C$, and let $w\_{jC}=\sum\_{i\in C} w\_{ij}$. At any point in the regulariation path, the slope of its coefficient is given by,
 \\[
 v\_C = \frac{d\alpha\_C}{d\lambda}=\frac{1}{\lvert C\rvert}\sum\_{j\notin C}w\_{jC} \textrm{sign}(\alpha_j-\alpha_C)
 \\]
 
-**proof.** Consider the following sufficient optimality condition, for all $i=1,...,n$:
+>**proof.** Consider the following sufficient optimality condition, for all $i=1,...,n$:
 \\[
 0=\alpha\_i - X\_i + \lambda \sum\_{\substack{j\neq i \\ \alpha\_i\neq \alpha\_j}}  w\_{ij} \textrm{sign}(\alpha\_i - \alpha\_j) + \lambda \sum\_{ \substack{j\neq i\\ \alpha\_i =\alpha\_j} } w\_{ij}\beta\_{ij}
 \\]
@@ -290,10 +290,11 @@ Furthermore, by summing each of these equations, we obtain the following:
 \alpha\_C = \bar{X}\_C + \frac{\lambda}{\lvert C \rvert} \sum\_{j\notin C} w\_{jC}\textrm{sign}(\alpha\_j -\alpha\_C)
 \\]
 where $\bar{X}\_C=\sum\_{i\in C} X\_i /\lvert C\rvert$. Taking the derivative with respect to $\lambda$ gives us the slope $v\_C$ of the coefficient line for cluster $C$, proving the Lamma.
+  
+还有一个参考的定理：随着$\lambda$的增大，**不会出现类簇分裂的情况**。这也是一维flsa在$\lambda\_1$为0时的情况。  
+>**Theorem 1**
+Let $\beta\_k(\lambda\_2)$ be the optimal solution to the one-dimensional FLSA problem for coefficient $k$ and penalty parameter $\lambda\_2$. Then if for some $k$ and $\lambda\_2^0$ it holds that $\beta\_k(\lambda\_2^0)$, then for any $\lambda\_2 >\lambda\_2^0$ it holds that $\beta\_k(\lambda\_2)=\beta\_{k+1}(\lambda\_2)$.   
 
-还有一个参考的定理：随着$\lambda$的增大，不会出现类簇分裂的情况。这也是一维flsa在$\lambda\_1$为0时的情况。  
-**Theorem 1**
-Let $\beta\_k(\lambda\_2)$ be the optimal solution to the one-dimensional FLSA problem for coefficient $k$ and penalty parameter $\lambda\_2$. Then if for some $k$ and $\lambda\_2^0$ it holds that $\beta\_k(\lambda\_2^0)$, then for any $\lambda\_2 >\lambda\_2^0$ it holds that $\beta\_k(\lambda\_2)=\beta\_{k+1}(\lambda\_2)$. 
 证明过程可以看,
 >Friedman et al. PATHWISE COORDINATE OPTIMIZATION, [2007]
 
