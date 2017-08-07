@@ -293,7 +293,9 @@ where $\bar{X}\_C=\sum\_{i\in C} X\_i /\lvert C\rvert$. Taking the derivative wi
 
 还有一个参考的定理：随着$\lambda$的增大，不会出现类簇分裂的情况。这也是一维flsa在$\lambda\_1$为0时的情况。  
 **Theorem 1**
-Let $\beta\_k(\lambda\_2)$ be the optimal solution to the one-dimensional FLSA problem for coefficient $k$ and penalty parameter $\lambda\_2$. Then if for some $k$ and $\lambda\_2^0$ it holds that $\beta\_k(\lambda\_2^0)$, then for any $\lambda\_2 >\lambda\_2^0$ it holds that $\beta\_k(\lambda\_2)=\beta\_{k+1}(\lambda\_2)$.
+Let $\beta\_k(\lambda\_2)$ be the optimal solution to the one-dimensional FLSA problem for coefficient $k$ and penalty parameter $\lambda\_2$. Then if for some $k$ and $\lambda\_2^0$ it holds that $\beta\_k(\lambda\_2^0)$, then for any $\lambda\_2 >\lambda\_2^0$ it holds that $\beta\_k(\lambda\_2)=\beta\_{k+1}(\lambda\_2)$. 
+证明过程可以看,
+>Friedman et al. PATHWISE COORDINATE OPTIMIZATION, [2007]
 
 现在开始看`join_clusters`的代码:
 ```
