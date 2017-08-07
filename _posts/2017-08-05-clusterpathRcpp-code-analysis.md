@@ -239,39 +239,41 @@ Cluster* make_clusters_l1(double *x, int N){
 ```
 上述代码的velocity输出为，
 
-<table class="table table-bordered table-striped table-condensed" align="center" valign="center">  
-    <tr>  
+<table class="table table-bordered table-striped table-condensed" align="center" valign="center" width="60%"> 
+    <tr> 
         <td>alpha</td>  
-    <td>lambda</td>  
+    <td>lambda</td> 
     <td>velocity</td>
-    </tr>  
-    <tr>  
+    </tr> 
+    <tr> 
         <td>-3</td>  
-    <td>0</td>  
+    <td>0</td> 
     <td>4</td>
     </tr>
-    <tr>  
+    <tr> 
         <td>-2</td>  
-    <td>0</td>  
+    <td>0</td> 
     <td>2</td>
     </tr>
-    <tr>  
+    <tr> 
         <td>0</td>  
-    <td>0</td>  
+    <td>0</td> 
     <td>0</td>
     </tr>
-    <tr>  
+    <tr> 
         <td>3</td>  
-    <td>0</td>  
+    <td>0</td> 
     <td>-2</td>
     </tr>
-    <tr>  
+    <tr> 
         <td>5</td>  
-    <td>0</td>  
+    <td>0</td> 
     <td>-4</td>
     </tr>
 </table>
-这里的velocity表示的是最优条件下，类簇内的均值对lambda的变化率（斜率，速率）。对于velocity的求法，可以参考以下lamma.  
+这里的velocity表示的是最优条件下，类簇内的均值对lambda的变化率（斜率，速率）。  
+
+对于velocity的求法，可以参考以下lamma.  
 >**Lemma 1**. Let $C=\\{i:\alpha\_i=\alpha\_C\\} \subseteq \\{1,...,n\\}$ be the cluster formed after the fusion of all points in $C$, and let $w\_{jC}=\sum\_{i\in C} w\_{ij}$. At any point in the regulariation path, the slope of its coefficient is given by,
 \\[
 v\_C = \frac{d\alpha\_C}{d\lambda}=\frac{1}{\lvert C\rvert}\sum\_{j\notin C}w\_{jC} \textrm{sign}(\alpha_j-\alpha_C)
@@ -296,7 +298,7 @@ where $\bar{X}\_C=\sum\_{i\in C} X\_i /\lvert C\rvert$. Taking the derivative wi
 Let $\beta\_k(\lambda\_2)$ be the optimal solution to the one-dimensional FLSA problem for coefficient $k$ and penalty parameter $\lambda\_2$. Then if for some $k$ and $\lambda\_2^0$ it holds that $\beta\_k(\lambda\_2^0)$, then for any $\lambda\_2 >\lambda\_2^0$ it holds that $\beta\_k(\lambda\_2)=\beta\_{k+1}(\lambda\_2)$.   
 
 证明过程可以看,
->Friedman et al. PATHWISE COORDINATE OPTIMIZATION, [2007]
+>Friedman et al. PATHWISE COORDINATE OPTIMIZATION [2007]
 
 现在开始看`join_clusters`的代码:
 ```
