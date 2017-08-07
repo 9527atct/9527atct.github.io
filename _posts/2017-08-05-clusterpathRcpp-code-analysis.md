@@ -318,7 +318,7 @@ Cluster* join_clusters(Clusters clusters){
     prev_cluster=*prev_it;
     // calculate initial events list from intersection of all adjacent
     // lines
-    lambda=(prev_cluster->alpha - c->alpha)/(c->v - prev_cluster->v);
+    lambda=(prev_cluster->alpha - c->alpha)/(c->v - prev_cluster->v);  //分析见下文
     if(lambda>0){//only insert if greater than 0!
       e=Event(lambda,prev_it);
       e_it = events.insert(e);//logarithmic
@@ -379,6 +379,15 @@ Cluster* join_clusters(Clusters clusters){
   return c;
 }
 ```
+对于$\lambda$的取值说明：由上面的定理可以知道，唯一可以改变融合两个类簇的的方式是合并两个集合，因为对于增大的$\lambda$，这些类簇不会再次分裂。因此，路径方案是一个分段线性的，并且对于增加的$\lambda$当两个类簇融合时，断点就会出现。这样，就很容易计算下一个断点，当相邻集合具有相同的类簇中心值（$alpha$），断点就会出现。翻译不好，还是直接贴英文。In order to do this, define,
+\\[
+h\_{i,i+1}(\lambda\_2)=\frac{\beta\_{F\{i}}(\lambda\_2)-\beta\_{F\_{i+1}}(\lambda\_2)}{ \frac{\partial \beta\_{F\_{i+1}}}{\partial \lambda\_2}-\frac{\partial \beta\_{F\_{i}}}{\partial \lambda\_2}  } +\lambda\_2
+\\]
+which is the value for $\lambda\_2$ at which the coefficients of the sets $F\_i$ and $F\_{i+1}$ have the same value and can be fused, assuming that no other coefficients become fused before that. If $h\_{i,i+1}(\lambda\_2) <\lambda\_2$, these values are being ignored as the two groups $F\_i$ and $F\_{i+1}$ are actually moving apart for increasing $\lambda\_2$. The next value at which coefficients are fused is therefore the hitting time 
+\\[
+h(\lambda\_2)=\min\_{h\_{i,i+1}>\lambda\_2} h\_{i,i+1}(\lambda\_2)
+\\]
+
   
  ---   
 
