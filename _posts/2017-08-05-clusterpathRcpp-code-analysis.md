@@ -379,7 +379,22 @@ Cluster* join_clusters(Clusters clusters){
   return c;
 }
 ```
-对于$\lambda$的取值说明：由上面的定理可以知道，唯一可以改变融合两个类簇的的方式是合并两个集合，因为对于增大的$\lambda$，这些类簇不会再次分裂。因此，路径方案是一个分段线性的，并且对于增加的$\lambda$当两个类簇融合时，断点就会出现。这样，就很容易计算下一个断点，当相邻集合具有相同的类簇中心值（$alpha$），断点就会出现。翻译不好，还是直接贴英文。In order to do this, define,
+`c->v=(ni*ci->v + nj*cj->v)/(ni+nj);`**合并类簇时对velocity的理解**。
+\\[
+v\_c = \frac{1}{\lvert c\_i \cup c\_j \rvert }\sum\_{j \notin (c\_i \cup c\_j )} w\_{j(c\_i \cup c\_j )}\text{sign}(\alpha\_j -\alpha\_{(c\_i \cup c\_j )})
+\\]
+对于任意类簇$(c\_k, k\neq i,j)$,（所有的类簇已排好序）。
+\\[
+\sum\_k w\_{kc} \text{sign}(\alpha\_k -\alpha\_c)=\sum\_k w\_{kc1} \text{sign}(\alpha\_k -\alpha\_{c1}) + \sum\_k w\_{kc2} \text{sign}(\alpha\_k -\alpha\_{c2})
+\\]
+对于需要合并的类簇来说，
+\\[
+\sum\_{i\in I} w\_{iJ} \text{sign}(\alpha\_I -\alpha\_J) + \sum\_{j\in J} w\_{jI} \text{sign}(\alpha\_J -\alpha\_I) ==0
+\\]
+特别要说明的是，$w\_{iJ}$的$J$是一个类簇集合，$i$代表类簇"I"的每一个无素。所以，$\sum\_{i\in I}w\_{ij}=\sum\_{j\in J}w\_{ji}$。 显然这两项的符号是相反的。故，这句代码是合理的。
+
+
+**对于$\lambda$的取值说明**：由上面的定理可以知道，唯一可以改变融合两个类簇的的方式是合并两个集合，因为对于增大的$\lambda$，这些类簇不会再次分裂。因此，路径方案是一个分段线性的，并且对于增加的$\lambda$当两个类簇融合时，断点就会出现。这样，就很容易计算下一个断点，当相邻集合具有相同的类簇中心值（$alpha$），断点就会出现。翻译不好，还是直接贴英文。In order to do this, define,
 \\[
 h\_{i,i+1}(\lambda\_2)=\frac{\beta\_{F\{i}}(\lambda\_2)-\beta\_{F\_{i+1}}(\lambda\_2)}{ \frac{\partial \beta\_{F\_{i+1}}}{\partial \lambda\_2}-\frac{\partial \beta\_{F\_{i}}}{\partial \lambda\_2}  } +\lambda\_2
 \\]
