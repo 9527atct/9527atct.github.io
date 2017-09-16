@@ -1,6 +1,6 @@
 ﻿---
 layout: postarticle
-title: Computer Vision (1)
+title: Computer Vision 1
 date: 2017-09-01 09:25:05 +1000
 categories: ComputerVision
 comments: true
