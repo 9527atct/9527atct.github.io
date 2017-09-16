@@ -94,14 +94,13 @@ SVD represents any matrix $A$ as a product of three matrices: $U\Sigma V^T$. In 
 SVD的意义。先将缩放因子吸收进$U$,得到$[U\Sigma]\_{m\times n}$,
 \\[
 \begin{bmatrix}
--3.67&-0.71&0\\\-8.8&0.30&0
+-3.67 & -0.71 & 0 \\\ -8.8 & 0.30 & 0
 \end{bmatrix}\times \begin{bmatrix}
--0.42&-0.57&-0.70\\\0.81&0.11&-0.58\\\0.41&-0.82&0.41
+-0.42 & -0.57 & -0.70 \\\ 0.81 & 0.11 & -0.58 \\\ 0.41 & -0.82 & 0.41
 \end{bmatrix}
 \\]
 
-矩阵$U\Sigma$第一列影响的部分为$V^T$的第一行,即，$V^T$的第一行$(V\_1)^T=\begin{bmatrix}
-	-3.67\\\-8.8	\end{bmatrix}$只缩放了$U\Sigma$的第一列$[U\Sigma]\_1=\begin{bmatrix}
+矩阵$U\Sigma$第一列影响的部分为$V^T$的第一行,即，$V^T$的第一行$(V\_1)^T=\begin{bmatrix} -3.67 \\\ -8.8\end{bmatrix}$只缩放了$U\Sigma$的第一列$[U\Sigma]\_1=\begin{bmatrix}
 	-0.42&-0.57&-0.70
 	\end{bmatrix}$，同理，第二列影响第二行，影响的结果分别为，
 \\[
