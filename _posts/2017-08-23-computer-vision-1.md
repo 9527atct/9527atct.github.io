@@ -8,7 +8,9 @@ comments: true
 
 ### 矩阵与图像      
 ---  
- **图像在Matlab中的存储形式为一个维度为3的矩阵**($m\times n\times 3$)。  以下图像操作都是基齐次坐标(Homogeneous	Coordinates)。 In homogeneous coordinates, the multiplication works out so the rightmost column of the matrix is a vector that gets added.  
+ **图像在Matlab中的存储形式为一个维度为3的矩阵**($m\times n\times 3$)。  
+ 
+ 以下图像操作都是基齐次坐标(Homogeneous	Coordinates)。 In homogeneous coordinates, the multiplication works out so the rightmost column of the matrix is a vector that gets added.  
 --- 
 
 **图像位移(Translation)**  
@@ -41,10 +43,10 @@ x\\\y\\\1
 \end{bmatrix}
 \\]
 
+---    
+**由于矩阵乘法的不可交换性，导致 Translation & Scaling != Scaling & Translation**  
 ---  
-**由于矩阵乘法的不可交换性，导致 Translation \& Scaling != Scaling \& Translation**  
----  
-
+  
 **图像旋转(Rotation)**  
 原位置：$P=(x,y)$, 新位置：$P'=(x',y')$,旋转角度：$\theta=(\theta)$,那么旋转矩阵为：$R$,即
 \\[
