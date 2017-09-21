@@ -9,7 +9,11 @@ comments: true
 
 ### 安装TensorFlow    
 ---  
-[TensorFlow官方网站](https://www.tensorflow.org) 推荐linux环境下，使用原生pip安装， 这里只考虑CPU版， GPU版参考官网。
+[TensorFlow官方网站](https://www.tensorflow.org) 
+
+本文主要是在linux环境下，使用原生pip安装（简单不易出错）。同时只考虑CPU版， GPU版在考虑性能时参考官网设置。
+
+安装命令
 ```
 pip install tensorflow
 ```
@@ -26,8 +30,8 @@ You maight think of **TensorFlow** Core programs as consisting of two discrete s
 **tf.placeholder**: is a promise to provide a value later.   
 **tf.Variable** allow us to add trainable parameters to graph.  
 
-
-###入门案例  
+      
+### 入门案例    
 --- 
 
 ```
@@ -113,9 +117,42 @@ def using_tf_estimator():
     
     
     
+def iris_CNN():
+    # load dataset
+    iris = tf.contrib.learn.datasets.load_dataset('iris')
+    x_train,x_test,y_train,y_test = train_test_split(
+            iris.data, iris.target, test_size=0.2,random_state=42)
+    
+    feature_columns = infer_real_valued_columns_from_input(
+            x_train)
+    classifier = tf.contrib.learn.DNNClassifier(
+            feature_columns=feature_columns, hidden_units=[10,20,10], n_classes=3)
+    
+    classifier.fit(x_train,y_train,steps=200)
+    predictions = list(classifier.predict(x_test,as_iterable=True))
+    score = accuracy_score(y_test,predictions)
+    
+    print('Accuracy: {0:f}'.format(score))    
 
 if __name__=='__main__':
-    #test_tf_is_installed()
-    #using_tf_train()
+    test_tf_is_installed()
+    using_tf_train()
     using_tf_estimator()
+    iris_CNN()
 ```
+
+有机器学习基础的话，应该很容易看懂。这里简单说明一下：
+
+- `if __name__=='__main__'`这个语句相当于C语言的main函数。
+- `test_tf_is_installed()` 测试TensorFlow环境是否安装成功。
+- `using_tf_train(), using_tf_estimator()` 测试最基本的线性回归算法的tf实现形式。
+- `iris_CNN()`卷积网络实现iris分类问题。
+
+
+
+
+
+
+
+
+
