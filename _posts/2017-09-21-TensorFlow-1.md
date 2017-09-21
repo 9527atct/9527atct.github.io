@@ -2,7 +2,7 @@
 layout: postarticle
 title: TensorFlow 1
 date: 2017-09-21 11:54:05 +1000
-categories: ComputerVision
+categories: DeepLearning
 comments: true
 --- 
 
