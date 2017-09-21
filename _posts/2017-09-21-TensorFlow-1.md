@@ -7,14 +7,15 @@ comments: true
 --- 
 
 
-###安装TensorFlow  
-
+### 安装TensorFlow    
+---  
 [TensorFlow官方网站](https://www.tensorflow.org) 推荐linux环境下，使用原生pip安装， 这里只考虑CPU版， GPU版参考官网。
 ```
 pip install tensorflow
 ```
 
-###几个小概念  
+### 几个小概念    
+---  
 
 You maight think of **TensorFlow** Core programs as consisting of two discrete sections:
 - Building the computational graph
@@ -25,7 +26,9 @@ You maight think of **TensorFlow** Core programs as consisting of two discrete s
 **tf.placeholder**: is a promise to provide a value later.   
 **tf.Variable** allow us to add trainable parameters to graph.  
 
+
 ###入门案例  
+--- 
 
 ```
 import tensorflow as tf
