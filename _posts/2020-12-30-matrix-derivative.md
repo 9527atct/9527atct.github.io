@@ -27,3 +27,5 @@ df=\sum_i \frac{\partial f}{\partial x_i}dx_i = \left[ \frac{\partial f}{\partia
 \\[
 df=\sum_{i,j}\frac{\partial f}{\partial X_{ij}}dX_{ij}=tr\left( \left[\frac{\partial f}{\partial \mathbf{X}}\right]^T d\mathbf{X} \right)
 \\]
+这里，$tr(\mathbf{A}^T\mathbf{B})=\sum_{ij}A_{ij}B_{ij}$，矩阵$A,B$具有相同的维度。
+
