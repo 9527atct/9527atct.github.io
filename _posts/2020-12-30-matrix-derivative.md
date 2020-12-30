@@ -2,7 +2,7 @@
 layout: postarticle
 title: matrix derivatives
 date: 2020-12-30 10:50
-categories: Math
+categories: math
 comments: true
 ---
 
