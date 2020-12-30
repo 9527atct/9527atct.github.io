@@ -25,5 +25,5 @@ df=\sum_i \frac{\partial f}{\partial x_i}dx_i = \left[ \frac{\partial f}{\partia
 \\]
 因此，矩阵层数与微分之间的关系为
 \\[
-df=\sum_{i,j}\frac{\partial f}{\partial X_{ij}}dX_{ij}=tr\left( \left[\frac{\partial f}{\partial \mathbf{X}}\righth]^T d\mathbf{X} \right)
+df=\sum_{i,j}\frac{\partial f}{\partial X_{ij}}dX_{ij}=tr\left( \left[\frac{\partial f}{\partial \mathbf{X}}\right]^T d\mathbf{X} \right)
 \\]
